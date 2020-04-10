@@ -2,31 +2,30 @@
 // EXTENSÕES DO TEXTFIELD:
 // -----------------------
 
-// Para o botão "Ver" possuir o mesmo estilo de borda que a caixa do formulário, quando em foco:
-manterEstiloDaBarraInferiorDasCriancasDaCaixaDoFormulario();
+// Para todas as extensões de textfield possuírem o mesmo estilo de borda que a caixa do formulário, quando em foco:
+manterEstiloDasExtensoesDoTextfieldIguaisAoDoTextfield();
 
-// Fazer botão ver funcionar, assim como alterar seu texto:
+// Fazer botão "Ver" funcionar, assim como alterar seu texto:
 verSenhaListener();
         
 // Fazer botões "Ver" apenas aparecerem quando alguma das caixas de texto não estiver vazia:
 esconderBotoesVerSenha();
 
-function manterEstiloDaBarraInferiorDasCriancasDaCaixaDoFormulario() {
-    // Obter caixas de senha do formulário:
-    var senhasFormulario = document.querySelectorAll(".input_box");
+function manterEstiloDasExtensoesDoTextfieldIguaisAoDoTextfield() {
+    // Obter caixas de formulário:
+    var caixasFormulario = document.querySelectorAll(".input_box");
     
     // Para cada caixa, adicionar listeners que mudam o estilo do botão "Ver" para combinar com o de entrada de texto:
-    senhasFormulario.forEach(function(caixa){
-        var textoCaixa = caixa.querySelector(".textfield");
-        var children = caixa.children;
+    caixasFormulario.forEach(function(caixa){
+        var textfield = caixa.querySelector(".textfield");
         
-        textoCaixa.addEventListener("focusin", function(){
+        textfield.addEventListener("focusin", function(){
             for (const child of caixa.children) {
                 child.classList.add("focused_textfield");
             }
         });
         
-        textoCaixa.addEventListener("focusout", function(){
+        textfield.addEventListener("focusout", function(){
             for (const child of caixa.children) {
                 child.classList.remove("focused_textfield");
             }
@@ -36,20 +35,20 @@ function manterEstiloDaBarraInferiorDasCriancasDaCaixaDoFormulario() {
 
 function verSenhaListener() {
     // Obter caixas de senha do formulário:
-    var senhasFormulario = document.querySelectorAll(".password_box");
+    var caixasSenha = document.querySelectorAll(".password_box");
     
-    senhasFormulario.forEach(function(caixa){
-        var senhaTextField = caixa.querySelector(".textfield");
+    caixasSenha.forEach(function(caixa){
+        var textfield = caixa.querySelector(".textfield");
         var verSenhaButton = caixa.querySelector(".ver_senha");
         
         verSenhaButton.addEventListener("click", function(){
-            if (senhaTextField.type == "password") {
-                senhasFormulario.forEach(function(_){
+            if (textfield.type == "password") {
+                caixasSenha.forEach(function(_){
                     _.querySelector(".textfield").type = "text"
                     _.querySelector(".ver_senha").textContent = "Esconder"
                 });
             } else {
-                senhasFormulario.forEach(function(_){
+                caixasSenha.forEach(function(_){
                     _.querySelector(".textfield").type = "password"
                     _.querySelector(".ver_senha").textContent = "Ver"
                 });
@@ -67,9 +66,9 @@ function esconderBotoesVerSenha() {
     
     // Para toda caixa de senha, adicione um listener em sua caixa de texto para verificar se os botões "Ver" deveriam ser mostrados:
     caixasSenha.forEach(function(caixa){
-        var senhaTextField = caixa.querySelector(".textfield");
+        var textfield = caixa.querySelector(".textfield");
     
-        senhaTextField.addEventListener("input", function(){
+        textfield.addEventListener("input", function(){
             if (!caixasDeSenhaEstaoTodasVazias(caixasSenha)) {
                 verSenhaButtons.forEach(function(button){
                     button.classList.remove("ver_senha_invisible");
@@ -88,9 +87,10 @@ function esconderBotoesVerSenha() {
 function caixasDeSenhaEstaoTodasVazias(caixasSenha) {
     var caixasVazias = true;
     
+    // Para toda caixa de senha dada, verificar se algum de seus texfields possui texto:
     caixasSenha.forEach(function(caixa){
-        var caixaDeTextoSenha = caixa.querySelector(".textfield");
-        if (caixaDeTextoSenha.value.length > 0) {
+        var textfield = caixa.querySelector(".textfield");
+        if (textfield.value.length > 0) {
             caixasVazias = false;
         } 
     });

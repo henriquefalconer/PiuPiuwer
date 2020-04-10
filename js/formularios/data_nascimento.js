@@ -5,9 +5,9 @@
 formatarTextoDeDataDeNascimento();
 
 function formatarTextoDeDataDeNascimento() {
-    var formulario_data = document.querySelector(".birthdate");
+    var birthdate = document.querySelector(".birthdate");
 
-    formulario_data.addEventListener("input", function(){
+    birthdate.addEventListener("input", function(){
         // Obter texto não formatado:
         var textoDigitado = this.value;
 
@@ -18,7 +18,7 @@ function formatarTextoDeDataDeNascimento() {
         this.value = textoFormatado;
 
         // Alterar a posição do cursor de texto no campo do formulário:
-        definirPosicaoDoCursorNaCaixaDeTexo(this, textoFormatado);
+        definirPosicaoDoCursorNaCaixaDeTexto(this, textoFormatado);
     });
 }
 
@@ -46,7 +46,7 @@ function removerBarrasETracos(texto) {
     return texto.replace(new RegExp("/", "g"), "").replace(new RegExp("-", "g"), "");
 }
 
-function definirPosicaoDoCursorNaCaixaDeTexo(elemento, texto) {
+function definirPosicaoDoCursorNaCaixaDeTexto(elemento, texto) {
     var quantidadeNumerosDigitados = removerBarrasETracos(texto).length;
     var posicaoReal = quantidadeNumerosDigitados;
     
