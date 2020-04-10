@@ -50,68 +50,75 @@ function countOcorrencesInString(string, substring) {
     return (string.match(new RegExp(substring, "g")) || []).length;
 }
 
-function valorDoCampoEhValido(campo) {
-    var tipoCampo = campo.classList[1];
-    var valor = campo.value;
+function valorDoCampoEhValido(textfield) {
+    var tipoCampo = textfield.classList[1];
+    var valor = textfield.value;
+    var parentOfParent = textfield.parentNode.parentNode;
     
     if (valor.length == 0) return false;
     
-    if (tipoCampo == "username") {
-        // Se o valor não possuir apenas caracteres minúsculos, retornar falso:
-        if (valor != valor.toLowerCase()) return false;
+    // Se, e apenas se, a caixa do formulário do textfield estiver envolvida por uma pai de popup ajuda, faça o seguinte:
+    if (parentOfParent.classList.contains("input_box_help_parent")) {
+        if (tipoCampo == "username") {
+            // Se o valor não possuir apenas caracteres minúsculos, retornar falso:
+            if (valor != valor.toLowerCase()) return false;
+            
+            // Se o valor possuir algum espaço, retornar falso:
+            if (countOcorrencesInString(valor, " ") > 0) return 0;
+        }
         
-        // Se o valor possuir algum espaço, retornar falso:
-        if (countOcorrencesInString(valor, " ") > 0) return 0;
-    }
-    
-    if (tipoCampo == "email") {
-        // Se o valor do campo possuir mais de um "@", retornar falso:
-        if (countOcorrencesInString(valor, "@") != 1) return false;
+        if (tipoCampo == "email") {
+            // Se o valor do campo possuir mais de um "@", retornar falso:
+            if (countOcorrencesInString(valor, "@") != 1) return false;
+            
+            // Separação do domínio:
+            var dominio = valor.split("@")[1];
+
+            console.log(dominio.split("."));
+            console.log(countOcorrencesInString(dominio, /\./));
+            
+            // Se domínio não possuir ".", retornar falso:
+            if (countOcorrencesInString(dominio, /\./) == 0) return false;
+            
+            // Se as strings entre "." do domínio possuírem tamanho zero, retornar falso:
+            dominio.split(".").forEach(function(string){
+                if (string.length == 0) return false;
+            });
+        }
         
-        // Separação do domínio:
-        var dominio = valor.split("@")[1];
+        else if (tipoCampo == "birthdate") {
+            // Obter quantidade de milissegundos desde 01/01/1970:
+            var dataObjeto = transformarStringDataEmObjeto(valor);
+            
+            // Criar objeto com a data atual:
+            var dataHoje = Date.parse(new Date());
+            
+            // Verificar se data existe:
+            if (isNaN(dataObjeto)) return false;
+            
+            // Se data for anterior a 01/01/1903, retornar falso:
+            if (dataObjeto < Date.parse("1903-01-01")) return false;
+            
+            // Se a data não estiver no passado, retornar falso:
+            if (dataObjeto > dataHoje) return false;
+            
+            // Se a data não for, pelo menos, 12 anos atrás, retornar falso:
+            if (!dataEhMaisDeTantosAnosAtras(valor, 12)) return false;
+        }
         
-        // Se domínio não possuir ".", retornar falso:
-        if (countOcorrencesInString(dominio, ".") == 0) return false;
+        else if (tipoCampo == "password") {
+            // Verificar se senha possuir no mínimo 6 caracteres:
+            if (valor.length < 6) return false;
+            
+            // Verificar se senha possui, no mínimo, um caractere maiúsculo:
+            if (valor == valor.toLowerCase()) return 0;
+        }
         
-        // Se as strings entre "." do domínio possuírem tamanho zero, retornar falso:
-        dominio.split(".").forEach(function(string){
-            if (string.length == 0) return false;
-        });
-    }
-    
-    else if (tipoCampo == "birthdate") {
-        // Obter quantidade de milissegundos desde 01/01/1970:
-        var dataObjeto = transformarStringDataEmObjeto(valor);
-        
-        // Criar objeto com a data atual:
-        var dataHoje = Date.parse(new Date());
-        
-        // Verificar se data existe:
-        if (isNaN(dataObjeto)) return false;
-        
-        // Se data for anterior a 01/01/1903, retornar falso:
-        if (dataObjeto < Date.parse("1903-01-01")) return false;
-        
-        // Se a data não estiver no passado, retornar falso:
-        if (dataObjeto > dataHoje) return false;
-        
-        // Se a data não for, pelo menos, 12 anos atrás, retornar falso:
-        if (!dataEhMaisDeTantosAnosAtras(valor, 12)) return false;
-    }
-    
-    else if (tipoCampo == "password") {
-        // Verificar se senha possuir no mínimo 6 caracteres:
-        if (valor.length < 6) return false;
-        
-        // Verificar se senha possui, no mínimo, um caractere maiúsculo:
-        if (valor == valor.toLowerCase()) return 0;
-    }
-    
-    else if (tipoCampo == "confirmpassword") {
-        var password = document.querySelector(".password").value;
-        // Verificar se a confirmação de senha é igual à senha:
-        if (valor != password) return false;
+        else if (tipoCampo == "confirmpassword") {
+            var password = document.querySelector(".password").value;
+            // Verificar se a confirmação de senha é igual à senha:
+            if (valor != password) return false;
+        }
     }
     
     return true;
