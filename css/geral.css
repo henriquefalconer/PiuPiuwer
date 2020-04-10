@@ -1,0 +1,103 @@
+body{
+    margin: 0;
+    background-color: white;
+    font-family: sans-serif;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 60px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 20px;
+    border-bottom: 2px solid #ddd;
+    position: fixed;
+    top: 0;
+    background-color: white;
+}
+
+.logo_piu{
+    height: 39px;
+    object-fit: contain;
+}
+
+.main_content{
+    margin-top: 60px;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+.hollow_button{
+    border: 1px solid #f21d1d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #f21d1d;
+    border-radius: 15px;
+    padding: 12px 16px;
+    font-size: 13px;
+    text-align: center;
+    font-weight: bold;
+    box-sizing: border-box;
+    height: 20px;
+    margin: 0 30px;
+}
+
+.filled_button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 20px;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    background-color: #f21d1d;
+    box-sizing: border-box;
+    border: none;
+    color: white;
+    border-radius: 20px;
+}
+
+footer{
+    border-top: 2px solid #ddd;
+    padding: 0 20px;
+    height: 100px;
+    box-sizing: border-box;
+}
+
+.piupiuwer_copyright{
+    width: 200px;
+    align-content: end;
+    font-size: 12px;
+    color: #888;
+    margin: 20px 0;
+}
+
+.logo_piupiuwer_grey{
+    height: 30px;
+}
+
+.invisible{
+    display: none;
+}
+
+.active {
+  display: block;
+}
+
+.centralized_text{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

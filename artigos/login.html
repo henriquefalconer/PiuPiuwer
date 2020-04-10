@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>PiuPiuwer</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        
+        <!-- CSS do projeto: -->
+        <link rel="stylesheet" href="../css/geral.css">
+        <link rel="stylesheet" href="../css/paginas_de_forms.css">
+    </head>
+    <body>
+        <header>
+            
+            <a href="../index.html">
+                <img class="logo_piu" src="../img/Logo%20Piupiuwer.png">
+            </a>
+            
+            <a class="hollow_button" href="../index.html">
+                Voltar
+            </a>
+            
+        </header>
+        <main class="main_content formulario_content">
+            <h1 class="form_title">Login</h1>
+            <form class="formulario_cadastro">
+                <div class="input_box">
+                    <input class="textfield name" type="text" placeholder="E-mail ou nome de usuário" id="name" name="name">
+                </div>
+                <div class="input_box password_box">
+                    <input class="textfield password" type="password" placeholder="Senha" id="password" name="password">
+                    <p class="textfield_extension ver_senha ver_senha_invisible">Ver</p>
+                </div>
+                <span class="error_text invisible">Insira os dados corretamente.</span>
+                <input class="filled_button button_confirmar" type="submit" value="Continuar">
+            </form>
+            
+            <div class="pagina_cadastro_links_conta">
+            
+                <a class="link_conta link_conta_esquerdo" href="esqueci_senha.html">
+                    Esqueci minha senha
+                </a>
+                
+                <span class="ponto"></span>
+                
+                <a class="link_conta link_conta_direito" href="cadastro.html">
+                    Criar uma nova conta
+                </a>
+                
+            </div>
+        </main>
+        
+        <footer>
+            <div class="piupiuwer_copyright">
+                <img class="logo_piupiuwer_grey" src="../img/Logo%20Piupiuwer%20Grey.png">
+                <p>© 2020 PiuPiuwer, Inc.</p>
+            </div>
+        </footer>
+        
+        <script src="../js/formularios/extensoes_textfield.js"></script>
+        <script src="../js/formularios/verificacao_campos.js"></script>
+    </body>
+</html>
