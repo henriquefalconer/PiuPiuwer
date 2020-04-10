@@ -17,7 +17,8 @@ function botaoConfirmarListener() {
         var camposFormulario = document.querySelectorAll(".input_box");
 
         camposFormulario.forEach(function(campo){
-            var campoEhValido = valorDoCampoEhValido(campo.querySelector(".textfield"));
+            var textfield = campo.querySelector(".textfield");
+            var campoEhValido = valorDoCampoEhValido(textfield);
             
             if (!campoEhValido) {
                 for (const child of campo.children) {
@@ -137,25 +138,24 @@ function transformarStringDataEmObjeto(stringData) {
 }
 
 function dataEhMaisDeTantosAnosAtras(stringData, anos) {
-    var dataHoje = new Date();
-    
+    // Obtenção do dia, mês e ano especificado:
     var diaString = stringData.split("/")[0];
     var mesString = stringData.split("/")[1];
     var anoString = stringData.split("/")[2];
     
+    // Obtenção do dia, mês e ano atuais:
+    var dataHoje = new Date();
     var anoAtual = dataHoje.getFullYear();
     var mesAtual = dataHoje.getMonth() + 1;
     var diaAtual = dataHoje.getDate();
     
+    // Verificação de ordem:
     if (anoString > (anoAtual - anos)) return false;
-    
     if (anoString == (anoAtual - anos)) {
         if (mesString > mesAtual) return false;
-        
         if (mesString == mesAtual) {
             if (diaString > diaAtual) return false;
         }
     }
-    
     return true;
 }
