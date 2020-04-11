@@ -7,18 +7,24 @@
 
 .form_title{
     text-align: center;
+    margin: 21.44px 40px;
+}
+
+.form_subtitle{
+    margin: 23px 90px 5px;
 }
 
 .formulario_cadastro{
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 400px;
+    margin: 0 250px;
     align-items: center;
 }
 
 .input_box{
     display: flex;
-    width: 400px;
+    width: 100%;
     align-items: flex-end;
 }
 
@@ -26,7 +32,7 @@
     display: block;
     margin: 8px 0;
     height: 30px;
-    width: 400px;
+    width: 100%;
     border: none;
     border-bottom: 2px solid #999;
     font-size: 14px;
@@ -98,6 +104,7 @@
 /* Popup container */
 .input_box_help_parent {
     position: relative;
+    width: 100%;
 }
 
 /* The actual popup (appears on top) */
@@ -110,10 +117,10 @@
     color: #fff;
     text-align: center;
     display: flex;
+    padding: 10px;
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
-    padding: 10px;
     position: absolute;
     z-index: 1;
     margin-left: 10px;
@@ -156,7 +163,7 @@
     color: #f21d1d;
     font-size: 14px;
     margin-top: 15px;
-    width: 400px;
+    width: 100%;
     font-weight: bold;
 }
 
@@ -206,4 +213,37 @@
 link_conta_direito{
     text-align: start;
     width: 180px;
+}
+
+@media screen and (max-width: 845px){
+
+    .formulario_cadastro{
+        width: 65%;
+    }
+
+    .popup_ajuda{
+        width: 0;
+        height: 0;
+        margin: 0 auto;
+        position: static;
+        padding: 0;
+        transition: height .2s;
+    }/* Popup arrow */
+
+    .popup_ajuda::after {
+        display: none;
+    }
+
+    .input_box_help_parent{
+        position: static;
+    }
+
+    .show{
+        width: 100%;
+        height: 60px;
+        display: block;
+        display: flex;
+        padding: 10px;
+    }
+
 }

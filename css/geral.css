@@ -24,8 +24,12 @@ header{
 }
 
 .main_content{
-    margin-top: 60px;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 60px auto 0;
+    width: 1000px;
+    border-left: 2px solid #ddd;
+    border-right: 2px solid #ddd;
 }
 
 a{
@@ -100,4 +104,17 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@media screen and (max-width: 1000px){
+    .main_content{
+        width: 100%;
+        border: none;
+    }
+}
+
+@media screen and (max-width: 320px){
+    .main_content{
+        width: 320px;
+    }
 }
