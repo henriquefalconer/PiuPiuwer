@@ -5,7 +5,7 @@
 formatarTextoDeDataDeNascimento();
 
 function formatarTextoDeDataDeNascimento() {
-    var birthdate = document.querySelector(".birthdate");
+    var birthdate = document.querySelector("#birthdate");
 
     birthdate.addEventListener("input", function(){
         // Obter texto não formatado:

@@ -114,6 +114,12 @@ footer{
     justify-content: center;
 }
 
+.featureless_textfield{
+    display: block;
+    border: none;
+    background-color: transparent;
+}
+
 @media screen and (max-width: 1000px){
     .main_content{
         width: 100%;

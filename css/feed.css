@@ -15,8 +15,6 @@
 }
 
 #pesquisar{
-    background-color: transparent;
-    border: none;
     font-size: 18px;
     font-weight: 400;
     color: #6a6a6a;
@@ -144,4 +142,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.piu{
+    display: flex;
+}
+
+.main_info_piu{
+    display: flex;
+    align-items: center;
 }

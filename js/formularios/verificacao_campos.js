@@ -60,7 +60,7 @@ function countOcorrencesInString(string, substring) {
 }
 
 function valorDoCampoEhValido(textfield) {
-    var tipoCampo = textfield.classList[1];
+    var tipoCampo = textfield.id;
     var valor = textfield.value;
     var parentOfParent = textfield.parentNode.parentNode;
     
