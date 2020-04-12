@@ -167,6 +167,7 @@
 
 .button_confirmar{
     margin: 30px 0 35px;
+    width: 122px;
     cursor: pointer;
 }
 
@@ -181,15 +182,6 @@
 .pagina_cadastro_links_conta{
     display: flex;
     align-items: center;
-}
-
-.ponto{
-    height: 5px;
-    width: 5px;
-    background-color: #aaa;
-    border-radius: 50%;
-    margin: 0 10px;
-    display: block;
 }
 
 .link_conta{

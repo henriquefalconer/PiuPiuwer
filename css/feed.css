@@ -26,7 +26,7 @@
     color: #999;
 }
 
-#pesquisar_no_campo:-moz-placeholder {
+#pesquisar:-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
     color: #999;
     opacity: 1;
@@ -43,16 +43,9 @@
     color: #999;
 }
 
-/* Popup container */
-.input_box_help_parent {
-    position: relative;
-    width: 100%;
-}
-
 
 #social_media_area{
     display: flex;
-    height: 600px;
     width: 600px;
     margin: 60px auto 0;
     position: relative;
@@ -130,8 +123,9 @@
 }
 
 #feed_content{
-    height: 1000px;
+    min-height: 100%;
     width: 100%;
+    background-color: #ddd;
 }
 
 #tab_title{
@@ -142,13 +136,125 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: white;
 }
 
 .piu{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    padding-bottom: 0;
+    background-color: white;
+    margin: 0 0 2px;
 }
 
-.main_info_piu{
+.piu_main_area{
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+#piar_box{
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+}
+
+.avatar_piu{
+    height: 50px;
+    margin-right: 10px;
+}
+
+#piar_textfield{
+    font-size: 18px;
+    width: 100%;
+    font-weight: 500;
+    color: #999;
+    font-family: sans-serif;
+    margin-right: 10px;
+}
+
+#piar_textfield::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #acacac;
+}
+
+#piar_textfield:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #acacac;
+    opacity: 1;
+}
+
+#piar_textfield::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #acacac;
+    opacity: 1;
+}
+
+#piar_textfield:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #acacac;
+}
+
+#piar_box_button{
+    margin-top: auto;
+    width: 120px;
+}
+
+.piu_text_area{
+    width: 100%;
+}
+
+.piu_info{
     display: flex;
     align-items: center;
+    margin: 0;
+    padding: 2px;
+}
+
+.piuwer_name{
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.piuwer_username{
+    color: #8f8f8f;
+}
+
+.ponto_piu{
+    background-color: #c4c4c4;
+    margin: 0 8px 0 10px;
+}
+
+.piu_time{
+    color: #8f8f8f;
+}
+
+.piu_message{
+    padding: 2px;
+    margin: 4px 0;
+}
+
+.piu_actions_area{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.action_box{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.piu_action_icon{
+    height: 20px;
+    margin: 0 8px;
+}
+
+.action_count{
+    color: #C6C5C5;
+    font-weight: 500;
 }
