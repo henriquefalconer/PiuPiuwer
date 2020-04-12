@@ -156,7 +156,7 @@ function montarPiuElement(piu) {
     var piuElement = document.createElement("div");
     piuElement.classList.add("piu");
 
-    var dadosUsuario = getDadosUsuario(piu);
+    var dadosUsuario = getDadosUsuarioFromPiuId(piu.piu_id);
 
     // Montar área principal do piu:
     var areaPrincipal = montarAreaPrincipal(piu, dadosUsuario);
@@ -169,8 +169,8 @@ function montarPiuElement(piu) {
     return piuElement;
 }
 
-function getDadosUsuario(piu) {
-    var nomeUsuario = piu.piu_id.split(":")[0];
+function getDadosUsuarioFromPiuId(piuId) {
+    var nomeUsuario = piuId.split(":")[0];
 
     var infoUsuario = {};
 
@@ -182,6 +182,22 @@ function getDadosUsuario(piu) {
     });
 
     return infoUsuario;
+}
+
+function getPiuFromPiuId(piuId) {
+    var nomeUsuario = piuId.split(":")[0];
+
+    var piuData = {};
+
+    Object.keys(baseDeDados).forEach(function(usuario){
+        if (usuario == nomeUsuario) {
+            baseDeDados[usuario].pius.forEach(function(piu){
+                if (piu.piu_id == piuId) piuData = piu;
+            });
+        }
+    });
+
+    return piuData;
 }
 
 function montarAreaPrincipal(dadosPiu, dadosUsuario) {
@@ -200,31 +216,7 @@ function montarAreaPrincipal(dadosPiu, dadosUsuario) {
     piuTextArea.classList.add("piu_text_area");
 
     // Montar informações do piu:
-    var piuInfo = document.createElement("p");
-    piuInfo.classList.add("piu_info");
-
-    // Montar elementos do piuInfo:
-    var piuName = document.createElement("span");
-    piuName.classList.add("piuwer_name");
-    piuName.textContent = dadosUsuario.nome;
-    piuInfo.appendChild(piuName);
-
-    var piuUserName = document.createElement("span");
-    piuUserName.classList.add("piuwer_username");
-    piuUserName.textContent = "@" + dadosUsuario.username;
-    piuInfo.appendChild(piuUserName);
-
-    var piuPonto = document.createElement("span");
-    piuPonto.classList.add("ponto");
-    piuPonto.classList.add("ponto_piu");
-    piuInfo.appendChild(piuPonto);
-
-    var piuTime = document.createElement("span");
-    piuTime.classList.add("piu_time");
-    piuTime.textContent = getRelativeTime(getTimeFromPiuId(dadosPiu.piu_id));
-    piuInfo.appendChild(piuTime);    
-
-    // Inserir piuInfo em piuTextArea:
+    var piuInfo = montarPiuInfo(dadosUsuario, dadosPiu);
     piuTextArea.appendChild(piuInfo);    
 
     // Montar mensagem do piu:
@@ -232,6 +224,47 @@ function montarAreaPrincipal(dadosPiu, dadosUsuario) {
     piuMessage.classList.add("piu_message");
     piuMessage.textContent = dadosPiu.message;
     piuTextArea.appendChild(piuMessage);
+
+    // Caso exista, montar um piu_reply:
+    if (dadosPiu.piu_reply_id != null) {
+        var piuReply = document.createElement("div");
+        piuReply.classList.add("piu");
+        piuReply.classList.add("piu_reply");
+    
+        // Definir dados do piu_reply: 
+        var replyUserData = getDadosUsuarioFromPiuId(dadosPiu.piu_reply_id);
+        var replyPiuData = getPiuFromPiuId(dadosPiu.piu_reply_id);
+    
+        // Montar piuReplyInfo, porém sem avatar:
+        var piuReplyInfo = montarPiuInfo(replyUserData, replyPiuData);
+
+        // Montar avatar no piuReplyInfo: 
+        var piuReplyAvatar = document.createElement("img");
+        piuReplyAvatar.classList.add("avatar_piu_reply");
+        piuReplyAvatar.alt = "Avatar usuário reply";
+        piuReplyAvatar.src = "../img/avatars/" + replyUserData.avatar;
+        piuReplyInfo.insertBefore(piuReplyAvatar, piuReplyInfo.childNodes[0]);
+
+        // Adicionar piuReplyInfo em piuReply:
+        piuReply.appendChild(piuReplyInfo);
+
+        // Montar div da mensagem do piu_reply:
+        var piuReplyTextArea = document.createElement("div");
+        piuReplyTextArea.classList.add("piu_text_area");
+        piuReplyTextArea.classList.add("piu_reply_text_area");
+
+        // Montar mensagem do piu_reply:
+        var piuReplyMessage = document.createElement("p");
+        piuReplyMessage.classList.add("piu_message");
+        piuReplyMessage.textContent = replyPiuData.message;
+        piuReplyTextArea.appendChild(piuReplyMessage);
+
+        // Adicionar piuReplyTextArea em piuReply:
+        piuReply.appendChild(piuReplyTextArea);
+
+        // Adicionar piuReply em piuTextArea:
+        piuTextArea.appendChild(piuReply);
+    }
     
     // Inserir piuTextArea em piuMainArea:
     piuMainArea.appendChild(piuTextArea);   
@@ -257,6 +290,34 @@ function getRelativeTime(timeInMilliseconds) {
     }
 
     return relativeTime;
+}
+
+function montarPiuInfo(dadosUsuario, dadosPiu) {
+    var piuInfo = document.createElement("p");
+    piuInfo.classList.add("piu_info");
+
+    // Montar elementos do piuInfo:
+    var piuName = document.createElement("span");
+    piuName.classList.add("piuwer_name");
+    piuName.textContent = dadosUsuario.nome;
+    piuInfo.appendChild(piuName);
+
+    var piuUserName = document.createElement("span");
+    piuUserName.classList.add("piuwer_username");
+    piuUserName.textContent = "@" + dadosUsuario.username;
+    piuInfo.appendChild(piuUserName);
+
+    var piuPonto = document.createElement("span");
+    piuPonto.classList.add("ponto");
+    piuPonto.classList.add("ponto_piu");
+    piuInfo.appendChild(piuPonto);
+
+    var piuTime = document.createElement("span");
+    piuTime.classList.add("piu_time");
+    piuTime.textContent = getRelativeTime(getTimeFromPiuId(dadosPiu.piu_id));
+    piuInfo.appendChild(piuTime);    
+
+    return piuInfo;
 }
 
 function montarPiuActionButtons(dados) {
