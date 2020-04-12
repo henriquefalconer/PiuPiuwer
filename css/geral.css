@@ -16,6 +16,7 @@ header{
     position: fixed;
     top: 0;
     background-color: white;
+    z-index: 1;
 }
 
 .logo_piu{
@@ -28,8 +29,6 @@ header{
     justify-content: center;
     margin: 60px auto 0;
     width: 1000px;
-    border-left: 2px solid #ddd;
-    border-right: 2px solid #ddd;
 }
 
 a{
@@ -46,30 +45,37 @@ input:focus{
     flex-direction: column;
     justify-content: center;
     color: #f21d1d;
-    border-radius: 15px;
+    border-radius: 300px;
     padding: 12px 16px;
     font-size: 13px;
     text-align: center;
     font-weight: bold;
     box-sizing: border-box;
     height: 20px;
-    margin: 0 30px;
+    margin: 0;
 }
 
 .filled_button{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 20px;
-    padding: 14px 20px;
     font-size: 13px;
     font-weight: 600;
+    text-align: center;
     margin: 0;
     background-color: #f21d1d;
     box-sizing: border-box;
     border: none;
     color: white;
     border-radius: 20px;
+    height: 40px;
+    padding: 10px 30px;
+    font-weight: 600;
+    border-radius: 300px;
+}
+
+.voltar_button{
+    margin-left: 30px;
 }
 
 footer{
@@ -80,11 +86,13 @@ footer{
 }
 
 .piupiuwer_copyright{
-    width: 200px;
     align-content: end;
+    margin: 20px 0;
+}
+
+#piupiuwer_copyright_text{
     font-size: 12px;
     color: #888;
-    margin: 20px 0;
 }
 
 .logo_piupiuwer_grey{

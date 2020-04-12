@@ -13,11 +13,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-}
-
-.separator_vertical_pagina_principal{
-    width: 2px;
-    background-color: #ddd;
+    border-left: 2px solid #ddd;
+    border-right: 2px solid #ddd;
 }
 
 .pagina_inicial_content_text_area{

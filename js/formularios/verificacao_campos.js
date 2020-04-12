@@ -16,11 +16,14 @@ function botaoConfirmarListener() {
 
         var camposFormulario = document.querySelectorAll(".input_box");
 
+        var todosOsCamposSaoValidos = true;
+
         camposFormulario.forEach(function(campo){
             var textfield = campo.querySelector(".textfield");
             var campoEhValido = valorDoCampoEhValido(textfield);
             
             if (!campoEhValido) {
+                todosOsCamposSaoValidos = false;
                 for (const child of campo.children) {
                     child.classList.add("erro_no_campo");
                 }
@@ -33,15 +36,21 @@ function botaoConfirmarListener() {
             
         });
 
-        var primeiroCampoComErro = document.querySelector(".erro_no_campo");
+        if (todosOsCamposSaoValidos) {
+            location.replace("feed.html");
+        } else {
 
-        var errorText = document.querySelector(".error_text");
+            var primeiroCampoComErro = document.querySelector(".erro_no_campo");
+    
+            var errorText = document.querySelector(".error_text");
+    
+            if (primeiroCampoComErro != null) {
+                errorText.classList.remove("invisible");
+                primeiroCampoComErro.focus();
+            }
+            else errorText.classList.add("invisible");
 
-        if (primeiroCampoComErro != null) {
-            errorText.classList.remove("invisible");
-            primeiroCampoComErro.focus();
         }
-        else errorText.classList.add("invisible");
 
     });
 }

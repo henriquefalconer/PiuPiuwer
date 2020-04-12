@@ -1,0 +1,147 @@
+#pesquisar_no_piupiwer_box{
+    display: flex;
+    align-items: center;
+    background-color: #e3e3e3;
+    border-radius: 20px;
+    height: 35px;
+    width: 400px;
+    margin-left: 50px;
+    padding: 0 19px;
+}
+
+#icone_lupa{
+    height: 21px;
+    margin: 0 10px 0 0;
+}
+
+#pesquisar{
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: #6a6a6a;
+    width: 100%;
+}
+
+#pesquisar::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #999;
+}
+
+#pesquisar_no_campo:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #999;
+    opacity: 1;
+}
+
+#pesquisar::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #999;
+    opacity: 1;
+}
+
+#pesquisar:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #999;
+}
+
+/* Popup container */
+.input_box_help_parent {
+    position: relative;
+    width: 100%;
+}
+
+
+#social_media_area{
+    display: flex;
+    height: 600px;
+    width: 600px;
+    margin: 60px auto 0;
+    position: relative;
+}
+
+.side_bar{
+    position: fixed;
+    width: 200px;
+    bottom: 0;
+    padding: 60px 0 0;
+    height: 100%;
+    box-sizing: border-box;
+    border-left: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+#left_side_content{
+    padding: 85px 25px 25px;
+    left: 50%;
+    transform: translateX(-250%);
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navigation_bar{
+    width: 100%;
+}
+
+.navigation_button{
+    width: 100%;
+    height: 38px;
+    margin: 0;
+    color: #999;
+    font-size: 16px;
+    font-weight: 700;
+    border-color: #999;
+}
+
+#selected_navigation_button{
+    color: #f21d1d;
+    border: 2px solid #f21d1d;
+}
+
+.navigation_vertical_separator{
+    height: 15px;
+}
+
+#navigation_piar_button{
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#ajustes_button{
+    height: 40px;
+    margin: 10px;
+}
+
+#right_side_content{
+    padding-bottom: 10px;
+    right: 50%;
+    transform: translateX(250%);
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#piupiuwer_copyright_text_feed{
+    color: #808080;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+#feed_content{
+    height: 1000px;
+    width: 100%;
+}
+
+#tab_title{
+    border-bottom: 2px solid #ddd;
+    padding: 10px 16px;
+    margin: 0;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
