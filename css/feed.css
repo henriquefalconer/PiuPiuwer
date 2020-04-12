@@ -149,6 +149,15 @@
     padding-bottom: 0;
     background-color: white;
     margin: 0 0 2px;
+    font-size: 15px;
+}
+
+.piu_reply{
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    padding: 10px 18px;
+    margin-top: 12px;
+    margin-bottom: 3px;
 }
 
 .piu_main_area{
@@ -164,6 +173,11 @@
 
 .avatar_piu{
     height: 50px;
+    margin-right: 10px;
+}
+
+.avatar_piu_reply{
+    height: 35px;
     margin-right: 10px;
 }
 
@@ -207,11 +221,16 @@
     width: 100%;
 }
 
+.piu_reply_text_area{
+    margin: 5px 0;
+}
+
 .piu_info{
     display: flex;
     align-items: center;
     margin: 0;
     padding: 2px;
+    width: 100%;
 }
 
 .piuwer_name{
@@ -234,7 +253,7 @@
 
 .piu_message{
     padding: 2px;
-    margin: 4px 0;
+    margin: 4px 0 0;
 }
 
 .piu_actions_area{
@@ -250,11 +269,12 @@
 }
 
 .piu_action_icon{
-    height: 20px;
+    height: 18px;
     margin: 0 8px;
 }
 
 .action_count{
     color: #C6C5C5;
     font-weight: 500;
+    margin: 15px 0;
 }

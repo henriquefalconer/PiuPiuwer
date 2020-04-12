@@ -1,6 +1,6 @@
-// ---------------------------------------------------
-// CONTROLAR FUNCIONALIDADES DA CAIXA DE TEXTO DE PIAR
-// ---------------------------------------------------
+// ----------------------------------------------------
+// CONTROLAR FUNCIONALIDADES DA CAIXA DE TEXTO DE PIAR:
+// ----------------------------------------------------
 
 autoSizeTextArea();
 
