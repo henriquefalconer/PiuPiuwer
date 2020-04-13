@@ -1,0 +1,172 @@
+#pesquisar_no_piupiwer_box{
+    display: flex;
+    align-items: center;
+    background-color: #e3e3e3;
+    border-radius: 20px;
+    height: 35px;
+    width: 400px;
+    margin-left: 50px;
+    padding: 0 19px;
+}
+
+#icone_lupa{
+    height: 21px;
+    margin: 0 10px 0 0;
+}
+
+#pesquisar{
+    font-size: 18px;
+    font-weight: 400;
+    color: #6a6a6a;
+    width: 100%;
+}
+
+#pesquisar::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #999;
+}
+
+#pesquisar:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #999;
+    opacity: 1;
+}
+
+#pesquisar::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #999;
+    opacity: 1;
+}
+
+#pesquisar:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #999;
+}
+
+#logout_button{
+    font-weight: 600;
+}
+
+#avatar_header{
+    height: 90%;
+    margin-left: 20px;
+}
+
+#avatar_header img{
+    height: 100%;
+}
+
+#social_media_area{
+    width: 600px;
+    background-color: #ddd;
+    display: block;
+}
+
+#tab_top_area{
+    border-bottom: 2px solid #ddd;
+    padding: 0 16px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 51px;
+    box-sizing: border-box;
+}
+
+#tab_title{
+    font-size: 25px;
+}
+
+#recarregar_button{
+    height: 45%;
+    cursor: pointer;
+}
+
+#secao_em_desenvolvimento{
+    background-color: white;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    color: #222;
+}
+
+#icone_desenvolvimento{
+    width: 90px;
+}
+
+.side_bar{
+    position: fixed;
+    width: 200px;
+    bottom: 0;
+    padding: 60px 0 0;
+    height: 100%;
+    box-sizing: border-box;
+    border-left: 2px solid #ddd;
+    border-right: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+#left_side_content{
+    padding: 85px 25px 25px;
+    left: 50%;
+    transform: translateX(-250%);
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navigation_bar{
+    width: 100%;
+}
+
+.navigation_button{
+    width: 100%;
+    height: 38px;
+    margin: 0;
+    color: #999;
+    font-size: 16px;
+    font-weight: 700;
+    border-color: #999;
+}
+
+.selected_navigation_button{
+    color: #f21d1d;
+    border: 2px solid #f21d1d;
+}
+
+.navigation_vertical_separator{
+    height: 15px;
+}
+
+#navigation_piar_button{
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#ajustes_button{
+    height: 40px;
+    margin: 10px;
+}
+
+#right_side_content{
+    padding-bottom: 10px;
+    right: 50%;
+    transform: translateX(250%);
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#piupiuwer_copyright_text_feed{
+    color: #808080;
+    font-weight: 500;
+    font-size: 15px;
+}
+

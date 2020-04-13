@@ -2,7 +2,11 @@
 // CONTROLAR FUNCIONALIDADES DA CAIXA DE TEXTO DE PIAR:
 // ----------------------------------------------------
 
+// Amuentar altura da caixa de texto de pius automaticamente:
 autoSizeTextArea();
+
+// Ativar funcionamento do botão de piar do topo do Feed:
+piarButtonListener();
 
 function autoSizeTextArea() {
     var textArea = document.querySelector("#piar_textfield");
@@ -20,9 +24,26 @@ function autoSizeTextArea() {
                      + this.scrollHeight
                      + parseInt(computed.getPropertyValue('padding-bottom'), 10)
                      + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-    
-        console.log(height);
         this.style.height = height + 'px';
     });
 }
+
+function piarButtonListener() {
+    var piarButton = document.querySelector("#piar_box_button");
+
+    if (piarButton != null) {
+        var piarTextArea = document.querySelector("#piar_textfield");
+    
+        piarButton.addEventListener("click", function(){
+            event.preventDefault();
+    
+            if (piarTextArea.value.length > 0 && piarTextArea.value.length <= 140) {
+                adicionarPiuABaseDeDados(piarTextArea.value);
+                piarTextArea.value = "";
+            }
+        });
+
+    }
+}
+
 

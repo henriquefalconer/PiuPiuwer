@@ -7,6 +7,7 @@ body{
 header{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     flex-direction: row;
     height: 60px;
     width: 100%;
@@ -17,6 +18,13 @@ header{
     top: 0;
     background-color: white;
     z-index: 1;
+}
+
+#left_side_header, #right_side_header{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
 }
 
 .logo_piu{
@@ -33,6 +41,7 @@ header{
 
 a{
     text-decoration: none;
+    color: #000;
 }
 
 input:focus{

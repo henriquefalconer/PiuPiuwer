@@ -1,31 +1,35 @@
-// ------------------------------------------------------------
-// A PARTIR DA BASE DE DADOS, MONTAR SEQUÊNCIA DE PIUS NO FEED:
-// ------------------------------------------------------------
+// --------------------------------------------------------------
+// A PARTIR DA BASE DE DADOS, MONTAR ELEMENTOS DA PÁGINA DE FEED:
+// --------------------------------------------------------------
 
+// Montar sequência de pius
 montarPiusFeed();
 
 function montarPiusFeed() {
-    var allPius = [];
-
-    Object.keys(baseDeDados).forEach(function(user){
-        var userInfo = baseDeDados[user].info_usuario;
-        var userPius = baseDeDados[user].pius;
-
-        userPius.forEach(function(piu){
-            allPius.push(piu);
-        });
-    });
-
-    sortPiusInTime(allPius);
-
     var piusArea = document.querySelector("#pius_area");
 
-    allPius.forEach(function(piu){
-        var piuElement = montarPiuElement(piu);
+    if (piusArea != null) {
+        var allPius = [];
 
-        piusArea.appendChild(piuElement);
-    });
-    
+        Object.keys(baseDeDados).forEach(function(user){
+            var userInfo = baseDeDados[user].info_usuario;
+            var userPius = baseDeDados[user].pius;
+
+            userPius.forEach(function(piu){
+                allPius.push(piu);
+            });
+        });
+
+        sortPiusInTime(allPius);
+
+        piusArea.innerHTML = "";
+
+        allPius.forEach(function(piu){
+            var piuElement = montarPiuElement(piu);
+
+            piusArea.appendChild(piuElement);
+        });
+    }
 }
 
 function sortPiusInTime(pius){
@@ -36,9 +40,15 @@ function getTimeFromPiuId(piuId){
     return piuId.split(":")[1];
 }
 
+function getUserNameFromPiuId(piuId){
+    return piuId.split(":")[0];
+}
+
 function montarPiuElement(piu) {
+    // Montar div externo ao piu:
     var piuElement = document.createElement("div");
     piuElement.classList.add("piu");
+    piuElement.id = piu.piu_id;
 
     var dadosUsuario = getDadosUsuarioFromPiuId(piu.piu_id);
 
@@ -54,7 +64,7 @@ function montarPiuElement(piu) {
 }
 
 function getDadosUsuarioFromPiuId(piuId) {
-    var nomeUsuario = piuId.split(":")[0];
+    var nomeUsuario = getUserNameFromPiuId(piuId);
 
     var infoUsuario = {};
 
@@ -69,7 +79,7 @@ function getDadosUsuarioFromPiuId(piuId) {
 }
 
 function getDadosPiuFromPiuId(piuId) {
-    var nomeUsuario = piuId.split(":")[0];
+    var nomeUsuario = getUserNameFromPiuId(piuId);
 
     var piuData = {};
 
@@ -85,6 +95,7 @@ function getDadosPiuFromPiuId(piuId) {
 }
 
 function montarAreaPrincipal(dadosPiu, dadosUsuario) {
+    // Montar div da área principal do piu:
     var piuMainArea = document.createElement("div");
     piuMainArea.classList.add("piu_main_area");
 
@@ -93,7 +104,12 @@ function montarAreaPrincipal(dadosPiu, dadosUsuario) {
     piuAvatar.classList.add("avatar_piu");
     piuAvatar.alt = "Avatar usuário";
     piuAvatar.src = "../img/avatars/" + dadosUsuario.avatar;
-    piuMainArea.appendChild(piuAvatar);
+
+    // Montar link do avatar e inserí-lo no piuReplyInfo:
+    var piuAvatarLink = document.createElement("a");
+    piuAvatarLink.href = "perfil.html?user=" + dadosUsuario.username;
+    piuAvatarLink.appendChild(piuAvatar);
+    piuMainArea.appendChild(piuAvatarLink);
 
     // Montar área de texto do piu:
     var piuTextArea = document.createElement("div");
@@ -117,14 +133,13 @@ function montarAreaPrincipal(dadosPiu, dadosUsuario) {
     }
     
     // Inserir piuTextArea em piuMainArea:
-    piuMainArea.appendChild(piuTextArea);   
+    piuMainArea.appendChild(piuTextArea); 
 
     return piuMainArea;
 }
 
 function montarPiuReply(replyPiuId) {
     var piuReply = document.createElement("div");
-    piuReply.classList.add("piu");
     piuReply.classList.add("piu_reply");
 
     // Definir dados do piu_reply: 
@@ -134,12 +149,17 @@ function montarPiuReply(replyPiuId) {
     // Montar piuReplyInfo, porém sem avatar:
     var piuReplyInfo = montarPiuInfo(replyUserData, replyPiuData);
 
-    // Montar avatar no piuReplyInfo: 
+    // Montar avatar: 
     var piuReplyAvatar = document.createElement("img");
     piuReplyAvatar.classList.add("avatar_piu_reply");
     piuReplyAvatar.alt = "Avatar usuário reply";
     piuReplyAvatar.src = "../img/avatars/" + replyUserData.avatar;
-    piuReplyInfo.insertBefore(piuReplyAvatar, piuReplyInfo.childNodes[0]);
+
+    // Montar link do avatar e inserí-lo no piuReplyInfo:
+    var piuReplyAvatarLink = document.createElement("a");
+    piuReplyAvatarLink.href = "perfil.html?user=" + replyUserData.username;
+    piuReplyAvatarLink.appendChild(piuReplyAvatar);
+    piuReplyInfo.insertBefore(piuReplyAvatarLink, piuReplyInfo.childNodes[0]);
 
     // Adicionar piuReplyInfo em piuReply:
     piuReply.appendChild(piuReplyInfo);
@@ -173,9 +193,10 @@ function getRelativeTime(timeInMilliseconds) {
     } else if (differenceInSeconds < 3600) {
         relativeTime = (differenceInSeconds/60).toFixed(0) + " min";
     } else if (differenceInSeconds < 3600*24) {
-        relativeTime = (differenceInSeconds/3600).toFixed(1) + " h";
+        relativeTime = (differenceInSeconds/3600).toFixed(0) + " h";
     } else {
-        relativeTime = (differenceInSeconds/3600/24).toFixed(0) + " dias";
+        relativeTime = (differenceInSeconds/3600/24).toFixed(0) + " dia";
+        if ((differenceInSeconds/3600/24).toFixed(0) > 1) relativeTime = relativeTime + "s";
     }
 
     return relativeTime;
@@ -185,22 +206,27 @@ function montarPiuInfo(dadosUsuario, dadosPiu) {
     var piuInfo = document.createElement("p");
     piuInfo.classList.add("piu_info");
 
-    // Montar elementos do piuInfo:
-    var piuName = document.createElement("span");
+    // Montar nome no piuInfo:
+    var piuName = document.createElement("a");
+    piuName.href = "perfil.html?user=" + dadosUsuario.username;
     piuName.classList.add("piuwer_name");
     piuName.textContent = dadosUsuario.nome;
     piuInfo.appendChild(piuName);
 
-    var piuUserName = document.createElement("span");
+    // Montar username no piuInfo:
+    var piuUserName = document.createElement("a");
+    piuUserName.href = "perfil.html?user=" + dadosUsuario.username;
     piuUserName.classList.add("piuwer_username");
     piuUserName.textContent = "@" + dadosUsuario.username;
     piuInfo.appendChild(piuUserName);
 
+    // Montar ponto no piuInfo:
     var piuPonto = document.createElement("span");
     piuPonto.classList.add("ponto");
     piuPonto.classList.add("ponto_piu");
     piuInfo.appendChild(piuPonto);
 
+    // Montar tempo no piuInfo:
     var piuTime = document.createElement("span");
     piuTime.classList.add("piu_time");
     piuTime.textContent = getRelativeTime(getTimeFromPiuId(dadosPiu.piu_id));
@@ -214,15 +240,15 @@ function montarPiuActionButtons(dados) {
     piuActionsArea.classList.add("piu_actions_area");
 
     // Montar ação de amar:
-    var amarBox = createActionElement("amar_button", "Amar", "Amar.png", dados.likes);
+    var amarBox = createActionElement("amar_button", "Amar", "Amar.svg", dados.likes);
     piuActionsArea.appendChild(amarBox);
 
     // Montar ação de retornar:
-    var retornarBox = createActionElement("reply_button", "Retornar", "Retornar.png", dados.replies);
+    var retornarBox = createActionElement("reply_button", "Retornar", "Retornar.svg", dados.replies);
     piuActionsArea.appendChild(retornarBox);
 
     // Montar ação de destacar:
-    var destacarBox = createActionElement("highlight_button", "Destacar", "Alfinete.png");
+    var destacarBox = createActionElement("highlight_button", "Destacar", "Alfinete.svg");
     piuActionsArea.appendChild(destacarBox);
     
     return piuActionsArea;

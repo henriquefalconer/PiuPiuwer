@@ -9,6 +9,7 @@ var baseDeDados = {
         info_usuario: {
             nome: "Fulano Beltrano da Silva",
             avatar: "Fulano.png",
+            background: "Pés%20na%20praia.png",
             seguidores: [
                 "rosi.plat",
                 "richar.lison",
@@ -28,7 +29,7 @@ var baseDeDados = {
                     destacado: false,
                 },
                 message: "E pensar que tem caras por aí que só piam a quantidade de pius que eles já postaram... Eles parecem mal saber de todo o potencial que a plataforma PiuPiuwer tem!",
-                piu_reply_id: null,
+                piu_reply_id: "cleber.cunha:" + Date.parse("12 Apr 2020 11:00:00"),
             },
         ],
     },
@@ -36,6 +37,7 @@ var baseDeDados = {
         info_usuario: {
             nome: "Cleber",
             avatar: "Cleber.png",
+            background: "Pés%20na%20praia.png",
             seguidores: [
                 "richar.lison",
             ],
@@ -72,6 +74,7 @@ var baseDeDados = {
         info_usuario: {
             nome: "Richarlison",
             avatar: "Richarlison.png",
+            background: "Pés%20na%20praia.png",
             seguidores: [
                 "rosi.plat",
                 "fulano.beltrano",
@@ -98,6 +101,7 @@ var baseDeDados = {
         info_usuario: {
             nome: "Rosimary",
             avatar: "Rosimary.png",
+            background: "Pés%20na%20praia.png",
             seguidores: [
                 "richar.lison",
             ],
@@ -117,3 +121,24 @@ var baseDeDados = {
         ],
     },
 };
+
+function adicionarPiuABaseDeDados(mensagem, piuReplyId) {
+    var currentTime = Date.parse(new Date());
+
+    // Inserir piu a base de dados:
+    baseDeDados[loggedInUser].pius.push(
+        {
+            piu_id: loggedInUser + ":" + currentTime,
+            actions: {
+                likes: 0,
+                replies: 0,
+                destacado: false,
+            },
+            message: mensagem,
+            piu_reply_id: piuReplyId,
+        },
+    );
+    
+    // Recarregar feed de pius:
+    montarPiusFeed();
+}

@@ -10,7 +10,7 @@
         <!-- CSS do projeto: -->
         <link rel="stylesheet" href="../css/geral.css">
         <link rel="stylesheet" href="../css/paginas_de_midia_social.css">
-        <link rel="stylesheet" href="../css/feed.css">
+        <link rel="stylesheet" href="../css/perfil.css">
     </head>
     <body>
         <header>
@@ -31,7 +31,7 @@
             <section id="right_side_header">
                 <a href="../index.html" id="logout_button">Logout</a>
                 <a id="avatar_header">
-                    <img class="avatar_usuario_logado" alt="Avatar usuário" src="../img/avatars/null.svg">
+                    <img class="avatar_usuario_logado" alt="Avatar usuário" src="../img/avatars/null.png">
                 </a>
             </section>
 
@@ -41,7 +41,7 @@
 
             <nav id="navigation_bar">
                 
-                <a href="feed.html" class="hollow_button navigation_button selected_navigation_button">
+                <a href="feed.html" class="hollow_button navigation_button" id="feed_button">
                     Feed
                 </a>
 
@@ -70,21 +70,14 @@
         <main class="main_content" id="social_media_area">
 
             <div id="tab_top_area">
-                <h1 id="tab_title">Feed</h1>
+                <h1 id="tab_title"></h1>
                 <img id="recarregar_button" alt="Recarregar página" src="../img/icons/Refresh.svg">
             </div>
 
-            <div id="piar_box">
-                <div class="piu_main_area">
-                    <a>
-                        <img class="avatar_piu avatar_usuario_logado" alt="Avatar usuário" src="../img/avatars/null.svg">
-                    </a>
-                    <textarea class="featureless_textfield" id="piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
-                    <p class="filled_button" id="piar_box_button">Piar</p>
-                </div>
-            </div>
-
-            <main id="pius_area"></main>
+            <main id="secao_em_desenvolvimento">
+                <img id="icone_desenvolvimento" alt="Ícone de desenvolvimento" src="../img/icons/Wrench.svg">
+                <h1>Seção em desenvolvimento.</h1>
+            </main>
 
         </main>
             
@@ -95,9 +88,9 @@
         </aside>
         
         <script src="../js/pius/base_de_dados.js"></script>
-        <script src="../js/pius/piar_textarea.js"></script>
+        <script src="../js/pius/montar_feed.js"></script>
+        <script src="../js/pius/montar_perfil.js"></script>
         <script src="../js/pius/montar_paginas_de_midia_social.js"></script>
         <script src="../js/pius/interacao_com_pius.js"></script>
-        <script src="../js/pius/montar_feed.js"></script>
     </body>
 </html>
