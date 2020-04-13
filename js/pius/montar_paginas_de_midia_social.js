@@ -25,7 +25,7 @@ function montarAvataresUsuario() {
 
     avatarPiarBox.forEach(function(avatar){
         // Adicionar imagem do usuário logado:
-        avatar.src = "../img/avatars/" + baseDeDados[loggedInUser].info_usuario.avatar;
+        avatar.src = "../img/avatars/" + baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.avatar;
         
         // Adicionar link para acesso ao perfil do usuário logado:
         var avatarLink = avatar.parentNode;

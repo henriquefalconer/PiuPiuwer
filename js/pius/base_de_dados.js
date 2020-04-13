@@ -4,141 +4,139 @@
 
 var loggedInUser = "fulano.beltrano";
 
-var baseDeDados = {
-    "fulano.beltrano": {
-        info_usuario: {
-            nome: "Fulano Beltrano da Silva",
-            avatar: "Fulano.png",
-            background: "Pés%20na%20praia.png",
-            seguidores: [
+var baseDeDados = new BaseDeDados([
+    new UsuarioData(
+        new InfoUsuario(
+            "Fulano Beltrano da Silva",
+            "fulano.beltrano",
+            "Fulano.png",
+            "Pés%20na%20praia.png",
+            [
                 "rosi.plat",
                 "richar.lison",
             ],
-            seguindo: [
+            [
                 "cleber.cunha",
                 "rosi.plat",
                 "richar.lison",
             ],
-        },
-        pius: [
-            {
-                piu_id: "fulano.beltrano:" + Date.parse("12 Apr 2020 12:17:00"),
-                actions: {
-                    likes: 11,
-                    replies: 5,
-                    destacado: false,
-                },
-                message: "E pensar que tem caras por aí que só piam a quantidade de pius que eles já postaram... Eles parecem mal saber de todo o potencial que a plataforma PiuPiuwer tem!",
-                piu_reply_id: "cleber.cunha:" + Date.parse("12 Apr 2020 11:00:00"),
-            },
-        ],
-    },
-    "cleber.cunha": {
-        info_usuario: {
-            nome: "Cleber",
-            avatar: "Cleber.png",
-            background: "Pés%20na%20praia.png",
-            seguidores: [
+            [
+                "fulano.beltrano:1586704620000",
+                "cleber.cunha:1586700000000",
+                "richar.lison:1586691000000",
+                "cleber.cunha:1586689200000",
+                "rosi.plat:1586685600000",
+            ],
+            [
+                "rosi.plat:1586685600000",
+            ],
+        ),
+        [
+            new Piu(
+                "fulano.beltrano:" + Date.parse("12 Apr 2020 12:17:00"),
+                "E pensar que tem caras por aí que só piam a quantidade de pius que eles já postaram... Eles parecem mal saber de todo o potencial que a plataforma PiuPiuwer tem!",
+                "cleber.cunha:" + Date.parse("12 Apr 2020 11:00:00"),
+            ),
+        ]
+    ),
+    new UsuarioData(
+        new InfoUsuario(
+            "Cleber",
+            "cleber.cunha",
+            "Cleber.png",
+            "Pés%20na%20praia.png",
+            [
                 "richar.lison",
             ],
-            seguindo: [
+            [
                 "fulano.beltrano",
                 "rosi.plat",
                 "richar.lison",
             ],
-        },
-        pius: [
-            {
-                piu_id: "cleber.cunha:" + Date.parse("12 Apr 2020 11:00:00"),
-                actions: {
-                    likes: 10,
-                    replies: 4,
-                    destacado: false,
-                },
-                message: "Este é meu 100º piu! Esperei bastante por este momento!",
-                piu_reply_id: null,
-            },
-            {
-                piu_id: "cleber.cunha:" + Date.parse("12 Apr 2020 8:00:00"),
-                actions: {
-                    likes: 10,
-                    replies: 4,
-                    destacado: false,
-                },
-                message: "Este é meu 99º piu! Isso é 1 a menos que 100!",
-                piu_reply_id: null,
-            },
-        ],
-    },
-    "richar.lison": {
-        info_usuario: {
-            nome: "Richarlison",
-            avatar: "Richarlison.png",
-            background: "Pés%20na%20praia.png",
-            seguidores: [
+            [
+                "fulano.beltrano:1586704620000",
+                "cleber.cunha:1586700000000",
+                "richar.lison:1586691000000",
+                "cleber.cunha:1586689200000",
+                "rosi.plat:1586685600000",
+            ],
+            [
+                "rosi.plat:1586685600000",
+            ],
+        ),
+        [
+            new Piu(
+                "cleber.cunha:" + Date.parse("12 Apr 2020 11:00:00"),
+                "Este é meu 100º piu! Esperei bastante por este momento!",
+                null,            
+            ),
+            new Piu(
+                "cleber.cunha:" + Date.parse("12 Apr 2020 8:00:00"),
+                "Este é meu 99º piu! Isso é 1 a menos que 100!",
+                null,      
+            ),
+        ]
+    ),
+    new UsuarioData(
+        new InfoUsuario(
+            "Richarlison",
+            "richar.lison",
+            "Richarlison.png",
+            "Pés%20na%20praia.png",
+            [
                 "rosi.plat",
                 "fulano.beltrano",
             ],
-            seguindo: [
+            [
                 "rosi.plat",
                 "fulano.beltrano",
             ],
-        },
-        pius: [
-            {
-                piu_id: "richar.lison:" + Date.parse("12 Apr 2020 8:30:00"),
-                actions: {
-                    likes: 10,
-                    replies: 5,
-                    destacado: false,
-                },
-                message: "Sim! Sem dúvidas, é a melhor rede social que existe.",
-                piu_reply_id: "rosi.plat:" + Date.parse("12 Apr 2020 7:00:00"),
-            },
-        ],
-    },
-    "rosi.plat": {
-        info_usuario: {
-            nome: "Rosimary",
-            avatar: "Rosimary.png",
-            background: "Pés%20na%20praia.png",
-            seguidores: [
+            [
+                "fulano.beltrano:1586704620000",
+                "cleber.cunha:1586700000000",
+                "richar.lison:1586691000000",
+                "cleber.cunha:1586689200000",
+                "rosi.plat:1586685600000",
+            ],
+            [
+                "rosi.plat:1586685600000",
+            ],
+        ),
+        [
+            new Piu(
+                "richar.lison:" + Date.parse("12 Apr 2020 8:30:00"),
+                "Sim! Sem dúvidas, é a melhor rede social que existe.",
+                "rosi.plat:" + Date.parse("12 Apr 2020 7:00:00"),
+            ),
+        ]
+    ),
+    new UsuarioData(
+        new InfoUsuario(
+            "Rosimary",
+            "rosi.plat",
+            "Rosimary.png",
+            "Pés%20na%20praia.png",
+            [
                 "richar.lison",
             ],
-            seguindo: [],
-        },
-        pius: [
-            {
-                piu_id: "rosi.plat:" + Date.parse("12 Apr 2020 7:00:00"),
-                actions: {
-                    likes: 10,
-                    replies: 5,
-                    destacado: false,
-                },
-                message: "Comecei a usar hoje! Parece ser bom esse PiuPiwer.",
-                piu_reply_id: null,
-            },
-        ],
-    },
-};
-
-function adicionarPiuABaseDeDados(mensagem, piuReplyId) {
-    var currentTime = Date.parse(new Date());
-
-    // Inserir piu a base de dados:
-    baseDeDados[loggedInUser].pius.push(
-        {
-            piu_id: loggedInUser + ":" + currentTime,
-            actions: {
-                likes: 0,
-                replies: 0,
-                destacado: false,
-            },
-            message: mensagem,
-            piu_reply_id: piuReplyId,
-        },
-    );
-    
-    // Recarregar feed de pius:
-    montarPiusFeed();
-}
+            [],
+            [
+                "fulano.beltrano:1586704620000",
+                "cleber.cunha:1586700000000",
+                "richar.lison:1586691000000",
+                "cleber.cunha:1586689200000",
+                "rosi.plat:1586685600000",
+            ],
+            [
+                "rosi.plat:1586685600000",
+            ],
+        ),
+        [
+            new Piu(
+                "rosi.plat:" + Date.parse("12 Apr 2020 7:00:00"),
+                "Comecei a usar hoje! Parece ser bom esse PiuPiwer.",
+                null,
+            ),
+        ]
+    ),
+]);

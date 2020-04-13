@@ -16,9 +16,7 @@ function replyButtonListeners() {
         replyButton.parentNode.addEventListener("click", function(){
             var piarTextArea = document.querySelector("#piar_textfield");
 
-            incrementReplyCount(piu.id);
-
-            adicionarPiuABaseDeDados(piarTextArea.value, piu.id);
+            baseDeDados.adicionarPiuABaseDeDados(piarTextArea.value, piu.id);
         });
     });
 }
@@ -30,28 +28,7 @@ function amarButtonListeners() {
         var amarButton = piu.querySelector(".amar_button");
 
         amarButton.parentNode.addEventListener("click", function(){
-            incrementAmarCount(piu.id);
-            montarPiusFeed();
+            baseDeDados.togglePiuLike(piu.id);
         });
-    });
-}
-
-function incrementReplyCount(piuId) {
-    var nomeUsuario = piuId.split(":")[0];
-
-    baseDeDados[nomeUsuario].pius.forEach(function(piu){
-        if (piu.piu_id == piuId) {
-            piu.actions.replies++;
-        }
-    });
-}
-
-function incrementAmarCount(piuId) {
-    var nomeUsuario = piuId.split(":")[0];
-
-    baseDeDados[nomeUsuario].pius.forEach(function(piu){
-        if (piu.piu_id == piuId) {
-            piu.actions.likes++;
-        }
     });
 }

@@ -38,7 +38,7 @@ function piarButtonListener() {
             event.preventDefault();
     
             if (piarTextArea.value.length > 0 && piarTextArea.value.length <= 140) {
-                adicionarPiuABaseDeDados(piarTextArea.value);
+                baseDeDados.adicionarPiuABaseDeDados(piarTextArea.value);
                 piarTextArea.value = "";
             }
         });

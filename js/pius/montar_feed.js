@@ -11,9 +11,8 @@ function montarPiusFeed() {
     if (piusArea != null) {
         var allPius = [];
 
-        Object.keys(baseDeDados).forEach(function(user){
-            var userInfo = baseDeDados[user].info_usuario;
-            var userPius = baseDeDados[user].pius;
+        baseDeDados.data.forEach(function(userData){
+            var userPius = userData.pius;
 
             userPius.forEach(function(piu){
                 allPius.push(piu);
@@ -29,11 +28,14 @@ function montarPiusFeed() {
 
             piusArea.appendChild(piuElement);
         });
+
+        // Adicionar functionalidades aos botãoes de ação dos pius:
+        ativarFuncoesPius();
     }
 }
 
 function sortPiusInTime(pius){
-    pius.sort(function(a, b){return getTimeFromPiuId(b.piu_id) - getTimeFromPiuId(a.piu_id)});
+    pius.sort(function(a, b){return getTimeFromPiuId(b.piuId) - getTimeFromPiuId(a.piuId)});
 }
 
 function getTimeFromPiuId(piuId){
@@ -48,50 +50,19 @@ function montarPiuElement(piu) {
     // Montar div externo ao piu:
     var piuElement = document.createElement("div");
     piuElement.classList.add("piu");
-    piuElement.id = piu.piu_id;
+    piuElement.id = piu.piuId;
 
-    var dadosUsuario = getDadosUsuarioFromPiuId(piu.piu_id);
+    var dadosUsuario = baseDeDados.getDadosUsuarioFromPiuId(piu.piuId);
 
     // Montar área principal do piu:
     var areaPrincipal = montarAreaPrincipal(piu, dadosUsuario);
     piuElement.appendChild(areaPrincipal);
 
     // Montar action buttons do piu:
-    var actionButtons = montarPiuActionButtons(piu.actions);
+    var actionButtons = montarPiuActionButtons(piu);
     piuElement.appendChild(actionButtons);
 
     return piuElement;
-}
-
-function getDadosUsuarioFromPiuId(piuId) {
-    var nomeUsuario = getUserNameFromPiuId(piuId);
-
-    var infoUsuario = {};
-
-    Object.keys(baseDeDados).forEach(function(usuario){
-        if (usuario == nomeUsuario) {
-            infoUsuario = baseDeDados[usuario].info_usuario;
-            infoUsuario["username"] = nomeUsuario;
-        }
-    });
-
-    return infoUsuario;
-}
-
-function getDadosPiuFromPiuId(piuId) {
-    var nomeUsuario = getUserNameFromPiuId(piuId);
-
-    var piuData = {};
-
-    Object.keys(baseDeDados).forEach(function(usuario){
-        if (usuario == nomeUsuario) {
-            baseDeDados[usuario].pius.forEach(function(piu){
-                if (piu.piu_id == piuId) piuData = piu;
-            });
-        }
-    });
-
-    return piuData;
 }
 
 function montarAreaPrincipal(dadosPiu, dadosUsuario) {
@@ -126,9 +97,9 @@ function montarAreaPrincipal(dadosPiu, dadosUsuario) {
     piuTextArea.appendChild(piuMessage);
 
     // Caso exista, montar um piu_reply:
-    if (dadosPiu.piu_reply_id != null) {
+    if (dadosPiu.piuReplyId != null) {
         // Montar piu_reply:
-        var piuReply = montarPiuReply(dadosPiu.piu_reply_id);
+        var piuReply = montarPiuReply(dadosPiu.piuReplyId);
         piuTextArea.appendChild(piuReply);
     }
     
@@ -143,8 +114,8 @@ function montarPiuReply(replyPiuId) {
     piuReply.classList.add("piu_reply");
 
     // Definir dados do piu_reply: 
-    var replyUserData = getDadosUsuarioFromPiuId(replyPiuId);
-    var replyPiuData = getDadosPiuFromPiuId(replyPiuId);
+    var replyUserData = baseDeDados.getDadosUsuarioFromPiuId(replyPiuId);
+    var replyPiuData = baseDeDados.getDadosPiuFromPiuId(replyPiuId);
 
     // Montar piuReplyInfo, porém sem avatar:
     var piuReplyInfo = montarPiuInfo(replyUserData, replyPiuData);
@@ -229,22 +200,22 @@ function montarPiuInfo(dadosUsuario, dadosPiu) {
     // Montar tempo no piuInfo:
     var piuTime = document.createElement("span");
     piuTime.classList.add("piu_time");
-    piuTime.textContent = getRelativeTime(getTimeFromPiuId(dadosPiu.piu_id));
+    piuTime.textContent = getRelativeTime(getTimeFromPiuId(dadosPiu.piuId));
     piuInfo.appendChild(piuTime);    
 
     return piuInfo;
 }
 
-function montarPiuActionButtons(dados) {
+function montarPiuActionButtons(piu) {
     var piuActionsArea = document.createElement("div");
     piuActionsArea.classList.add("piu_actions_area");
 
     // Montar ação de amar:
-    var amarBox = createActionElement("amar_button", "Amar", "Amar.svg", dados.likes);
+    var amarBox = createActionElement("amar_button", "Amar", "Amar.svg", piu.getLikes());
     piuActionsArea.appendChild(amarBox);
 
     // Montar ação de retornar:
-    var retornarBox = createActionElement("reply_button", "Retornar", "Retornar.svg", dados.replies);
+    var retornarBox = createActionElement("reply_button", "Retornar", "Retornar.svg", piu.getReplies());
     piuActionsArea.appendChild(retornarBox);
 
     // Montar ação de destacar:

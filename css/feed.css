@@ -151,6 +151,7 @@
 .piu_action_icon{
     height: 18px;
     margin: 0 8px;
+    cursor: pointer;
 }
 
 .action_count{
