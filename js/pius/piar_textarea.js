@@ -8,6 +8,9 @@ autoSizeTextArea();
 // Ativar funcionamento do botão de piar do topo do Feed:
 piarButtonListener();
 
+// Controlar o contador de caracteres:
+changeNumberOfCharactersColor();
+
 function autoSizeTextArea() {
     var textArea = document.querySelector("#piar_textfield");
     textArea.addEventListener("input", function() {
@@ -40,10 +43,45 @@ function piarButtonListener() {
             if (piarTextArea.value.length > 0 && piarTextArea.value.length <= 140) {
                 baseDeDados.adicionarPiuABaseDeDados(piarTextArea.value);
                 piarTextArea.value = "";
+                atualizarEstiloTextarea();
             }
         });
 
     }
 }
 
+function changeNumberOfCharactersColor() {
+    var textArea = document.querySelector("#piar_textfield");
 
+    textArea.addEventListener("input", atualizarEstiloTextarea);
+}
+
+function atualizarEstiloTextarea() {
+    var textArea = document.querySelector("#piar_textfield");
+    var numberOfCharacters = document.querySelector(".number_of_characters");
+    var piarButton = document.querySelector("#piar_box_button");
+
+    if (textArea.value.length > 0) {
+        numberOfCharacters.parentNode.classList.remove("invisible");
+        piarButton.classList.remove("invalid_button_piu");
+
+        if (textArea.value.length > 140) {
+            numberOfCharacters.classList.add("invalid_number_of_characters");
+            textArea.classList.add("invalid_text_area");
+            piarButton.classList.add("invalid_button_piu");
+        }
+        else {
+            numberOfCharacters.classList.remove("invalid_number_of_characters");
+            textArea.classList.remove("invalid_text_area");
+            piarButton.classList.remove("invalid_button_piu");
+        }
+        numberOfCharacters.textContent = textArea.value.length;
+        
+    }
+    else {
+        numberOfCharacters.parentNode.classList.add("invisible");
+        piarButton.classList.add("invalid_button_piu");
+        numberOfCharacters.classList.remove("invalid_number_of_characters");
+        textArea.classList.remove("invalid_text_area");
+    }
+}

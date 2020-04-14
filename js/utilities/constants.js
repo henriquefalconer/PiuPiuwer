@@ -136,7 +136,7 @@ class Piu {
         baseDeDados.data.forEach(function(usuarioData){
             if (usuarioData.infoUsuario.likes.includes(thisPiu.piuId)) likesList.push(usuarioData.infoUsuario.username);
         });
-
+        
         return likesList;
     }
 
@@ -160,3 +160,13 @@ class Piu {
         return baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.destacados.includes(this.piuId);
     }
 }
+
+String.prototype.abreviar = String.prototype.abreviar ||
+      function(){
+          return (this.count(" ") > 0) ? this.substring(0, this.indexOf(" ")+1) + this.substring(this.lastIndexOf(" ")+1, this.length).substring(0, 1) + "." : this;
+      };
+
+String.prototype.count = String.prototype.count || 
+      function(substring){
+          return (this.match(new RegExp(substring, "g")) || []).length;
+      }; 

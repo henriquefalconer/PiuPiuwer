@@ -59,10 +59,7 @@ function montarAreaPrincipal(dadosPiu, dadosUsuario) {
     piuMainArea.classList.add("piu_main_area");
 
     // Montar avatar do piu:
-    var piuAvatar = document.createElement("img");
-    piuAvatar.classList.add("avatar_piu");
-    piuAvatar.alt = "Avatar usuário";
-    piuAvatar.src = "../img/avatars/" + dadosUsuario.avatar;
+    var piuAvatar = montarAvatarDoPiu("avatar_piu", dadosUsuario.avatar);
 
     // Montar link do avatar e inserí-lo no piuReplyInfo:
     var piuAvatarLink = document.createElement("a");
@@ -109,10 +106,7 @@ function montarPiuReply(replyPiuId) {
     var piuReplyInfo = montarPiuInfo(replyUserData, replyPiuData);
 
     // Montar avatar: 
-    var piuReplyAvatar = document.createElement("img");
-    piuReplyAvatar.classList.add("avatar_piu_reply");
-    piuReplyAvatar.alt = "Avatar usuário reply";
-    piuReplyAvatar.src = "../img/avatars/" + replyUserData.avatar;
+    var piuReplyAvatar = montarAvatarDoPiu("avatar_piu_reply", replyUserData.avatar)
 
     // Montar link do avatar e inserí-lo no piuReplyInfo:
     var piuReplyAvatarLink = document.createElement("a");
@@ -131,6 +125,7 @@ function montarPiuReply(replyPiuId) {
     // Montar mensagem do piu_reply:
     var piuReplyMessage = document.createElement("p");
     piuReplyMessage.classList.add("piu_message");
+    piuReplyMessage.classList.add("piu_reply_message");
     piuReplyMessage.textContent = replyPiuData.message;
     piuReplyTextArea.appendChild(piuReplyMessage);
 
@@ -148,7 +143,9 @@ function montarPiuInfo(dadosUsuario, dadosPiu) {
     var piuName = document.createElement("a");
     piuName.href = "perfil.html?user=" + dadosUsuario.username;
     piuName.classList.add("piuwer_name");
-    piuName.textContent = dadosUsuario.nome;
+    piuName.textContent = (dadosUsuario.nome.length > 30)
+        ? dadosUsuario.nome.abreviar()
+        : dadosUsuario.nome;
     piuInfo.appendChild(piuName);
 
     // Montar username no piuInfo:
@@ -218,4 +215,16 @@ function createActionElement(iconClasse, iconAlt, iconSrc, active, actionCountNu
     }
 
     return actionBox;
+}
+
+function montarAvatarDoPiu(classe, src) {
+    var piuAvatar = document.createElement("img");
+    piuAvatar.classList.add(classe);
+    piuAvatar.alt = "Avatar usuário";
+    if (!src.includes("http")) {
+        piuAvatar.src = "../img/avatars/" + src;
+    } else {
+        piuAvatar.src = src;
+    }
+    return piuAvatar;
 }

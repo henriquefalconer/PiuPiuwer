@@ -45,18 +45,14 @@ function botaoConfirmarListener() {
             var errorText = document.querySelector(".error_text");
     
             if (primeiroCampoComErro != null) {
-                errorText.classList.remove("invisible");
+                errorText.classList.remove("not_displayed");
                 primeiroCampoComErro.focus();
             }
-            else errorText.classList.add("invisible");
+            else errorText.classList.add("not_displayed");
 
         }
 
     });
-}
-
-function countOcorrencesInString(string, substring) {
-    return (string.match(new RegExp(substring, "g")) || []).length;
 }
 
 function valorDoCampoEhValido(textfield) {
@@ -73,21 +69,18 @@ function valorDoCampoEhValido(textfield) {
             if (valor != valor.toLowerCase()) return false;
             
             // Se o valor possuir algum espaço, retornar falso:
-            if (countOcorrencesInString(valor, " ") > 0) return 0;
+            if (valor.count(" ") > 0) return 0;
         }
         
         if (tipoCampo == "email") {
             // Se o valor do campo possuir mais de um "@", retornar falso:
-            if (countOcorrencesInString(valor, "@") != 1) return false;
+            if (valor.count("@") != 1) return false;
             
             // Separação do domínio:
             var dominio = valor.split("@")[1];
-
-            console.log(dominio.split("."));
-            console.log(countOcorrencesInString(dominio, /\./));
             
             // Se domínio não possuir ".", retornar falso:
-            if (countOcorrencesInString(dominio, /\./) == 0) return false;
+            if (dominio.count(/\./) == 0) return false;
             
             // Se as strings entre "." do domínio possuírem tamanho zero, retornar falso:
             dominio.split(".").forEach(function(string){
@@ -148,7 +141,7 @@ function removerErroCampoFormulario() {
 }
 
 function transformarStringDataEmObjeto(stringData) {
-    if (countOcorrencesInString(stringData, "-") > 0) return NaN;
+    if (stringData.count("-") > 0) return NaN;
     var listaData = stringData.split("/");
     return Date.parse(listaData[2]+"-"+listaData[1]+"-"+listaData[0]); 
 }

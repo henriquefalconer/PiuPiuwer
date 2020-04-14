@@ -32,7 +32,7 @@
             <section id="right_side_header">
                 <a href="../index.html" id="logout_button">Logout</a>
                 <a id="avatar_header">
-                    <img class="avatar_usuario_logado" alt="Avatar usuário" src="../img/avatars/null.png">
+                    <img class="avatar_usuario_logado" alt="Avatar usuário" src="../img/avatars/null.svg">
                 </a>
             </section>
 
@@ -44,12 +44,6 @@
                 
                 <a href="feed.html" class="hollow_button navigation_button selected_navigation_button">
                     Feed
-                </a>
-
-                <div class="navigation_vertical_separator"></div>
-
-                <a class="hollow_button navigation_button" id="mensagens_button">
-                    Mensagens
                 </a>
 
                 <div class="navigation_vertical_separator"></div>
@@ -78,10 +72,13 @@
             <div id="piar_box">
                 <div class="piu_main_area">
                     <a>
-                        <img class="avatar_piu avatar_usuario_logado" alt="Avatar usuário" src="../img/avatars/null.png">
+                        <img class="avatar_piu avatar_usuario_logado" alt="Avatar usuário" src="../img/avatars/null.svg">
                     </a>
-                    <textarea class="featureless_textfield" id="piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
-                    <p class="filled_button" id="piar_box_button">Piar</p>
+                    <textarea class="featureless_textfield transparent_border_text_area" id="piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
+                    <div id="vertical_piar_box">
+                        <p class="invisible" id="piar_box_characters"><span class="number_of_characters invalid_number_of_characters"></span>/140</p>
+                        <p class="filled_button invalid_button_piu" id="piar_box_button">Piar</p>
+                    </div>
                 </div>
             </div>
 
@@ -97,7 +94,9 @@
         
         <script src="../js/utilities/general_functions.js"></script>
         <script src="../js/utilities/constants.js"></script>
+        <script src="../js/network/get_json_data.js"></script>
         <script src="../js/pius/base_de_dados.js"></script>
+        <script src="../js/pius/implement_server_pius.js"></script>
         <script src="../js/pius/piar_textarea.js"></script>
         <script src="../js/pius/montar_paginas_de_midia_social.js"></script>
         <script src="../js/pius/interacao_com_pius.js"></script>

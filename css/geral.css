@@ -119,8 +119,12 @@ footer{
     height: 30px;
 }
 
-.invisible{
+.not_displayed{
     display: none;
+}
+
+.invisible{
+    visibility: hidden;
 }
 
 .active {

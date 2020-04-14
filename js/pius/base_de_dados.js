@@ -28,20 +28,18 @@ var baseDeDados = new BaseDeDados([
             ],
             // IDs dos pius que o usuário deu like:
             [
-                "fulano.beltrano:1586704620000",
-                "richar.lison:1586691000000",
-                "rosi.plat:1586685600000",
+                "fulano.beltrano:" + Date.parse("14 Apr 2020 12:17:00"),
+                "richar.lison:" + Date.parse("14 Apr 2020 8:30:00"),
+                "rosi.plat:" + Date.parse("14 Apr 2020 7:00:00"),
             ],
             // Pius destacados:
-            [
-                "rosi.plat:1586685600000",
-            ],
+            [],
         ),
         [
             new Piu(
-                "fulano.beltrano:" + Date.parse("12 Apr 2020 12:17:00"),
+                "fulano.beltrano:" + Date.parse("14 Apr 2020 12:17:00"),
                 "E pensar que tem caras por aí que só piam a quantidade de pius que eles já postaram... Eles parecem mal saber de todo o potencial que a plataforma PiuPiuwer tem!",
-                "cleber.cunha:" + Date.parse("12 Apr 2020 11:00:00"),
+                "cleber.cunha:" + Date.parse("14 Apr 2020 11:00:00"),
             ),
         ]
     ),
@@ -60,20 +58,20 @@ var baseDeDados = new BaseDeDados([
                 "richar.lison",
             ],
             [
-                "fulano.beltrano:1586704620000",
-                "cleber.cunha:1586689200000",
-                "richar.lison:1586691000000",
+                "fulano.beltrano:" + Date.parse("14 Apr 2020 12:17:00"),
+                "cleber.cunha:" + Date.parse("14 Apr 2020 8:00:00"),
+                "richar.lison:" + Date.parse("14 Apr 2020 8:30:00"),
             ],
             [],
         ),
         [
             new Piu(
-                "cleber.cunha:" + Date.parse("12 Apr 2020 11:00:00"),
+                "cleber.cunha:" + Date.parse("14 Apr 2020 11:00:00"),
                 "Este é meu 100º piu! Esperei bastante por este momento!",
                 null,            
             ),
             new Piu(
-                "cleber.cunha:" + Date.parse("12 Apr 2020 8:00:00"),
+                "cleber.cunha:" + Date.parse("14 Apr 2020 8:00:00"),
                 "Este é meu 99º piu! Isso é 1 a menos que 100!",
                 null,      
             ),
@@ -81,7 +79,7 @@ var baseDeDados = new BaseDeDados([
     ),
     new UsuarioData(
         new InfoUsuario(
-            "Richarlison",
+            "Richarlison Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão",
             "richar.lison",
             "Richarlison.png",
             "Pés%20na%20praia.png",
@@ -94,19 +92,19 @@ var baseDeDados = new BaseDeDados([
                 "fulano.beltrano",
             ],
             [
-                "cleber.cunha:1586689200000",
-                "richar.lison:1586691000000",
-                "rosi.plat:1586685600000",
+                "cleber.cunha:" + Date.parse("14 Apr 2020 8:00:00"),
+                "richar.lison:" + Date.parse("14 Apr 2020 8:30:00"),
+                "rosi.plat:" + Date.parse("14 Apr 2020 7:00:00"),
             ],
             [
-                "rosi.plat:1586685600000",
+                "rosi.plat:" + Date.parse("14 Apr 2020 7:00:00"),
             ],
         ),
         [
             new Piu(
-                "richar.lison:" + Date.parse("12 Apr 2020 8:30:00"),
+                "richar.lison:" + Date.parse("14 Apr 2020 8:30:00"),
                 "Sim! Sem dúvidas, é a melhor rede social que existe.",
-                "rosi.plat:" + Date.parse("12 Apr 2020 7:00:00"),
+                "rosi.plat:" + Date.parse("14 Apr 2020 7:00:00"),
             ),
         ]
     ),
@@ -127,7 +125,7 @@ var baseDeDados = new BaseDeDados([
         ),
         [
             new Piu(
-                "rosi.plat:" + Date.parse("12 Apr 2020 7:00:00"),
+                "rosi.plat:" + Date.parse("14 Apr 2020 7:00:00"),
                 "Comecei a usar hoje! Parece ser bom esse PiuPiwer.",
                 null,
             ),

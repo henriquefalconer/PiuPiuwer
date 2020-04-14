@@ -1,3 +1,109 @@
+#piar_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    margin: 0 0 2px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+#piar_box .piu_main_area{
+    padding-bottom: 20px;
+}
+
+#piar_textfield{
+    font-size: 18px;
+    width: 100%;
+    font-weight: 500;
+    color: #000;
+    font-family: sans-serif;
+    margin-right: 10px;
+}
+
+#piar_textfield::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #acacac;
+}
+
+#piar_textfield:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #acacac;
+    opacity: 1;
+}
+
+#piar_textfield::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #acacac;
+    opacity: 1;
+}
+
+#piar_textfield:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #acacac;
+}
+
+#vertical_piar_box{
+    margin-top: auto;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#piar_box_characters{
+    font-size: 15px;
+    color: #555;
+    margin-top: 4px;
+}
+
+.number_of_characters{
+    font-weight: 600;
+    color: #000;
+}
+
+.invalid_number_of_characters{
+    color: #f21d1d;
+}
+
+.transparent_border_text_area{
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 0;
+    transition: border .2s;
+    transition: padding .2s;
+}
+
+.invalid_text_area{
+    padding: 5px;
+    border: 2px solid #f21d1d;
+}
+
+#piar_box_button{
+    width: 100%;
+    transition: opacity .2s;
+}
+
+.invalid_button_piu{
+    opacity: 70%;
+    cursor: default;
+}
+
+.invalid_button_piu:hover{
+    filter: brightness(100%); 
+}
+
+.piu_text_area{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.piu_reply_text_area{
+    margin: 5px 0;
+}
+
 .piu{
     display: flex;
     flex-direction: column;
@@ -35,82 +141,26 @@
     padding-bottom: 0;
 }
 
-#piar_box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: white;
-    margin: 0 0 2px;
-    font-size: 15px;
-    margin-bottom: 15px;
-}
-
-#piar_box .piu_main_area{
-    padding-bottom: 20px;
-}
-
-.avatar_piu{
-    height: 50px;
-    margin-right: 10px;
-}
-
-.avatar_piu_reply{
-    height: 35px;
-    margin-right: 10px;
-}
-
-#piar_textfield{
-    font-size: 18px;
-    width: 100%;
-    font-weight: 500;
-    color: #000;
-    font-family: sans-serif;
-    margin-right: 10px;
-}
-
-#piar_textfield::-webkit-input-placeholder {
-    /* WebKit, Blink, Edge */
-    color: #acacac;
-}
-
-#piar_textfield:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: #acacac;
-    opacity: 1;
-}
-
-#piar_textfield::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: #acacac;
-    opacity: 1;
-}
-
-#piar_textfield:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #acacac;
-}
-
-#piar_box_button{
-    margin-top: auto;
-    width: 120px;
-}
-
-.piu_text_area{
-    width: 100%;
-}
-
-.piu_reply_text_area{
-    margin: 5px 0;
-}
-
 .piu_info{
     display: flex;
     align-items: center;
     margin: 0;
     padding: 2px;
     width: 100%;
+    box-sizing: border-box;
+}
+
+.avatar_piu{
+    width: 50px;
+    margin-right: 10px;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+.avatar_piu_reply{
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 50%;
 }
 
 .piuwer_name{
@@ -134,6 +184,13 @@
 .piu_message{
     padding: 2px;
     margin: 4px 0 0;
+    width: 500px;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+.piu_reply_message{
+    width: 460px;
 }
 
 .piu_actions_area{
