@@ -88,7 +88,6 @@
 
 .invalid_button_piu{
     opacity: 70%;
-    cursor: default;
 }
 
 .invalid_button_piu:hover{

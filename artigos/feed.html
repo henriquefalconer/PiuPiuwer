@@ -56,7 +56,7 @@
 
             <p class="filled_button" id="navigation_piar_button">Piar</p>
 
-            <a href="">
+            <a href="ajustes.html">
                 <img id="ajustes_button" alt="Ajustes" src="../img/icons/Ajustes.svg">
             </a>
 
@@ -82,6 +82,14 @@
                 </div>
             </div>
 
+            <!-- Popup de erro do piar box -->
+            <div id="popup_par_box_erro" class="popup_tela_cheia">
+                <div class="popup_tela_cheia_conteudo">
+                    <p>O piu não deve possuir mais que 140 caracteres ou estar vazio.</p>
+                    <div class="filled_button popup_tela_cheia_button">OK</div>
+                </div>
+            </div>
+
             <main id="pius_area"></main>
 
         </main>
@@ -94,6 +102,7 @@
         
         <script src="../js/utilities/general_functions.js"></script>
         <script src="../js/utilities/constants.js"></script>
+        <script src="../js/popups/whole_screen_popups.js"></script>
         <script src="../js/network/get_json_data.js"></script>
         <script src="../js/pius/base_de_dados.js"></script>
         <script src="../js/pius/implement_server_pius.js"></script>

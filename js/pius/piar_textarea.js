@@ -11,6 +11,9 @@ piarButtonListener();
 // Controlar o contador de caracteres:
 changeNumberOfCharactersColor();
 
+// Ativar botão de "OK" na caixa de erro do piar box:
+popupWholeScreenCancelButtonListener("#popup_par_box_erro");
+
 function autoSizeTextArea() {
     var textArea = document.querySelector("#piar_textfield");
     textArea.addEventListener("input", function() {
@@ -44,6 +47,8 @@ function piarButtonListener() {
                 baseDeDados.adicionarPiuABaseDeDados(piarTextArea.value);
                 piarTextArea.value = "";
                 atualizarEstiloTextarea();
+            } else {
+                togglePopupWholeScreen("#popup_par_box_erro");
             }
         });
 
