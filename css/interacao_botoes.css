@@ -1,0 +1,11 @@
+a, .hollow_button, .filled_button, .action_box, #recarregar_button{
+    transition: filter .2s;
+}
+
+a:hover, .hollow_button:hover, .filled_button:hover, .action_box:hover, #recarregar_button:hover{
+    filter: brightness(85%); 
+}
+
+.piuwer_name:hover, .piuwer_username:hover{
+    text-decoration: underline;
+}

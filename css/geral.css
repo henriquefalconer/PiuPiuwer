@@ -59,10 +59,10 @@ textarea:focus{
 
 .hollow_button{
     border: 1px solid #f21d1d;
+    color: #f21d1d;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    color: #f21d1d;
     border-radius: 300px;
     font-size: 13px;
     text-align: center;

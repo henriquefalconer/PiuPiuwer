@@ -178,25 +178,36 @@ function montarPiuActionButtons(piu) {
     piuActionsArea.classList.add("piu_actions_area");
 
     // Montar ação de amar:
-    var amarBox = createActionElement("amar_button", "Amar", "Amar.svg", piu.getLikes());
+    var likesDoPiu = piu.getLikes();
+    var amarBox = createActionElement("amar_button", "Amar", "Amar.svg", likesDoPiu.includes(loggedInUser), likesDoPiu.length);
     piuActionsArea.appendChild(amarBox);
 
     // Montar ação de retornar:
-    var retornarBox = createActionElement("reply_button", "Retornar", "Retornar.svg", piu.getReplies());
+    var repliesDoPiu = piu.getReplies();
+    var retornarBox = createActionElement("reply_button", "Retornar", "Retornar.svg", repliesDoPiu.includes(loggedInUser), repliesDoPiu.length);
     piuActionsArea.appendChild(retornarBox);
 
     // Montar ação de destacar:
-    var destacarBox = createActionElement("highlight_button", "Destacar", "Alfinete.svg");
+    var destacarBox = createActionElement("destacar_button", "Destacar", "Alfinete.svg", piu.hasDestaque());
     piuActionsArea.appendChild(destacarBox);
     
     return piuActionsArea;
 }
 
-function createActionElement(iconClass, iconAlt, iconSrc, actionCountNumber) {
+function createActionElement(iconClasse, iconAlt, iconSrc, active, actionCountNumber) {
     var actionBox = document.createElement("div");
     actionBox.classList.add("action_box");
 
-    var amarIcon = GeneralFunctions.createImgElement(["piu_action_icon", iconClass], iconAlt, "../img/icons/" + iconSrc);
+    var classesToAdd = ["piu_action_icon"];
+
+    if (active) {
+        classesToAdd.push("active_button");
+        iconSrc = iconSrc.split(/\./)[0] + " Vermelho." + iconSrc.split(/\./)[1];
+    }
+
+    classesToAdd.push(iconClasse);
+
+    var amarIcon = GeneralFunctions.createImgElement(classesToAdd, iconAlt, "../img/icons/" + iconSrc);
     actionBox.appendChild(amarIcon);
 
     if (actionCountNumber != null) {

@@ -7,26 +7,32 @@ var loggedInUser = "fulano.beltrano";
 var baseDeDados = new BaseDeDados([
     new UsuarioData(
         new InfoUsuario(
+            // Nome:
             "Fulano Beltrano da Silva",
+            // Nome de usuário:
             "fulano.beltrano",
+            // Arquivo de avatar:
             "Fulano.png",
+            // Arquivo de plano de fundo do perfil:
             "Pés%20na%20praia.png",
+            // Seguidores:
             [
                 "rosi.plat",
                 "richar.lison",
             ],
+            // Seguindo:
             [
                 "cleber.cunha",
                 "rosi.plat",
                 "richar.lison",
             ],
+            // IDs dos pius que o usuário deu like:
             [
                 "fulano.beltrano:1586704620000",
-                "cleber.cunha:1586700000000",
                 "richar.lison:1586691000000",
-                "cleber.cunha:1586689200000",
                 "rosi.plat:1586685600000",
             ],
+            // Pius destacados:
             [
                 "rosi.plat:1586685600000",
             ],
@@ -55,14 +61,10 @@ var baseDeDados = new BaseDeDados([
             ],
             [
                 "fulano.beltrano:1586704620000",
-                "cleber.cunha:1586700000000",
-                "richar.lison:1586691000000",
                 "cleber.cunha:1586689200000",
-                "rosi.plat:1586685600000",
+                "richar.lison:1586691000000",
             ],
-            [
-                "rosi.plat:1586685600000",
-            ],
+            [],
         ),
         [
             new Piu(
@@ -92,10 +94,8 @@ var baseDeDados = new BaseDeDados([
                 "fulano.beltrano",
             ],
             [
-                "fulano.beltrano:1586704620000",
-                "cleber.cunha:1586700000000",
-                "richar.lison:1586691000000",
                 "cleber.cunha:1586689200000",
+                "richar.lison:1586691000000",
                 "rosi.plat:1586685600000",
             ],
             [
@@ -119,17 +119,11 @@ var baseDeDados = new BaseDeDados([
             [
                 "richar.lison",
             ],
+            [
+                "richar.lison",
+            ],
             [],
-            [
-                "fulano.beltrano:1586704620000",
-                "cleber.cunha:1586700000000",
-                "richar.lison:1586691000000",
-                "cleber.cunha:1586689200000",
-                "rosi.plat:1586685600000",
-            ],
-            [
-                "rosi.plat:1586685600000",
-            ],
+            [],
         ),
         [
             new Piu(

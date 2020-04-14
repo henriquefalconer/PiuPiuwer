@@ -26,9 +26,32 @@ class BaseDeDados {
         if (index == -1) {
             this.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.likes.push(piuId);
         }
-        // Se o like não existe, adicioná-lo:
+        // Caso contrário, retire-o:
         else {
             this.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.likes.splice(index, 1);
+        }
+        
+        // Recarregar feed de pius:
+        montarPiusFeed();
+    }
+
+    replyPiu(piuId, message) {
+        this.adicionarPiuABaseDeDados(message, piuId);
+        
+        // Recarregar feed de pius:
+        montarPiusFeed();
+    }
+
+    togglePiuDestaque(piuId) {
+        const index = this.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.destacados.indexOf(piuId);
+
+        // Se o piu não está destacado, destaque-o:
+        if (index == -1) {
+            this.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.destacados.push(piuId);
+        }
+        // Caso contrário tire ele do destaque:
+        else {
+            this.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.destacados.splice(index, 1);
         }
         
         // Recarregar feed de pius:
@@ -106,19 +129,19 @@ class Piu {
     }
 
     getLikes() {
-        var likesCounter = 0;
+        var likesList = [];
 
         var thisPiu = this;
 
         baseDeDados.data.forEach(function(usuarioData){
-            if (usuarioData.infoUsuario.likes.includes(thisPiu.piuId)) likesCounter++;
+            if (usuarioData.infoUsuario.likes.includes(thisPiu.piuId)) likesList.push(usuarioData.infoUsuario.username);
         });
 
-        return likesCounter;
+        return likesList;
     }
 
     getReplies() {
-        var repliesCounter = 0;
+        var repliesList = [];
 
         var thisPiu = this;
 
@@ -126,10 +149,14 @@ class Piu {
             var piusUsuario = usuarioData.pius;
 
             piusUsuario.forEach(function(piu){
-                if (piu.piuReplyId == thisPiu.piuId) repliesCounter++;
+                if (piu.piuReplyId == thisPiu.piuId) repliesList.push(usuarioData.infoUsuario.username);
             });
         });
 
-        return repliesCounter;
+        return repliesList;
+    }
+
+    hasDestaque() {
+        return baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.destacados.includes(this.piuId);
     }
 }

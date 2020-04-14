@@ -1,6 +1,7 @@
 class GeneralFunctions {
     static sortPiusInTime(pius){
         pius.sort(function(a, b){return GeneralFunctions.getTimeFromPiuId(b.piuId) - GeneralFunctions.getTimeFromPiuId(a.piuId)});
+        pius.sort(function(a, b){return b.hasDestaque() - a.hasDestaque()});
     }
 
     static getUserNameFromPiuId(piuId){

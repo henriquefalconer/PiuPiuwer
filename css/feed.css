@@ -7,6 +7,7 @@
     background-color: white;
     margin: 0 0 2px;
     font-size: 15px;
+    cursor: default;
 }
 
 .piu_reply{
@@ -145,13 +146,17 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    z-index: 1;
 }
 
 .piu_action_icon{
     height: 18px;
     margin: 0 8px;
     cursor: pointer;
+}
+
+.active_button ~ .action_count{
+    color: #df1c1c;
+    font-weight: 600;
 }
 
 .action_count{
