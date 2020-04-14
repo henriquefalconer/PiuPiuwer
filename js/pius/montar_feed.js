@@ -19,7 +19,7 @@ function montarPiusFeed() {
             });
         });
 
-        sortPiusInTime(allPius);
+        GeneralFunctions.sortPiusInTime(allPius);
 
         piusArea.innerHTML = "";
 
@@ -32,18 +32,6 @@ function montarPiusFeed() {
         // Adicionar functionalidades aos botãoes de ação dos pius:
         ativarFuncoesPius();
     }
-}
-
-function sortPiusInTime(pius){
-    pius.sort(function(a, b){return getTimeFromPiuId(b.piuId) - getTimeFromPiuId(a.piuId)});
-}
-
-function getTimeFromPiuId(piuId){
-    return piuId.split(":")[1];
-}
-
-function getUserNameFromPiuId(piuId){
-    return piuId.split(":")[0];
 }
 
 function montarPiuElement(piu) {
@@ -152,27 +140,6 @@ function montarPiuReply(replyPiuId) {
     return piuReply;
 }
 
-function getRelativeTime(timeInMilliseconds) {
-    var relativeTime = "";
-
-    var currentTime = Date.parse(new Date());
-
-    var differenceInSeconds = (currentTime - timeInMilliseconds)/1000;
-
-    if (differenceInSeconds < 60) {
-        relativeTime = differenceInSeconds.toFixed(0) + " s";
-    } else if (differenceInSeconds < 3600) {
-        relativeTime = (differenceInSeconds/60).toFixed(0) + " min";
-    } else if (differenceInSeconds < 3600*24) {
-        relativeTime = (differenceInSeconds/3600).toFixed(0) + " h";
-    } else {
-        relativeTime = (differenceInSeconds/3600/24).toFixed(0) + " dia";
-        if ((differenceInSeconds/3600/24).toFixed(0) > 1) relativeTime = relativeTime + "s";
-    }
-
-    return relativeTime;
-}
-
 function montarPiuInfo(dadosUsuario, dadosPiu) {
     var piuInfo = document.createElement("p");
     piuInfo.classList.add("piu_info");
@@ -200,7 +167,7 @@ function montarPiuInfo(dadosUsuario, dadosPiu) {
     // Montar tempo no piuInfo:
     var piuTime = document.createElement("span");
     piuTime.classList.add("piu_time");
-    piuTime.textContent = getRelativeTime(getTimeFromPiuId(dadosPiu.piuId));
+    piuTime.textContent = GeneralFunctions.getRelativeTime(GeneralFunctions.getTimeFromPiuId(dadosPiu.piuId));
     piuInfo.appendChild(piuTime);    
 
     return piuInfo;
@@ -229,7 +196,7 @@ function createActionElement(iconClass, iconAlt, iconSrc, actionCountNumber) {
     var actionBox = document.createElement("div");
     actionBox.classList.add("action_box");
 
-    var amarIcon = createImgElement(["piu_action_icon", iconClass], iconAlt, "../img/icons/" + iconSrc);
+    var amarIcon = GeneralFunctions.createImgElement(["piu_action_icon", iconClass], iconAlt, "../img/icons/" + iconSrc);
     actionBox.appendChild(amarIcon);
 
     if (actionCountNumber != null) {
@@ -240,14 +207,4 @@ function createActionElement(iconClass, iconAlt, iconSrc, actionCountNumber) {
     }
 
     return actionBox;
-}
-
-function createImgElement(classList, alt, src) {
-    var img = document.createElement("img");
-    classList.forEach(function(classItem){
-        img.classList.add(classItem);
-    });
-    img.alt = alt;
-    img.src = src;
-    return img;
 }

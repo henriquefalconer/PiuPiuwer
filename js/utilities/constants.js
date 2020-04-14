@@ -46,7 +46,7 @@ class BaseDeDados {
     }
     
     getDadosUsuarioFromPiuId(piuId) {
-        var nomeUsuario = getUserNameFromPiuId(piuId);
+        var nomeUsuario = GeneralFunctions.getUserNameFromPiuId(piuId);
     
         var infoUsuario = null;
     
@@ -60,7 +60,7 @@ class BaseDeDados {
     }
     
     getDadosPiuFromPiuId(piuId) {
-        var nomeUsuario = getUserNameFromPiuId(piuId);
+        var nomeUsuario = GeneralFunctions.getUserNameFromPiuId(piuId);
 
         var piuData = null;
 
