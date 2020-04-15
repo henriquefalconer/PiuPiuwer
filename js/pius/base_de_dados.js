@@ -79,7 +79,7 @@ var baseDeDados = new BaseDeDados([
     ),
     new UsuarioData(
         new InfoUsuario(
-            "Richarlison Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão Dos Santos Neves Querubim Monstrão",
+            "Richarlison Dos Santos Neves Querubim Machado",
             "richar.lison",
             "Richarlison.png",
             "Pés%20na%20praia.png",

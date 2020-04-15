@@ -11,6 +11,12 @@ montarAvataresUsuario();
 // Ativar link de perfil do usuário:
 setPerfilButtonLink();
 
+// Ativar listener do botão de piar do sidebar:
+setSidebarPiarButtonListener();
+
+// Ativar listener do botão de sair do popup de sidebar:
+popupWholeScreenCancelButtonListener("#popup_piar_sidebar");
+
 function recarregarPaginaButtonListener() {
     var recarregarButton = document.querySelector("#recarregar_button");
 
@@ -25,7 +31,7 @@ function montarAvataresUsuario() {
 
     avatarPiarBox.forEach(function(avatar){
         // Adicionar imagem do usuário logado:
-        avatar.src = "../img/avatars/" + baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.avatar;
+        avatar.src = "../../img/avatars/" + baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.avatar;
         
         // Adicionar link para acesso ao perfil do usuário logado:
         var avatarLink = avatar.parentNode;
@@ -38,4 +44,12 @@ function setPerfilButtonLink() {
 
     // Adicionar link para acesso ao perfil do usuário logado:
     perfilButton.href = "perfil.html?user=" + loggedInUser;
+}
+
+function setSidebarPiarButtonListener() {
+    const piarButtonSidebar = document.querySelector("#navigation_piar_button");
+
+    piarButtonSidebar.addEventListener("click", function(){
+        togglePopupWholeScreen("#popup_piar_sidebar");
+    });
 }

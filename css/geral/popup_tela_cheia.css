@@ -1,0 +1,32 @@
+.popup_tela_cheia{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup_tela_cheia_conteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.popup_tela_cheia_button{
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.popup_tela_cheia_ativo{
+    display: flex;
+    -webkit-animation: fadeIn 0.08s;
+    animation: fadeIn 0.08s;
+}

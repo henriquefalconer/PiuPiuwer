@@ -1,0 +1,110 @@
+.formulario_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.form_title{
+    text-align: center;
+    margin: 21.44px 40px;
+}
+
+.form_subtitle{
+    margin: 23px 90px 5px;
+}
+
+.formulario_cadastro{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 0 250px;
+    align-items: center;
+}
+
+.input_box{
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.textfield{
+    margin: 8px 0;
+    height: 30px;
+    width: 100%;
+    border-bottom: 2px solid #999;
+    font-size: 14px;
+}
+
+.focused_textfield{
+    border-bottom: 2px solid #474747;
+}
+
+.button_confirmar{
+    margin: 30px 0 35px;
+    width: 122px;
+    cursor: pointer;
+}
+
+.criar_nova_conta_apos_esquecer_tudo{
+    height: 40px;
+    padding: 10px 30px;
+    margin: 30px 0 15px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.pagina_cadastro_links_conta{
+    display: flex;
+    align-items: center;
+}
+
+.link_conta{
+    color: #484848;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+}
+
+.link_conta_esquerdo{
+    text-align: end;
+    width: 180px;
+}
+
+.link_conta_direito{
+    text-align: start;
+    width: 180px;
+}
+
+@media screen and (max-width: 845px){
+
+    .formulario_cadastro{
+        width: 65%;
+    }
+
+    .popup_ajuda{
+        width: 0;
+        height: 0;
+        margin: 0 auto;
+        position: static;
+        padding: 0;
+        transition: height .2s;
+    }/* Popup arrow */
+
+    .popup_ajuda::after {
+        display: none;
+    }
+
+    .input_box_help_parent{
+        position: static;
+    }
+
+    .show{
+        width: 100%;
+        height: 60px;
+        display: block;
+        display: flex;
+        padding: 10px;
+    }
+
+}

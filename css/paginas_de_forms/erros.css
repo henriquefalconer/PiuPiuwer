@@ -1,0 +1,39 @@
+.erro_no_campo{
+    color: #f21d1d;
+    border-bottom: 2px solid #f21d1d;
+}
+
+.erro_no_campo:focus{
+    color: #f21d1d;
+    border-bottom: 2px solid #f21d1d;
+}
+
+.erro_no_campo::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #f21d1d;
+}
+
+.erro_no_campo:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #f21d1d;
+    opacity: 1;
+}
+
+.erro_no_campo::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #f21d1d;
+    opacity: 1;
+}
+
+.erro_no_campo:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #f21d1d;
+}
+
+.error_text{
+    color: #f21d1d;
+    font-size: 14px;
+    margin-top: 15px;
+    width: 100%;
+    font-weight: bold;
+}

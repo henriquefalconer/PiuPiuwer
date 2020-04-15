@@ -9,3 +9,11 @@ a:hover, .hollow_button:hover, .filled_button:hover, .action_box:hover, #recarre
 .piuwer_name:hover, .piuwer_username:hover{
     text-decoration: underline;
 }
+
+.invalid_button_piu{
+    opacity: 70%;
+}
+
+.invalid_button_piu:hover{
+    filter: brightness(100%); 
+}

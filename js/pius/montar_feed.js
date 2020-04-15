@@ -204,7 +204,7 @@ function createActionElement(iconClasse, iconAlt, iconSrc, active, actionCountNu
 
     classesToAdd.push(iconClasse);
 
-    var amarIcon = GeneralFunctions.createImgElement(classesToAdd, iconAlt, "../img/icons/" + iconSrc);
+    var amarIcon = GeneralFunctions.createImgElement(classesToAdd, iconAlt, "../../img/icons/" + iconSrc);
     actionBox.appendChild(amarIcon);
 
     if (actionCountNumber != null) {
@@ -222,7 +222,7 @@ function montarAvatarDoPiu(classe, src) {
     piuAvatar.classList.add(classe);
     piuAvatar.alt = "Avatar usuário";
     if (!src.includes("http")) {
-        piuAvatar.src = "../img/avatars/" + src;
+        piuAvatar.src = "../../img/avatars/" + src;
     } else {
         piuAvatar.src = src;
     }

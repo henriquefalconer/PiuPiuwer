@@ -21,7 +21,7 @@ function amarButtonListeners() {
         });
 
         replyButton.parentNode.addEventListener("click", function(){
-            var piarTextArea = document.querySelector("#piar_textfield");
+            var piarTextArea = document.querySelector(".piar_textfield");
             baseDeDados.replyPiu(piu.id, piarTextArea.value);
         });
 

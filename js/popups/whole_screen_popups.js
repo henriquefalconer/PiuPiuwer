@@ -9,7 +9,7 @@ function togglePopupWholeScreen(id) {
 
 function popupWholeScreenCancelButtonListener(id) {
     var popupBackground = document.querySelector(id);
-    var popupCancelButton = popupBackground.querySelector(".popup_tela_cheia_button");
+    var popupCancelButton = popupBackground.querySelector(".popup_exit_functionality");
 
     popupCancelButton.addEventListener("click", function(){
         togglePopupWholeScreen(id);

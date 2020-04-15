@@ -12,59 +12,64 @@ piarButtonListener();
 changeNumberOfCharactersColor();
 
 // Ativar botão de "OK" na caixa de erro do piar box:
-popupWholeScreenCancelButtonListener("#popup_par_box_erro");
+popupWholeScreenCancelButtonListener("#popup_piar_box_erro");
 
 function autoSizeTextArea() {
-    var textArea = document.querySelector("#piar_textfield");
-    textArea.addEventListener("input", function() {
-
-        // Reset field height
-        this.style.height = 'inherit';
-    
-        // Get the computed styles for the element
-        var computed = window.getComputedStyle(this);
-    
-        // Calculate the height
-        var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-                     + parseInt(computed.getPropertyValue('padding-top'), 10)
-                     + this.scrollHeight
-                     + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-                     + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-        this.style.height = height + 'px';
+    var allTextAreas = document.querySelectorAll(".piar_textfield");
+    allTextAreas.forEach(function(textArea){
+        textArea.addEventListener("input", function() {
+            // Reset field height:
+            this.style.height = 'inherit';
+            
+            // Get the computed styles for the element:
+            var computed = window.getComputedStyle(this);
+            
+            // Calculate the height:
+            var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+                         + parseInt(computed.getPropertyValue('padding-top'), 10)
+                         + this.scrollHeight
+                         + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                         + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+            this.style.height = height + 'px';
+        });
     });
 }
 
 function piarButtonListener() {
-    var piarButton = document.querySelector("#piar_box_button");
+    var piarBoxes = document.querySelectorAll(".piar_box");
 
-    if (piarButton != null) {
-        var piarTextArea = document.querySelector("#piar_textfield");
+    piarBoxes.forEach(function(piarBox){
+        var piarTextArea = piarBox.querySelector(".piar_textfield");
+        var piarButton = piarBox.querySelector(".piar_box_button");
     
         piarButton.addEventListener("click", function(){
-            event.preventDefault();
-    
             if (piarTextArea.value.length > 0 && piarTextArea.value.length <= 140) {
                 baseDeDados.adicionarPiuABaseDeDados(piarTextArea.value);
                 piarTextArea.value = "";
-                atualizarEstiloTextarea();
+                atualizarEstiloTextarea(piarBox);
             } else {
-                togglePopupWholeScreen("#popup_par_box_erro");
+                togglePopupWholeScreen("#popup_piar_box_erro");
             }
         });
-
-    }
+    });
 }
 
 function changeNumberOfCharactersColor() {
-    var textArea = document.querySelector("#piar_textfield");
+    var piarBoxes = document.querySelectorAll(".piar_box");
 
-    textArea.addEventListener("input", atualizarEstiloTextarea);
+    piarBoxes.forEach(function(piarBox){
+        var textArea = piarBox.querySelector(".piar_textfield");
+        
+        textArea.addEventListener("input", function(){
+            atualizarEstiloTextarea(piarBox);
+        });
+    });
 }
 
-function atualizarEstiloTextarea() {
-    var textArea = document.querySelector("#piar_textfield");
-    var numberOfCharacters = document.querySelector(".number_of_characters");
-    var piarButton = document.querySelector("#piar_box_button");
+function atualizarEstiloTextarea(piarBox) {
+    var textArea = piarBox.querySelector(".piar_textfield");
+    var numberOfCharacters = piarBox.querySelector(".number_of_characters");
+    var piarButton = piarBox.querySelector(".piar_box_button");
 
     if (textArea.value.length > 0) {
         numberOfCharacters.parentNode.classList.remove("invisible");

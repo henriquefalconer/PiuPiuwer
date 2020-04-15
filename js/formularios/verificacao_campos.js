@@ -37,7 +37,7 @@ function botaoConfirmarListener() {
         });
 
         if (todosOsCamposSaoValidos) {
-            location.replace("feed.html");
+            location.replace("../paginas_de_midia_social/feed.html");
         } else {
 
             var primeiroCampoComErro = document.querySelector(".erro_no_campo");
