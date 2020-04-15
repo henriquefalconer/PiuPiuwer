@@ -22,7 +22,7 @@
     width: 500px;
 }
 
-#popup_piar_sidebar .filled_button{
+.piar_tela_cheia .filled_button{
     width: 100px;
     margin-left: 10px;
 }
@@ -33,15 +33,15 @@
     cursor: pointer;
 }
 
-#popup_piar_sidebar .popup_tela_cheia_conteudo{
+.piar_tela_cheia .popup_tela_cheia_conteudo{
     align-items: flex-start;
 }
 
-#popup_piar_sidebar .piar_box{
+.piar_tela_cheia .piar_box{
     margin: 0;
 }
 
-#popup_piar_sidebar .piu_main_area{
+.piar_tela_cheia .piu_main_area{
     padding: 0;
     padding-top: 10px;
 }
@@ -49,6 +49,7 @@
 .piar_textfield{
     font-size: 18px;
     width: 100%;
+    box-sizing: border-box;
     font-weight: 500;
     color: #000;
     font-family: sans-serif;
@@ -75,7 +76,9 @@
 .piar_textfield:-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: #acacac;
-}.piar_box{
+}
+
+.piar_box{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,13 +125,13 @@
     border: 2px solid transparent;
     border-radius: 10px;
     padding: 0;
-    transition: border .2s;
+    transition: border-color 2s;
     transition: padding .2s;
 }
 
 .invalid_text_area{
-    padding: 5px;
-    border: 2px solid #f21d1d;
+    padding: 8px;
+    border-color: #f21d1d;
 }
 
 .piar_box_button{
@@ -140,4 +143,8 @@
     font-size: 17px;
     margin-bottom: 35px;
     text-align: center;
+}
+
+.piu_reply_popup{
+    width: 500px;
 }

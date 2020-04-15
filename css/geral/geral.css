@@ -50,7 +50,7 @@ input:focus{
 
 textarea{
     resize: none;
-    overflow: auto;
+    overflow: hidden;
 }
 
 textarea:focus{

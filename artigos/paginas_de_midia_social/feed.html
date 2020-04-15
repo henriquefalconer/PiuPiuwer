@@ -95,19 +95,44 @@
 
         </aside>
 
-        <!-- Popup de erro do piar box da sidebar -->
-        <div id="popup_piar_sidebar" class="popup_tela_cheia">
+        <!-- Popup para piar da sidebar -->
+        <div id="popup_piar_sidebar" class="popup_tela_cheia piar_tela_cheia">
             <div class="popup_tela_cheia_conteudo">
                 <div class="topo_popup_piu">
                     <h2>Monte seu piu</h2>
                     <p class="exit_popup_button popup_exit_functionality">&times;</p>
                 </div>
-                <div class="piar_box">
+                <div class="piar_box popup_piar_box">
                     <div class="piu_main_area">
                         <a>
                             <img class="avatar_piu avatar_usuario_logado" alt="Avatar usuário" src="../../img/avatars/null.svg">
                         </a>
                         <textarea class="featureless_textfield transparent_border_text_area piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
+                    </div>
+                    <div class="horizontal_piar_box">
+                        <p class="invisible" class="piar_box_characters"><span class="number_of_characters invalid_number_of_characters"></span>/140</p>
+                        <p class="filled_button piar_box_button invalid_button_piu">Piar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup de reply de um piu -->
+        <div id="popup_piar_reply" class="popup_tela_cheia piar_tela_cheia">
+            <div class="popup_tela_cheia_conteudo">
+                <div class="topo_popup_piu">
+                    <h2>Responda a esse piu</h2>
+                    <p class="exit_popup_button popup_exit_functionality">&times;</p>
+                </div>
+                <div class="piar_box popup_piar_box popup_reply_piu">
+                    <div class="piu_main_area">
+                        <a>
+                            <img class="avatar_piu avatar_usuario_logado" alt="Avatar usuário" src="../../img/avatars/null.svg">
+                        </a>
+                        <div class="piu_text_area">
+                            <textarea class="featureless_textfield transparent_border_text_area piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
+                            <div class="piu_reply_box"></div>
+                        </div>
                     </div>
                     <div class="horizontal_piar_box">
                         <p class="invisible" class="piar_box_characters"><span class="number_of_characters invalid_number_of_characters"></span>/140</p>

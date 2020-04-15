@@ -3,12 +3,6 @@
 // --------------------------------------
 
 function ativarFuncoesPius() {
-    amarButtonListeners();
-    replyButtonListeners();
-    destacarButtonListeners();
-}
-
-function amarButtonListeners() {
     var allPius = document.querySelectorAll(".piu");
 
     allPius.forEach(function(piu){
@@ -21,26 +15,11 @@ function amarButtonListeners() {
         });
 
         replyButton.parentNode.addEventListener("click", function(){
-            var piarTextArea = document.querySelector(".piar_textfield");
-            baseDeDados.replyPiu(piu.id, piarTextArea.value);
+            baseDeDados.replyPiu(piu.id);
         });
 
         destacarButton.parentNode.addEventListener("click", function(){
             baseDeDados.togglePiuDestaque(piu.id);
         });
-    });
-}
-
-function replyButtonListeners() {
-    var allPius = document.querySelectorAll(".piu");
-
-    allPius.forEach(function(piu){
-    });
-}
-
-function destacarButtonListeners() {
-    var allPius = document.querySelectorAll(".piu");
-
-    allPius.forEach(function(piu){
     });
 }

@@ -11,26 +11,13 @@ piarButtonListener();
 // Controlar o contador de caracteres:
 changeNumberOfCharactersColor();
 
-// Ativar botão de "OK" na caixa de erro do piar box:
-popupWholeScreenCancelButtonListener("#popup_piar_box_erro");
-
 function autoSizeTextArea() {
     var allTextAreas = document.querySelectorAll(".piar_textfield");
     allTextAreas.forEach(function(textArea){
         textArea.addEventListener("input", function() {
             // Reset field height:
             this.style.height = 'inherit';
-            
-            // Get the computed styles for the element:
-            var computed = window.getComputedStyle(this);
-            
-            // Calculate the height:
-            var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-                         + parseInt(computed.getPropertyValue('padding-top'), 10)
-                         + this.scrollHeight
-                         + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-                         + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-            this.style.height = height + 'px';
+            this.style.height = (this.scrollHeight) + 'px';
         });
     });
 }
@@ -44,9 +31,21 @@ function piarButtonListener() {
     
         piarButton.addEventListener("click", function(){
             if (piarTextArea.value.length > 0 && piarTextArea.value.length <= 140) {
-                baseDeDados.adicionarPiuABaseDeDados(piarTextArea.value);
+                var replyPiuId = null;
+
+                if (piarBox.classList.contains("popup_reply_piu")) {
+                    console.log(piarBox.querySelector(".piu_reply").id);
+                    replyPiuId = piarBox.querySelector(".piu_reply").id;
+                }
+
+                baseDeDados.adicionarPiuABaseDeDados(piarTextArea.value, replyPiuId);
                 piarTextArea.value = "";
                 atualizarEstiloTextarea(piarBox);
+
+                // Caso o botão esteja em um popup de tela cheia, fechar ele:
+                if (piarBox.classList.contains("popup_piar_box")) {
+                    closeAllWholeScreenPopups();
+                }
             } else {
                 togglePopupWholeScreen("#popup_piar_box_erro");
             }

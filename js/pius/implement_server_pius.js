@@ -48,7 +48,7 @@ function implementarPius(piusData) {
             [
                 new Piu(
                     // PiuId, com o horário em que piu foi postado (neste caso, aleatório) e o nome de usuário de quem postou:
-                    usuarioJsonData["username"].split("@")[1] + ":" + getRandomTime(),
+                    usuarioJsonData["username"].split("@")[1] + ":" + getTimeForServerUser(usuarioJsonData["username"].split("@")[1]),
                     usuarioJsonData["mensagem"],
                 ),
             ],
@@ -61,6 +61,26 @@ function implementarPius(piusData) {
     montarPiusFeed();
 }
 
+function getTimeForServerUser(username) {
+    const lista = {
+        "YeVictor": 1586920279000,
+        "Murilo_T": 1586920952000,
+        "Clau": 1586922954000,
+        "Jorel": 1586923140000,
+        "FabioBassoi": 1586923741000,
+        "Diegoo": 1586924665000,
+        "Mateeus": 1586926007000,
+        "MatiasH": 1586926500000,
+        "Ken?": 1586929207000,
+        "Enzo": 1586935441000,
+        "Gakio": 1586950236000,
+        "Magodosdoces": 1586958322000,
+        "MagaldiNarguileiro": 1586958585000,
+    };
+
+    return (Object.keys(lista).includes(username)) ? lista[username] : getRandomTime();
+}
+
 function getRandomTime() {
     const horarioAtual = Date.parse(new Date());
     var horario = horarioAtual + 1;
@@ -70,7 +90,7 @@ function getRandomTime() {
         const minuto = Math.floor(Math.random() * 60);
         const segundo = Math.floor(Math.random() * 60);
 
-        horario = Date.parse("14 Apr 2020 " + hora + ":" + minuto + ":" + segundo);
+        horario = Date.parse("15 Apr 2020 " + hora + ":" + minuto + ":" + segundo);
     }
     return horario;
 }

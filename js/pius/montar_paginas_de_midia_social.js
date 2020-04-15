@@ -14,9 +14,6 @@ setPerfilButtonLink();
 // Ativar listener do botão de piar do sidebar:
 setSidebarPiarButtonListener();
 
-// Ativar listener do botão de sair do popup de sidebar:
-popupWholeScreenCancelButtonListener("#popup_piar_sidebar");
-
 function recarregarPaginaButtonListener() {
     var recarregarButton = document.querySelector("#recarregar_button");
 

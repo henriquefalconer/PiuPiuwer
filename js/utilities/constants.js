@@ -35,11 +35,21 @@ class BaseDeDados {
         montarPiusFeed();
     }
 
-    replyPiu(piuId, message) {
-        this.adicionarPiuABaseDeDados(message, piuId);
-        
-        // Recarregar feed de pius:
-        montarPiusFeed();
+    replyPiu(piuReplyId) {
+        // Acionar popup de tela cheia:
+        togglePopupWholeScreen("#popup_piar_reply");
+
+        // Encontrar o popup de tela cheia:
+        var popupBox = document.querySelector("#popup_piar_reply");
+
+        // Montar o piu de reply:
+        var piuReply = montarPiuReply(piuReplyId);
+        piuReply.id = piuReplyId;
+
+        // Inserir o piu de reply no popup:
+        var popupPiarReplyPiu = popupBox.querySelector(".piu_reply_box");
+        popupPiarReplyPiu.innerHTML = "";
+        popupPiarReplyPiu.appendChild(piuReply);
     }
 
     togglePiuDestaque(piuId) {
