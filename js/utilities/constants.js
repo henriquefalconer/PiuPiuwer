@@ -44,7 +44,6 @@ class BaseDeDados {
 
         // Montar o piu de reply:
         var piuReply = montarPiuReply(piuReplyId);
-        piuReply.id = piuReplyId;
 
         // Inserir o piu de reply no popup:
         var popupPiarReplyPiu = popupBox.querySelector(".piu_reply_box");

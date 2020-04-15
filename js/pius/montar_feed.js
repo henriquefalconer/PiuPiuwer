@@ -5,6 +5,9 @@
 // Montar sequência de pius
 montarPiusFeed();
 
+// Listener da largura de tela, que define se textos (como os nomes de usuários) deveriam ser abreviados:
+listenerLarguraTela();
+
 function montarPiusFeed() {
     var piusArea = document.querySelector("#pius_area");
 
@@ -97,6 +100,7 @@ function montarAreaPrincipal(dadosPiu, dadosUsuario) {
 function montarPiuReply(replyPiuId) {
     var piuReply = document.createElement("div");
     piuReply.classList.add("piu_reply");
+    piuReply.id = replyPiuId;
 
     // Definir dados do piu_reply: 
     var replyUserData = baseDeDados.getDadosUsuarioFromPiuId(replyPiuId);
@@ -143,9 +147,13 @@ function montarPiuInfo(dadosUsuario, dadosPiu) {
     var piuName = document.createElement("a");
     piuName.href = "perfil.html?user=" + dadosUsuario.username;
     piuName.classList.add("piuwer_name");
-    piuName.textContent = (dadosUsuario.nome.length > 30)
-        ? dadosUsuario.nome.abreviar()
-        : dadosUsuario.nome;
+    if (dadosUsuario.nome.length > 30) {
+        piuName.textContent = dadosUsuario.nome.abreviar();
+        piuName.classList.add("abreviado");
+    } else {
+        piuName.textContent = dadosUsuario.nome;
+        piuName.classList.add("nao_abreviado");
+    }
     piuInfo.appendChild(piuName);
 
     // Montar username no piuInfo:
@@ -227,4 +235,18 @@ function montarAvatarDoPiu(classe, src) {
         piuAvatar.src = src;
     }
     return piuAvatar;
+}
+
+function listenerLarguraTela() {
+    window.addEventListener("resize", function(){
+        const naoAbreviados = document.querySelectorAll(".nao_abreviado");
+        if (this.innerWidth < 640) {
+            naoAbreviados.forEach(function(name){
+                name.textContent = name.textContent.abreviar();
+                name.classList.remove("nao_abreviado");
+            });
+        } else {
+            montarPiusFeed();
+        }
+    });
 }

@@ -3,10 +3,10 @@
     align-items: center;
     background-color: #e3e3e3;
     border-radius: 20px;
-    height: 35px;
+    height: 34px;
     width: 400px;
     margin-left: 50px;
-    padding: 0 19px;
+    padding: 0 17px;
 }
 
 #icone_lupa{
@@ -168,4 +168,73 @@
     color: #808080;
     font-weight: 500;
     font-size: 15px;
+}
+
+@media screen and (max-width: 1000px){
+    #social_media_area{
+        width: 60%;
+    }
+
+    .side_bar{
+        width: 20%;
+        bottom: 0;
+        padding: 60px 0 0;
+        height: 100%;
+        box-sizing: border-box;
+        border-left: 2px solid #ddd;
+        border-right: 2px solid #ddd;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #left_side_content{
+        padding: 85px 25px 25px;
+        border-left: none;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #right_side_content{
+        padding-bottom: 10px;
+        right: 0;
+        border-right: none;
+        transform: translateX(0%);
+        align-items: center;
+        justify-content: flex-end;
+    }
+    
+    #left_side_header{
+        width: 65%;
+    }
+
+}
+
+@media screen and (max-width: 850px){
+    #social_media_area{
+        width: 80%;
+        margin-right: 0;
+        margin-left: auto;
+    }
+
+    #right_side_content{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 640px){
+    #pesquisar_no_piupiwer_box{
+        margin-left: 30px;
+    }
+
+    #left_side_header{
+        width: 87.5%;
+    }
+
+    #right_side_header{
+        width: 12.5%;
+    }
+
+    #logout_button{
+        display: none;
+    }
 }

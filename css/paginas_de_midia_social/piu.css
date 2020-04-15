@@ -124,3 +124,19 @@
     font-weight: 500;
     margin: 15px 0;
 }
+
+@media screen and (max-width: 1000px){
+
+    .piu_message{
+        width: 100%;
+    }
+
+    #popup_piar_reply .popup_tela_cheia_conteudo{
+        width: 80%;
+    }
+
+    .piu_text_area{
+        width: 80%;
+        
+    }
+}

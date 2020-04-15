@@ -24,3 +24,7 @@
 .ver_senha_invisible{
     display: none;
 }
+
+.focused_textfield{
+    border-bottom: 2px solid #474747;
+}

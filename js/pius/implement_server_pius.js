@@ -15,12 +15,14 @@ function implementarPius(piusData) {
             var imageUrl = usuarioJsonData["imagem"].split(".jpg")[0] + "s.jpg";
         }
 
+        const username = usuarioJsonData["username"].split("@")[1];
+
         var usuarioData = new UsuarioData(
             new InfoUsuario(
                 // Nome:
                 usuarioJsonData["nome"],
                 // Nome de usuário:
-                usuarioJsonData["username"].split("@")[1],
+                username,
                 // Arquivo de avatar:
                 imageUrl,
                 // Arquivo de plano de fundo do perfil:
@@ -48,7 +50,7 @@ function implementarPius(piusData) {
             [
                 new Piu(
                     // PiuId, com o horário em que piu foi postado (neste caso, aleatório) e o nome de usuário de quem postou:
-                    usuarioJsonData["username"].split("@")[1] + ":" + getTimeForServerUser(usuarioJsonData["username"].split("@")[1]),
+                    username + ":" + getTimeForServerUser(username),
                     usuarioJsonData["mensagem"],
                 ),
             ],
