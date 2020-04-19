@@ -17,3 +17,7 @@ a:hover, .hollow_button:hover, .filled_button:hover, .action_box:hover, #recarre
 .invalid_button_piu:hover{
     filter: brightness(100%); 
 }
+
+.button_navigation_perfil:hover{
+    background-color: #f21d1d17;
+}

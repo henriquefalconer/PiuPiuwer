@@ -56,7 +56,7 @@
     height: 100%;
 }
 
-#social_media_area{
+.social_media_area{
     width: 600px;
     background-color: #ddd;
     display: block;
@@ -171,7 +171,7 @@
 }
 
 @media screen and (max-width: 1000px){
-    #social_media_area{
+    .social_media_area{
         width: 60%;
     }
 
@@ -210,7 +210,7 @@
 }
 
 @media screen and (max-width: 850px){
-    #social_media_area{
+    .social_media_area{
         width: 80%;
         margin-right: 0;
         margin-left: auto;

@@ -1,0 +1,113 @@
+#perfil_content{
+    background-color: #fff;
+}
+
+#conteudo_abaixo_do_titulo{
+    position: relative;
+}
+
+#conteudo_deslocado_perfil{
+    position: absolute;
+    object-fit: cover;
+    top: 148px;
+    z-index: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#fundo_perfil{
+    width: 100%;
+    height: 190px;
+    background-size: contain;
+    object-fit: cover;
+}
+
+#perfil_main_info{
+    padding: 25px;
+    padding-bottom: 8px;
+}
+
+#user_avatar_and_numbers{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 110px;
+}
+
+#perfil_avatar{
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    box-sizing: initial;
+    border-radius: 50%;
+}
+
+#user_numbers{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+}
+
+.user_numbers_box{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 8px;
+    letter-spacing: 0.005em;
+}
+
+.number{
+    font-weight: 600;
+}
+
+.number_text{
+    color: #848484;
+}
+
+#numbers_left_side{
+    display: flex;
+}
+
+#nome_perfil{
+    margin-bottom: 6px;
+    font-size: 25px;
+}
+
+#username_perfil{
+    color: #808080;
+    font-size: 15px;
+}
+
+#descricao_perfil{
+    font-size: 15px;
+}
+
+#buttons_navigation_perfil{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button_navigation_perfil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 2px solid #ddd;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    color: #f21d1d;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color .1s;
+}
+
+.selected_navigation_perfil_button{
+    border-bottom: 3px solid #f21d1d;
+}
+
+#pius_area{
+    background-color: #ddd;
+}

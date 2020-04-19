@@ -17,7 +17,7 @@ function autoSizeTextArea() {
         textArea.addEventListener("input", function() {
             // Reset field height:
             this.style.height = 'inherit';
-            this.style.height = (this.scrollHeight) + 'px';
+            this.style.height = (this.scrollHeight) + "px";
         });
     });
 }
@@ -34,7 +34,6 @@ function piarButtonListener() {
                 var replyPiuId = null;
 
                 if (piarBox.classList.contains("popup_reply_piu")) {
-                    console.log(piarBox.querySelector(".piu_reply").id);
                     replyPiuId = piarBox.querySelector(".piu_reply").id;
                 }
 

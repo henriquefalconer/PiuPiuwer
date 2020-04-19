@@ -9,10 +9,9 @@ function implementarPius(piusData) {
 
         // Caso o usuário não possua imagem, associe a imagem de usuário nulo:
         if (usuarioJsonData["imagem"].length == 0) {
-            var imageUrl = "null.svg"
+            var imageUrl = "null.svg";
         } else {
-            // Adicionar "s" logo antes do ".jpg" para obter imagem de baixa resolução do Imgur:
-            var imageUrl = usuarioJsonData["imagem"].split(".jpg")[0] + "s.jpg";
+            var imageUrl = usuarioJsonData["imagem"];
         }
 
         const username = usuarioJsonData["username"].split("@")[1];
@@ -26,7 +25,7 @@ function implementarPius(piusData) {
                 // Arquivo de avatar:
                 imageUrl,
                 // Arquivo de plano de fundo do perfil:
-                "Pés%20na%20praia.png",
+                "Fundo PJ.jpg",
                 // Seguidores:
                 [
                     "rosi.plat",
@@ -39,13 +38,13 @@ function implementarPius(piusData) {
                     "richar.lison",
                 ],
                 // IDs dos pius que o usuário deu like:
-                [
-                    "cleber.cunha:1586700000000",
-                    "richar.lison:1586691000000",
-                    "rosi.plat:1586685600000",
-                ],
+                [],
                 // Pius destacados:
                 [],
+                // Na plataforma desde:
+                Date.parse("02 Apr 2020 7:00:00"),
+                // Descrição de perfil
+                "Jogador de Gartic com eventuais trabalhos na PJ.",
             ),
             [
                 new Piu(
@@ -61,6 +60,9 @@ function implementarPius(piusData) {
 
     // Atualizar feed de pius:
     montarPiusFeed();
+
+    // Atualizar dados da página de perfil, caso ela exista:
+    montarDadosPessoais();
 }
 
 function getTimeForServerUser(username) {
@@ -95,4 +97,42 @@ function getRandomTime() {
         horario = Date.parse("15 Apr 2020 " + hora + ":" + minuto + ":" + segundo);
     }
     return horario;
+}
+
+function montarDadosPessoais() {
+    var perfilArea = document.querySelector("#perfil_content");
+
+    if (perfilArea != null) {
+        // Obter dados do usuário em questão:
+        var dadosUsuario = baseDeDados.getDadosUsuarioFromUsername(usuarioSelecionado);
+
+        // Alterar dados da página de perfil:
+        var planoDeFundo = perfilArea.querySelector("#fundo_perfil");
+        planoDeFundo.src = "../../img/background/" + dadosUsuario.infoUsuario.background;
+
+        var perfilAvatar = perfilArea.querySelector("#perfil_avatar");
+        perfilAvatar.src = getAvatarSrc(dadosUsuario.infoUsuario.avatar, ImgurSize.medium);
+
+        var seguidoresCounter = perfilArea.querySelector("#seguidores_counter");
+        seguidoresCounter.textContent = dadosUsuario.infoUsuario.seguidores.length;
+
+        if (dadosUsuario.infoUsuario.seguidores.length == 1) {
+            seguidoresCounter.parentNode.querySelector(".number_text").textContent = "Seguidor";
+        }
+
+        var conoscoDesdeCounter = perfilArea.querySelector("#conosco_desde");
+        conoscoDesdeCounter.textContent = GeneralFunctions.getDateFromMilisseconds(dadosUsuario.infoUsuario.conoscoDesde);
+
+        var seguindoCounter = perfilArea.querySelector("#seguindo_counter");
+        seguindoCounter.textContent = dadosUsuario.infoUsuario.seguindo.length;
+
+        var nomePerfil = perfilArea.querySelector("#nome_perfil");
+        nomePerfil.textContent = dadosUsuario.infoUsuario.nome;
+
+        var usernamePerfil = perfilArea.querySelector("#username_perfil");
+        usernamePerfil.textContent = "@" + dadosUsuario.infoUsuario.username;
+        
+        var descricaoPerfil = perfilArea.querySelector("#descricao_perfil");
+        descricaoPerfil.textContent = dadosUsuario.infoUsuario.descricao;
+    }
 }

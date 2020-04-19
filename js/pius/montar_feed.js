@@ -1,28 +1,56 @@
-// --------------------------------------------------------------
-// A PARTIR DA BASE DE DADOS, MONTAR ELEMENTOS DA PÁGINA DE FEED:
-// --------------------------------------------------------------
-
-// Montar sequência de pius
-montarPiusFeed();
-
-// Listener da largura de tela, que define se textos (como os nomes de usuários) deveriam ser abreviados:
-listenerLarguraTela();
-
 function montarPiusFeed() {
     var piusArea = document.querySelector("#pius_area");
 
     if (piusArea != null) {
         var allPius = [];
+        
+        switch (tipoDeFeed) {
+            case TipoDeFeed.apenasPiusDoUsuario:
+                allPius = baseDeDados.getDadosUsuarioFromUsername(usuarioSelecionado).pius;
+                break;
+            
+            case TipoDeFeed.piusERespostasDoUsuario:
+                baseDeDados.data.forEach(function(userData){
 
-        baseDeDados.data.forEach(function(userData){
-            var userPius = userData.pius;
+                    if (userData.infoUsuario.username == usuarioSelecionado) {
+                        userData.pius.forEach(function(piu){
+                            allPius.push(piu);
+                        });
+                    } else {
+                        userData.pius.forEach(function(piu){
+                            if (GeneralFunctions.getUserNameFromPiuId(piu.piuReplyId) == usuarioSelecionado) {
+                                allPius.push(piu);
+                            }
+                        });
+                    }
+    
+                });
+                break;
+            
+            case TipoDeFeed.curtidasDoUsuario:
+                baseDeDados.getDadosUsuarioFromUsername(usuarioSelecionado).infoUsuario.likes.forEach(function(likePiuId){
+                    allPius.push(baseDeDados.getDadosPiuFromPiuId(likePiuId));
+                });
+                break;
 
-            userPius.forEach(function(piu){
-                allPius.push(piu);
-            });
-        });
-
-        GeneralFunctions.sortPiusInTime(allPius);
+            case TipoDeFeed.contatos:
+                baseDeDados.data.forEach(function(userData){
+                    userData.pius.forEach(function(piu){
+                        allPius.push(piu);
+                    });
+                });
+                break;
+        
+            default:
+                baseDeDados.data.forEach(function(userData){
+                    userData.pius.forEach(function(piu){
+                        allPius.push(piu);
+                    });
+                });
+                break;
+        }
+        
+        if (allPius.length > 0) GeneralFunctions.sortPius(allPius);
 
         piusArea.innerHTML = "";
 
@@ -229,24 +257,26 @@ function montarAvatarDoPiu(classe, src) {
     var piuAvatar = document.createElement("img");
     piuAvatar.classList.add(classe);
     piuAvatar.alt = "Avatar usuário";
-    if (!src.includes("http")) {
-        piuAvatar.src = "../../img/avatars/" + src;
-    } else {
-        piuAvatar.src = src;
-    }
+    piuAvatar.src = getAvatarSrc(src, ImgurSize.small);
     return piuAvatar;
 }
 
 function listenerLarguraTela() {
-    window.addEventListener("resize", function(){
-        const naoAbreviados = document.querySelectorAll(".nao_abreviado");
-        if (this.innerWidth < 640) {
-            naoAbreviados.forEach(function(name){
-                name.textContent = name.textContent.abreviar();
-                name.classList.remove("nao_abreviado");
-            });
-        } else {
-            montarPiusFeed();
-        }
-    });
+    window.addEventListener("resize", abreviarNomesCasoNecessario);
+}
+
+function abreviarNomesCasoNecessario() {
+    const naoAbreviados = document.querySelectorAll(".nao_abreviado");
+    if (window.innerWidth < 640) {
+        naoAbreviados.forEach(function(name){
+            name.textContent = name.textContent.abreviar();
+            name.classList.remove("nao_abreviado");
+        });
+    } else {
+        montarPiusFeed();
+    }
+}
+
+function getAvatarSrc(src, imgurSize) {
+    return !src.includes("http") ? "../../img/avatars/" + src : src.setImgurSize(imgurSize);
 }

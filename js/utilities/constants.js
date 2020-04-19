@@ -118,7 +118,8 @@ class UsuarioData {
 class InfoUsuario {
     constructor(nome, username, avatar, 
         background, seguidores, seguindo, 
-        likes, destacados) {
+        likes, destacados, conoscoDesde, 
+        descricao) {
             this.nome = nome;
             this.username = username;
             this.avatar = avatar;
@@ -127,6 +128,8 @@ class InfoUsuario {
             this.seguindo = seguindo;
             this.likes = likes;
             this.destacados = destacados;
+            this.conoscoDesde = conoscoDesde;
+            this.descricao = descricao;
     }
 }
 
@@ -179,3 +182,21 @@ String.prototype.count = String.prototype.count ||
       function(substring){
           return (this.match(new RegExp(substring, "g")) || []).length;
       }; 
+
+String.prototype.setImgurSize = String.prototype.getImgurSmallSize || 
+      function(imgurSize){
+          return this.split(".jpg")[0] + imgurSize + ".jpg";
+      };
+
+const ImgurSize = {
+    small: "s",
+    medium: "m",
+    large: "l",
+}
+
+const TipoDeFeed = {
+    contatos: "contatos",
+    apenasPiusDoUsuario: "apenasPiusDeUsuario",
+    piusERespostasDoUsuario: "apenasRespostasDeUsuario",
+    curtidasDoUsuario: "tudoDoUsuario",
+}

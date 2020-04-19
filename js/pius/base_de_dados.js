@@ -28,12 +28,15 @@ var baseDeDados = new BaseDeDados([
             ],
             // IDs dos pius que o usuário deu like:
             [
-                "fulano.beltrano:" + Date.parse("15 Apr 2020 11:38:00"),
                 "richar.lison:" + Date.parse("15 Apr 2020 8:30:00"),
                 "rosi.plat:" + Date.parse("15 Apr 2020 7:00:00"),
             ],
             // Pius destacados:
             [],
+            // Na plataforma desde:
+            Date.parse("02 Feb 2020 7:00:00"),
+            // Descrição de perfil:
+            "O primeiro de muitos usuários do PiuPiwer!",
         ),
         [
             new Piu(
@@ -45,7 +48,7 @@ var baseDeDados = new BaseDeDados([
     ),
     new UsuarioData(
         new InfoUsuario(
-            "Cleber",
+            "Cleber Cunha",
             "cleber.cunha",
             "Cleber.png",
             "Pés%20na%20praia.png",
@@ -63,6 +66,8 @@ var baseDeDados = new BaseDeDados([
                 "richar.lison:" + Date.parse("15 Apr 2020 8:30:00"),
             ],
             [],
+            Date.parse("30 Mar 2020 7:00:00"),
+            "O segundo de muitos usuários do PiuPiwer!",
         ),
         [
             new Piu(
@@ -99,8 +104,15 @@ var baseDeDados = new BaseDeDados([
             [
                 "rosi.plat:" + Date.parse("15 Apr 2020 7:00:00"),
             ],
+            Date.parse("01 Apr 2020 7:00:00"),
+            "O terceiro de muitos usuários do PiuPiwer!",
         ),
         [
+            new Piu(
+                "richar.lison:" + Date.parse("18 Apr 2020 11:07:00"),
+                "Concordo totalmente!",
+                "fulano.beltrano:" + Date.parse("15 Apr 2020 11:38:00"),
+            ),
             new Piu(
                 "richar.lison:" + Date.parse("15 Apr 2020 8:30:00"),
                 "Sim! Sem dúvidas, é a melhor rede social que existe.",
@@ -122,6 +134,8 @@ var baseDeDados = new BaseDeDados([
             ],
             [],
             [],
+            Date.parse("15 Apr 2020 6:00:00"),
+            "Sou nova, não sei o que colocar aqui.",
         ),
         [
             new Piu(

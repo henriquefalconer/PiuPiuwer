@@ -5,7 +5,14 @@
         <meta charset="utf-8">
         <title>PiuPiuwer</title>
         <meta name="description" content="An interactive getting started guide for Brackets.">
-        <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+        
+        <!-- Favicons by realfavicongenerator.net: -->
+        <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicons/favicon-16x16.png">
+        <link rel="manifest" href="../../img/favicons/site.webmanifest">
+        <link rel="mask-icon" href="../../img/favicons/safari-pinned-tab.svg" color="#f21d1d">
+        <meta name="msapplication-TileColor" content="#f21d1d">
+        <meta name="theme-color" content="#ffffff">
         
         <!-- CSS do projeto: -->
         <link rel="stylesheet" href="../../css/geral/geral.css">
@@ -15,6 +22,7 @@
         <link rel="stylesheet" href="../../css/paginas_de_midia_social/geral.css">
         <link rel="stylesheet" href="../../css/paginas_de_midia_social/piu.css">
         <link rel="stylesheet" href="../../css/paginas_de_midia_social/piar_box.css">
+        <link rel="stylesheet" href="../../css/paginas_de_midia_social/perfil.css">
     </head>
     <body>
         <header>
@@ -65,16 +73,74 @@
 
         </aside>
 
-        <main class="main_content" id="social_media_area">
+        <main class="main_content social_media_area" id="perfil_content">
 
             <div id="tab_top_area">
                 <h1 id="tab_title"></h1>
                 <img id="recarregar_button" alt="Recarregar página" src="../../img/icons/Refresh.svg">
             </div>
 
-            <main id="secao_em_desenvolvimento">
-                <img id="icone_desenvolvimento" alt="Ícone de desenvolvimento" src="../../img/icons/Wrench.svg">
-                <h1>Seção em desenvolvimento.</h1>
+            <main id="conteudo_abaixo_do_titulo">
+
+                <img id="fundo_perfil" alt="Foto de fundo de perfil" src="../../img/background/null.svg">
+    
+                <main id="conteudo_deslocado_perfil">
+                    <section id="area_de_perfil">
+    
+                        <section id="perfil_main_info">
+                            <section id="user_avatar_and_numbers">
+                                <img id="perfil_avatar" alt="Foto de perfil do usuário" src="../../img/avatars/null.svg">
+    
+                                <section id="user_numbers">
+                                    
+                                    <section id="numbers_left_side">
+                                        <div class="user_numbers_box">
+                                            <span class="number" id="seguidores_counter">-</span>
+                                            <span class="number_text">Seguidores</span>
+                                        </div>
+                                        <div class="user_numbers_box">
+                                            <span class="number" id="seguindo_counter">-</span>
+                                            <span class="number_text">Seguindo</span>
+                                        </div>
+                                    </section>
+                                    
+                                    <section id="numbers_right_side">
+                                        <div class="user_numbers_box">
+                                            <span class="number" id="conosco_desde">--/--/----</span>
+                                            <span class="number_text">Conosco desde</span>
+                                        </div>
+                                    </section>
+    
+                                </section>
+    
+                            </section>
+                            
+                            <section id="texto_do_perfil">
+                                <h2 id="nome_perfil">-</h2>
+                                <span id="username_perfil">-</span>
+                                <p id="descricao_perfil">-</p>
+                            </section>
+                        </section>
+    
+                    </section>
+    
+                    <section id="pius_perfil_area">
+                        <nav id="buttons_navigation_perfil">
+                            <div class="button_navigation_perfil selected_navigation_perfil_button" id="apenasPiusDoUsuario">
+                                Pius
+                            </div>
+                            <div class="button_navigation_perfil" id="piusERespostasDoUsuario">
+                                Pius e Respostas
+                            </div>
+                            <div class="button_navigation_perfil" id="curtidasDoUsuario">
+                                Curtidas
+                            </div>
+                        </nav>
+                        
+                        <main id="pius_area"></main>
+                    </section>
+                </main>
+
             </main>
 
         </main>
@@ -107,6 +173,31 @@
             </div>
         </div>
 
+        <!-- Popup de reply de um piu -->
+        <div id="popup_piar_reply" class="popup_tela_cheia piar_tela_cheia">
+            <div class="popup_tela_cheia_conteudo">
+                <div class="topo_popup_piu">
+                    <h2>Responda a esse piu</h2>
+                    <p class="exit_popup_button popup_exit_functionality">&times;</p>
+                </div>
+                <div class="piar_box popup_piar_box popup_reply_piu">
+                    <div class="piu_main_area">
+                        <a>
+                            <img class="avatar_piu avatar_usuario_logado" alt="Avatar usuário" src="../../img/avatars/null.svg">
+                        </a>
+                        <div class="piu_text_area">
+                            <textarea class="featureless_textfield transparent_border_text_area piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
+                            <div class="piu_reply_box"></div>
+                        </div>
+                    </div>
+                    <div class="horizontal_piar_box">
+                        <p class="invisible" class="piar_box_characters"><span class="number_of_characters invalid_number_of_characters"></span>/140</p>
+                        <p class="filled_button piar_box_button invalid_button_piu">Piar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Popup de erro do piar box -->
         <div id="popup_piar_box_erro" class="popup_tela_cheia">
             <div class="popup_tela_cheia_conteudo">
@@ -116,12 +207,15 @@
         </div>
         
         <script src="../../js/utilities/constants.js"></script>
+        <script src="../../js/utilities/general_functions.js"></script>
         <script src="../../js/popups/whole_screen_popups.js"></script>
+        <script src="../../js/network/get_json_data.js"></script>
         <script src="../../js/pius/base_de_dados.js"></script>
         <script src="../../js/pius/piar_textarea.js"></script>
         <script src="../../js/pius/montar_feed.js"></script>
         <script src="../../js/pius/montar_perfil.js"></script>
         <script src="../../js/pius/montar_paginas_de_midia_social.js"></script>
         <script src="../../js/pius/interacao_com_pius.js"></script>
+        <script src="../../js/pius/implement_server_pius.js"></script>
     </body>
 </html>

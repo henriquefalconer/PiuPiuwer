@@ -1,15 +1,15 @@
 class GeneralFunctions {
-    static sortPiusInTime(pius){
+    static sortPius(pius){
         pius.sort(function(a, b){return GeneralFunctions.getTimeFromPiuId(b.piuId) - GeneralFunctions.getTimeFromPiuId(a.piuId)});
         pius.sort(function(a, b){return b.hasDestaque() - a.hasDestaque()});
     }
 
     static getUserNameFromPiuId(piuId){
-        return piuId.split(":")[0];
+        return (piuId == null) ? null : piuId.split(":")[0];
     }
 
     static getTimeFromPiuId(piuId){
-        return piuId.split(":")[1];
+        return (piuId == null) ? null : piuId.split(":")[1];
     }
 
     static getRelativeTime(timeInMilliseconds) {
@@ -41,5 +41,10 @@ class GeneralFunctions {
         img.alt = alt;
         img.src = src;
         return img;
+    }
+
+    static getDateFromMilisseconds(milliseconds) {
+        const date = new Date(milliseconds);
+        return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     }
 }
