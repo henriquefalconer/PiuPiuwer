@@ -17,7 +17,7 @@ listenerDosBotoesDeTipoDeFeed();
 function carregarPaginaDePerfil() {
     // A partir dos parâmetros passsados pelo url, obter nome de usuário requisitado:
     var parameters = new URLSearchParams(location.search);
-    var usuario = parameters.get("user");
+    var usuario = parameters.get("perfil");
 
     // Alterar nome da aba para o nome de usuário em questão:
     var tabTitle = document.querySelector("#tab_title");

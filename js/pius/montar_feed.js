@@ -62,6 +62,9 @@ function montarPiusFeed() {
 
         // Adicionar functionalidades aos botãoes de ação dos pius:
         ativarFuncoesPius();
+
+        // Alterar links para repassar usuário logado:
+        alterarLinksParaRepassarUsuarioLogado();
     }
 }
 
@@ -94,7 +97,7 @@ function montarAreaPrincipal(dadosPiu, dadosUsuario) {
 
     // Montar link do avatar e inserí-lo no piuReplyInfo:
     var piuAvatarLink = document.createElement("a");
-    piuAvatarLink.href = "perfil.html?user=" + dadosUsuario.username;
+    piuAvatarLink.href = "perfil.html?perfil=" + dadosUsuario.username;
     piuAvatarLink.appendChild(piuAvatar);
     piuMainArea.appendChild(piuAvatarLink);
 
@@ -142,7 +145,7 @@ function montarPiuReply(replyPiuId) {
 
     // Montar link do avatar e inserí-lo no piuReplyInfo:
     var piuReplyAvatarLink = document.createElement("a");
-    piuReplyAvatarLink.href = "perfil.html?user=" + replyUserData.username;
+    piuReplyAvatarLink.href = "perfil.html?perfil=" + replyUserData.username;
     piuReplyAvatarLink.appendChild(piuReplyAvatar);
     piuReplyInfo.insertBefore(piuReplyAvatarLink, piuReplyInfo.childNodes[0]);
 
@@ -173,7 +176,7 @@ function montarPiuInfo(dadosUsuario, dadosPiu) {
 
     // Montar nome no piuInfo:
     var piuName = document.createElement("a");
-    piuName.href = "perfil.html?user=" + dadosUsuario.username;
+    piuName.href = "perfil.html?perfil=" + dadosUsuario.username;
     piuName.classList.add("piuwer_name");
     if (dadosUsuario.nome.length > 30) {
         piuName.textContent = dadosUsuario.nome.abreviar();
@@ -186,7 +189,7 @@ function montarPiuInfo(dadosUsuario, dadosPiu) {
 
     // Montar username no piuInfo:
     var piuUserName = document.createElement("a");
-    piuUserName.href = "perfil.html?user=" + dadosUsuario.username;
+    piuUserName.href = "perfil.html?perfil=" + dadosUsuario.username;
     piuUserName.classList.add("piuwer_username");
     piuUserName.textContent = "@" + dadosUsuario.username;
     piuInfo.appendChild(piuUserName);

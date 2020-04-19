@@ -14,6 +14,9 @@
         <meta name="msapplication-TileColor" content="#f21d1d">
         <meta name="theme-color" content="#ffffff">
         
+        <!-- Icones do Font Awesome: -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
         <!-- CSS do projeto: -->
         <link rel="stylesheet" href="../../css/geral/geral.css">
         <link rel="stylesheet" href="../../css/geral/botoes.css">
@@ -21,6 +24,7 @@
         <link rel="stylesheet" href="../../css/paginas_de_forms/geral.css">
         <link rel="stylesheet" href="../../css/paginas_de_forms/textfield_extensions.css">
         <link rel="stylesheet" href="../../css/paginas_de_forms/erros.css">
+        <link rel="stylesheet" href="../../css/paginas_de_forms/popup.css">
     </head>
     <body>
         <header>
@@ -39,12 +43,22 @@
         <main class="main_content formulario_content">
             <h1 class="form_title">Login</h1>
             <form class="formulario_cadastro">
-                <div class="input_box">
-                    <input class="featureless_textfield textfield" type="text" placeholder="E-mail ou nome de usuário" id="name" name="name">
+                <div class="input_box_help_parent">
+                    <span class="popup_ajuda">Você pode logar como "fulano.beltrano", "cleber.cunha", "richar.lison" ou "rosi.plat".</span>
+
+                    <div class="input_box">
+                        <input class="featureless_textfield textfield" type="text" placeholder="Nome de usuário" id="username" name="username">
+                        <i style="display: flex" class="fa textfield_extension botao_ajuda">&#xf059;</i>
+                    </div>
                 </div>
-                <div class="input_box password_box">
-                    <input class="featureless_textfield textfield" type="password" placeholder="Senha" id="password" name="password">
-                    <p class="textfield_extension ver_senha ver_senha_invisible">Ver</p>
+                <div class="input_box_help_parent">                    
+                    <span class="popup_ajuda">Caso esteja com problemas, a senha secreta é "Password".</span>
+
+                    <div class="input_box password_box">
+                        <input class="featureless_textfield textfield" type="password" placeholder="Senha" id="password_login" name="password_login">
+                        <p class="textfield_extension ver_senha ver_senha_invisible">Ver</p>
+                        <i style="display: flex" class="fa textfield_extension botao_ajuda">&#xf059;</i>
+                    </div>
                 </div>
                 <span class="error_text not_displayed">Insira os dados corretamente.</span>
                 <input class="filled_button button_confirmar" type="submit" value="Continuar">
@@ -75,5 +89,6 @@
         <script src="../../js/utilities/constants.js"></script>
         <script src="../../js/formularios/extensoes_textfield.js"></script>
         <script src="../../js/formularios/verificacao_campos.js"></script>
+        <script src="../../js/formularios/ajuda.js"></script>
     </body>
 </html>

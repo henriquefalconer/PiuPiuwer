@@ -2,7 +2,7 @@
 // BASE DE DADOS DO PIUPIUWER:
 // ---------------------------
 
-var loggedInUser = "fulano.beltrano";
+var loggedInUser = "MagaldiNarguileiro";
 
 var baseDeDados = new BaseDeDados([
     new UsuarioData(
@@ -51,7 +51,7 @@ var baseDeDados = new BaseDeDados([
             "Cleber Cunha",
             "cleber.cunha",
             "Cleber.png",
-            "Pés%20na%20praia.png",
+            "Porsche 911.jpg",
             [
                 "richar.lison",
             ],
@@ -87,7 +87,7 @@ var baseDeDados = new BaseDeDados([
             "Richarlison Dos Santos Neves Querubim Machado",
             "richar.lison",
             "Richarlison.png",
-            "Pés%20na%20praia.png",
+            "Palmeira.jpg",
             [
                 "rosi.plat",
                 "fulano.beltrano",
@@ -122,10 +122,10 @@ var baseDeDados = new BaseDeDados([
     ),
     new UsuarioData(
         new InfoUsuario(
-            "Rosimary",
+            "Rosimary Platanos",
             "rosi.plat",
             "Rosimary.png",
-            "Pés%20na%20praia.png",
+            "Cidade.jpg",
             [
                 "richar.lison",
             ],

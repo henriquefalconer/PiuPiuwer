@@ -20,7 +20,7 @@ function manterEstiloDasExtensoesDoTextfieldIguaisAoDoTextfield() {
         var textfield = caixa.querySelector(".textfield");
         
         textfield.addEventListener("focusin", function(){
-            for (const child of caixa.children) {z
+            for (const child of caixa.children) {
                 child.classList.add("focused_textfield");
             }
         });

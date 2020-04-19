@@ -37,7 +37,8 @@ function botaoConfirmarListener() {
         });
 
         if (todosOsCamposSaoValidos) {
-            location.replace("../paginas_de_midia_social/feed.html");
+            const usuarioSelecionado = document.querySelector("#username").value;
+            location.replace("../paginas_de_midia_social/feed.html?loggedInAs=" + usuarioSelecionado);
         } else {
 
             var primeiroCampoComErro = document.querySelector(".erro_no_campo");
@@ -65,11 +66,9 @@ function valorDoCampoEhValido(textfield) {
     // Se, e apenas se, a caixa do formulário do textfield estiver envolvida por uma pai de popup ajuda, faça o seguinte:
     if (parentOfParent.classList.contains("input_box_help_parent")) {
         if (tipoCampo == "username") {
-            // Se o valor não possuir apenas caracteres minúsculos, retornar falso:
-            if (valor != valor.toLowerCase()) return false;
-            
-            // Se o valor possuir algum espaço, retornar falso:
-            if (valor.count(" ") > 0) return 0;
+            // Se o nome de usuário não for válido, retornar falso:
+            const usernamesValidos = ["fulano.beltrano", "cleber.cunha", "richar.lison", "rosi.plat"];
+            if (!usernamesValidos.includes(valor)) return false;
         }
         
         if (tipoCampo == "email") {
@@ -117,9 +116,14 @@ function valorDoCampoEhValido(textfield) {
         }
         
         else if (tipoCampo == "confirmpassword") {
-            var password = document.querySelector(".password").value;
+            var password = document.querySelector("#password").value;
             // Verificar se a confirmação de senha é igual à senha:
             if (valor != password) return false;
+        }
+
+        else if (tipoCampo == "password_login") {
+            // Se o valor inserido for diferente de "Password", retornar falso:
+            if (valor != "Password") return false;
         }
     }
     
