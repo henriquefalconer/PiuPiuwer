@@ -45,6 +45,11 @@
 
 #logout_button{
     font-weight: 600;
+    color: #313131;
+}
+
+#logout_button img{
+    display: none;
 }
 
 #avatar_header{
@@ -125,13 +130,21 @@
 }
 
 .navigation_button{
-    width: 100%;
-    height: 38px;
+    height: 42px;
     margin: 0;
     color: #999;
     font-size: 16px;
     font-weight: 700;
     border-color: #999;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.navigation_button img{
+    height: 70%;
+    width: 22px;
+    margin: 0 9% 0 18px;
 }
 
 .selected_navigation_button{
@@ -149,6 +162,11 @@
     margin: 0;
     font-size: 16px;
     font-weight: 600;
+}
+
+#navigation_piar_button img{
+    display: none;
+    height: 70%;
 }
 
 #ajustes_button{
@@ -189,9 +207,9 @@
 
     #left_side_content{
         padding: 85px 25px 25px;
+        left: 0;
+        transform: translateX(0%);
         border-left: none;
-        align-items: center;
-        justify-content: space-between;
     }
 
     #right_side_content{
@@ -199,14 +217,56 @@
         right: 0;
         border-right: none;
         transform: translateX(0%);
-        align-items: center;
-        justify-content: flex-end;
     }
     
     #left_side_header{
         width: 65%;
     }
 
+}
+
+@media screen and (max-width: 900px){
+    #left_side_content{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #navigation_bar{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .navigation_button{
+        justify-content: center;
+        width: 60%;
+    }
+
+    .navigation_button img{
+        margin: 0;
+    }
+
+    .navigation_button p{
+        display: none;
+    }
+
+    #navigation_piar_button{
+        width: 74%;
+    }
+
+    #navigation_piar_button img{
+        display: block;
+    }
+
+    #navigation_piar_button p{
+        display: none;
+    }
+
+    #ajustes_button{
+        height: 35px;
+    }
 }
 
 @media screen and (max-width: 850px){
@@ -227,14 +287,20 @@
     }
 
     #left_side_header{
-        width: 87.5%;
+        width: 78%;
     }
 
     #right_side_header{
-        width: 12.5%;
+        width: 14%;
+        margin-right: 4%;
     }
 
-    #logout_button{
+    #logout_button p{
         display: none;
+    }
+    
+    #logout_button img{
+        display: block;
+        width: 30px;
     }
 }

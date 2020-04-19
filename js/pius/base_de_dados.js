@@ -101,9 +101,7 @@ var baseDeDados = new BaseDeDados([
                 "richar.lison:" + Date.parse("15 Apr 2020 8:30:00"),
                 "rosi.plat:" + Date.parse("15 Apr 2020 7:00:00"),
             ],
-            [
-                "rosi.plat:" + Date.parse("15 Apr 2020 7:00:00"),
-            ],
+            [],
             Date.parse("01 Apr 2020 7:00:00"),
             "O terceiro de muitos usuários do PiuPiwer!",
         ),

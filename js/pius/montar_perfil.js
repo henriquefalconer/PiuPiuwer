@@ -27,6 +27,8 @@ function carregarPaginaDePerfil() {
     if (usuario == loggedInUser) {
         var perfilButton = document.querySelector("#perfil_button");
         perfilButton.classList.add("selected_navigation_button");
+        const perfilIcon = perfilButton.querySelector("img");
+        perfilIcon.src = perfilIcon.src.split(".svg")[0] + " Vermelho.svg";
     }
 
     // Registrar usuário selecionado:
