@@ -4,6 +4,10 @@
 
 controlarAjudaButtonListener();
 
+// Acionar listener de mouse sobre popup button:
+var isMouseOverPopupButton = false;
+isMouseOverPopupButtonListener();
+
 function controlarAjudaButtonListener() {
     // Obter caixas do formulário com botão de ajuda:
     var caixasFormulario = document.querySelectorAll(".input_box_help_parent");
@@ -23,11 +27,32 @@ function controlarAjudaButtonListener() {
 
                 popupAjuda.classList.toggle("show");
         });
-        
-        // Desativar popup, caso seja clicado:
-        popupAjuda.addEventListener("click", function(){
-            this.classList.remove("show");
-        });
 
+    });
+
+    document.addEventListener("click", function(){
+        if (!isMouseOverPopupButton) {
+            var popupsAjuda = document.querySelectorAll(".popup_ajuda");
+            
+            // Desativar todos os popups abertos:
+            popupsAjuda.forEach(function(popupAjuda){
+                popupAjuda.classList.remove("show");
+            });
+
+        }
+    });
+}
+
+function isMouseOverPopupButtonListener() {
+    var ajudaButtons = document.querySelectorAll(".botao_ajuda");
+
+    // Se o mouse estiver sobre qualquer botão ajuda, definir isMouseOverPopupAjuda:
+    ajudaButtons.forEach(function(button){
+        button.addEventListener("mouseover", function(){
+            isMouseOverPopupButton = true;
+        });
+        button.addEventListener("mouseout", function(){
+            isMouseOverPopupButton = false;
+        });
     });
 }

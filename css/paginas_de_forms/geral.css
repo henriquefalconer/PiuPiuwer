@@ -79,29 +79,4 @@
         width: 65%;
     }
 
-    .popup_ajuda{
-        width: 0;
-        height: 0;
-        margin: 0 auto;
-        position: static;
-        padding: 0;
-        transition: height .2s;
-    }/* Popup arrow */
-
-    .popup_ajuda::after {
-        display: none;
-    }
-
-    .input_box_help_parent{
-        position: static;
-    }
-
-    .show{
-        width: 100%;
-        height: 60px;
-        display: block;
-        display: flex;
-        padding: 10px;
-    }
-
 }
