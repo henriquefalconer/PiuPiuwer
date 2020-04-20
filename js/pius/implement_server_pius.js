@@ -26,11 +26,6 @@ function implementarPius(piusData) {
                 imageUrl,
                 // Arquivo de plano de fundo do perfil:
                 "Fundo PJ.jpg",
-                // Seguidores:
-                [
-                    "rosi.plat",
-                    "richar.lison",
-                ],
                 // Seguindo:
                 [
                     "cleber.cunha",

@@ -15,11 +15,6 @@ var baseDeDados = new BaseDeDados([
             "Fulano.png",
             // Arquivo de plano de fundo do perfil:
             "Pés%20na%20praia.png",
-            // Seguidores:
-            [
-                "rosi.plat",
-                "richar.lison",
-            ],
             // Seguindo:
             [
                 "cleber.cunha",
@@ -65,9 +60,6 @@ var baseDeDados = new BaseDeDados([
             "cleber.cunha",
             "Cleber.png",
             "Porsche 911.jpg",
-            [
-                "richar.lison",
-            ],
             [
                 "cleber.cunha",
                 "rosi.plat",
@@ -115,10 +107,6 @@ var baseDeDados = new BaseDeDados([
             "Richarlison.png",
             "Palmeira.jpg",
             [
-                "rosi.plat",
-                "fulano.beltrano",
-            ],
-            [
                 "cleber.cunha",
                 "rosi.plat",
                 "richar.lison",
@@ -164,9 +152,6 @@ var baseDeDados = new BaseDeDados([
             "rosi.plat",
             "Rosimary.png",
             "Cidade.jpg",
-            [
-                "richar.lison",
-            ],
             [
                 "cleber.cunha",
                 "rosi.plat",

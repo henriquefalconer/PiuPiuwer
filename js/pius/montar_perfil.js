@@ -73,9 +73,9 @@ function montarDadosPessoais() {
         perfilAvatar.src = getAvatarSrc(dadosUsuario.infoUsuario.avatar, ImgurSize.medium);
 
         var seguidoresCounter = perfilArea.querySelector("#seguidores_counter");
-        seguidoresCounter.textContent = dadosUsuario.infoUsuario.seguidores.length;
+        seguidoresCounter.textContent = dadosUsuario.getSeguidores().length;
 
-        if (dadosUsuario.infoUsuario.seguidores.length == 1) {
+        if (dadosUsuario.getSeguidores().length == 1) {
             seguidoresCounter.parentNode.querySelector(".number_text").textContent = "Seguidor";
         }
 

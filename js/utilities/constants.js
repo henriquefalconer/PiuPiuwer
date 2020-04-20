@@ -113,18 +113,31 @@ class UsuarioData {
         this.infoUsuario = infoUsuario;
         this.pius = pius;
     }
+
+    getSeguidores() {
+        var seguidoresList = [];
+
+        const thisUser = this;
+
+        baseDeDados.data.forEach(function(usuarioData){
+            if (usuarioData.infoUsuario.seguindo.includes(thisUser.infoUsuario.username)) {
+                seguidoresList.push(usuarioData.infoUsuario.username);
+            }
+        });
+
+        return seguidoresList;
+    }
 }
 
 class InfoUsuario {
     constructor(nome, username, avatar, 
-        background, seguidores, seguindo, 
+        background, seguindo, 
         likes, destacados, conoscoDesde, 
         descricao) {
             this.nome = nome;
             this.username = username;
             this.avatar = avatar;
             this.background = background;
-            this.seguidores = seguidores;
             this.seguindo = seguindo;
             this.likes = likes;
             this.destacados = destacados;
@@ -179,8 +192,9 @@ String.prototype.abreviar = String.prototype.abreviar ||
       };
 
 String.prototype.count = String.prototype.count || 
-      function(substring){
-          return (this.match(new RegExp(substring, "g")) || []).length;
+      function(substring, caseSensitive){
+          // Se caseSensitive for indefinido, ele é considerada falsa:
+          return ((caseSensitive ? this : this.toLowerCase()).match(new RegExp((caseSensitive ? substring : substring.toLowerCase()), "g")) || []).length;
       }; 
 
 String.prototype.setImgurSize = String.prototype.getImgurSmallSize || 

@@ -1,22 +1,101 @@
+#left_side_header{
+    width: 520px;
+    justify-content: space-between;
+}
+
 #pesquisar_no_piupiwer_box{
+    position: relative;
+    width: 400px;
+    margin: 0 20px;
+}
+
+.pesquisar_no_piupiwer_input{
     display: flex;
     align-items: center;
     background-color: #e3e3e3;
     border-radius: 20px;
     height: 34px;
-    width: 400px;
-    margin-left: 50px;
+    width: 100%;
+    box-sizing: border-box;
     padding: 0 17px;
+    border: 1px solid transparent;
+}
+
+.pesquisar_no_piupiwer_input_active{
+    background-color: #fff;
+    border: 1px solid #f21d1d;
+}
+
+#pesquisar_no_piupiuwer_results{
+    position: absolute;
+    top: 17;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.068);
+    max-height: 500px;
+    overflow: auto;
+}
+
+#pesquisar_no_piupiuwer_results ol{
+    margin: 0;
+}
+
+.pesquisa_card{
+    display: flex;
+    align-items: center;
+    height: 70px;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 1px;
+    padding: 9px 15px;
+    cursor: pointer;
+}
+
+.avatar_pesquisa{
+    height: 90%;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.pesquisa_card .text_area{
+    height: 72%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nome_pesquisa, .username_pesquisa{
+    margin: 0;
+}
+
+.nome_pesquisa{
+    font-size: 17px;
+}
+
+.username_pesquisa{
+    font-size: 14px;
+    color: #888;
+}
+
+.pesquisar_no_piupiwer_dica{
+    text-align: center;
+    color: #6a6a6a;
+    background-color: #fff;
+    margin: 0;
+    padding: 16px;
 }
 
 #icone_lupa{
-    height: 21px;
+    height: 16px;
     margin: 0 10px 0 0;
 }
 
 #pesquisar{
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
     color: #6a6a6a;
     width: 100%;
 }
@@ -218,10 +297,6 @@
         border-right: none;
         transform: translateX(0%);
     }
-    
-    #left_side_header{
-        width: 65%;
-    }
 
 }
 
@@ -282,7 +357,7 @@
 }
 
 @media screen and (max-width: 640px){
-    #pesquisar_no_piupiwer_box{
+    #pesquisar_no_piupiwer_input{
         margin-left: 30px;
     }
 
@@ -291,8 +366,9 @@
     }
 
     #right_side_header{
-        width: 14%;
+        width: 100%;
         margin-right: 4%;
+        box-sizing: border-box;
     }
 
     #logout_button p{
@@ -302,5 +378,20 @@
     #logout_button img{
         display: block;
         width: 30px;
+    }
+}
+
+@media screen and (max-height: 560px){
+    #pesquisar_no_piupiuwer_results{
+        position: absolute;
+        top: 17;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.068);
+        max-height: 500px;
+        overflow: auto;
     }
 }

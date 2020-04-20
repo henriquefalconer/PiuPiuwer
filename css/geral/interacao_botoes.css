@@ -1,9 +1,13 @@
-a, .hollow_button, .filled_button, .action_box, #recarregar_button{
+a, .hollow_button, .filled_button, .action_box, #recarregar_button, .pesquisa_card{
     transition: filter .2s;
 }
 
 a:hover, .hollow_button:hover, .filled_button:hover, .action_box:hover, #recarregar_button:hover{
-    filter: brightness(85%); 
+    filter: brightness(89%); 
+}
+
+.pesquisa_card:hover{
+    filter: brightness(92%);
 }
 
 .piuwer_name:hover, .piuwer_username:hover{
