@@ -12,7 +12,7 @@ piarButtonListener();
 changeNumberOfCharactersColor();
 
 function autoSizeTextArea() {
-    var allTextAreas = document.querySelectorAll(".piar_textfield");
+    var allTextAreas = document.querySelectorAll(".auto_expand_text_area");
     allTextAreas.forEach(function(textArea){
         textArea.addEventListener("input", function() {
             // Reset field height:

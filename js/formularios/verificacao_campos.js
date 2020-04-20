@@ -37,8 +37,19 @@ function botaoConfirmarListener() {
         });
 
         if (todosOsCamposSaoValidos) {
-            const usuarioSelecionado = document.querySelector("#username").value;
-            location.replace("../paginas_de_midia_social/feed.html?loggedInAs=" + usuarioSelecionado);
+
+            if (!location.href.includes("perfil.html")) {
+                const usuarioSelecionado = document.querySelector("#username").value;
+                location.replace("../paginas_de_midia_social/feed.html?loggedInAs=" + usuarioSelecionado);    
+            } else {
+                var infoUsuario = baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario;
+                infoUsuario.nome = document.querySelector("#name").value;
+                infoUsuario.descricao = document.querySelector("#description").value;
+                montarDadosPessoais();
+                montarPiusFeed();
+                togglePopupWholeScreen("#popup_alterar_perfil");
+            }
+
         } else {
 
             var primeiroCampoComErro = document.querySelector(".erro_no_campo");
@@ -124,6 +135,11 @@ function valorDoCampoEhValido(textfield) {
         else if (tipoCampo == "password_login") {
             // Se o valor inserido for diferente de "Password", retornar falso:
             if (valor != "Password") return false;
+        }
+
+        else if (tipoCampo == "description") {
+            // Se o valor for maior que 140 caracteres, retornar falso:
+            if (valor.length > 140) return false;
         }
     }
     

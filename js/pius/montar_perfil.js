@@ -57,3 +57,135 @@ function listenerDosBotoesDeTipoDeFeed() {
         });
     });
 }
+
+function montarDadosPessoais() {
+    var perfilArea = document.querySelector("#perfil_content");
+
+    if (perfilArea != null) {
+        // Obter dados do usuário em questão:
+        var dadosUsuario = baseDeDados.getDadosUsuarioFromUsername(usuarioSelecionado);
+
+        // Alterar dados da página de perfil:
+        var planoDeFundo = perfilArea.querySelector("#fundo_perfil");
+        planoDeFundo.src = "../../img/background/" + dadosUsuario.infoUsuario.background;
+
+        var perfilAvatar = perfilArea.querySelector("#perfil_avatar");
+        perfilAvatar.src = getAvatarSrc(dadosUsuario.infoUsuario.avatar, ImgurSize.medium);
+
+        var seguidoresCounter = perfilArea.querySelector("#seguidores_counter");
+        seguidoresCounter.textContent = dadosUsuario.infoUsuario.seguidores.length;
+
+        if (dadosUsuario.infoUsuario.seguidores.length == 1) {
+            seguidoresCounter.parentNode.querySelector(".number_text").textContent = "Seguidor";
+        }
+
+        var seguirButtonArea = document.querySelector("#numbers_right_side");
+        seguirButtonArea.innerHTML = "";
+        if (loggedInUser == usuarioSelecionado) {
+            seguirButtonArea.appendChild(montarBotaoDeAlterarPerfil());
+        } else if (baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.seguindo.includes(usuarioSelecionado)) {
+            seguirButtonArea.appendChild(montarBotaoDeSeguindo());
+        } else {
+            seguirButtonArea.appendChild(montarBotaoDeSeguir());
+        }
+
+        var seguindoCounter = perfilArea.querySelector("#seguindo_counter");
+        seguindoCounter.textContent = dadosUsuario.infoUsuario.seguindo.length;
+
+        var nomePerfil = perfilArea.querySelector("#nome_perfil");
+        nomePerfil.textContent = dadosUsuario.infoUsuario.nome;
+
+        var usernamePerfil = perfilArea.querySelector("#username_perfil");
+        usernamePerfil.textContent = "@" + dadosUsuario.infoUsuario.username;
+        
+        var descricaoPerfil = perfilArea.querySelector("#descricao_perfil");
+        descricaoPerfil.textContent = dadosUsuario.infoUsuario.descricao;
+
+        listenerBotaoSeguir();
+        listenerBotaoAlterarPerfil();
+    }
+}
+
+function montarBotaoDeAlterarPerfil() {
+    var divElement = document.createElement("div");
+    divElement.classList.add("hollow_button");
+    divElement.classList.add("seguir_button");
+    divElement.id = "alterar_perfil";
+
+    var pElement = document.createElement("p");
+    pElement.textContent = "Alterar perfil";
+    divElement.appendChild(pElement);
+
+    return divElement;
+}
+
+function montarBotaoDeSeguir() {
+    var divElement = document.createElement("div");
+    divElement.classList.add("hollow_button");
+    divElement.classList.add("seguir_button");
+    divElement.id = "seguir_button";
+
+    var pElement = document.createElement("p");
+    pElement.textContent = "Seguir";
+    divElement.appendChild(pElement);
+
+    return divElement;
+}
+
+function montarBotaoDeSeguindo() {
+    var divElement = document.createElement("div");
+    divElement.classList.add("filled_button");
+    divElement.classList.add("seguindo_button");
+    divElement.id = "seguir_button";
+
+    var iconElement = document.createElement("i");
+    iconElement.classList.add("fa");
+    iconElement.classList.add("fa-check");
+    iconElement.ariaHidden = "true";
+    divElement.appendChild(iconElement);
+
+    var pElement = document.createElement("p");
+    pElement.textContent = "Seguindo";
+    divElement.appendChild(pElement);
+
+    return divElement;
+}
+
+function listenerBotaoSeguir() {
+    var botaoSeguir = document.querySelector("#seguir_button");
+
+    if (botaoSeguir != null) {
+    
+        botaoSeguir.addEventListener("click", function(){
+            var seguindoList = baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.seguindo;
+            const index = seguindoList.indexOf(usuarioSelecionado)
+            if (index == -1) {
+                seguindoList.push(usuarioSelecionado);
+            } else {
+                seguindoList.splice(index, 1);
+            }
+            montarDadosPessoais();
+        });
+
+    }
+}
+
+function listenerBotaoAlterarPerfil() {
+    var botaoAlterarPerfil = document.querySelector("#alterar_perfil");
+
+    if (botaoAlterarPerfil != null) {
+        botaoAlterarPerfil.addEventListener("click", function(){
+            console.log("www");
+            setupFormAlterarPerfil();
+            togglePopupWholeScreen("#popup_alterar_perfil");
+        });
+    }
+}
+
+function setupFormAlterarPerfil() {
+    if (loggedInUser == usuarioSelecionado) {
+        const infoUsuario = baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario;
+        document.querySelector("#name").value = infoUsuario.nome;
+        document.querySelector("#description").value = infoUsuario.descricao;
+    }
+}

@@ -14,11 +14,18 @@
         <meta name="msapplication-TileColor" content="#f21d1d">
         <meta name="theme-color" content="#ffffff">
         
+        <!-- Icones do Font Awesome: -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
         <!-- CSS do projeto: -->
         <link rel="stylesheet" href="../../css/geral/geral.css">
         <link rel="stylesheet" href="../../css/geral/botoes.css">
         <link rel="stylesheet" href="../../css/geral/interacao_botoes.css">
         <link rel="stylesheet" href="../../css/geral/popup_tela_cheia.css">
+        <link rel="stylesheet" href="../../css/paginas_de_forms/geral.css">
+        <link rel="stylesheet" href="../../css/paginas_de_forms/popup.css">
+        <link rel="stylesheet" href="../../css/paginas_de_forms/textfield_extensions.css">
+        <link rel="stylesheet" href="../../css/paginas_de_forms/erros.css">
         <link rel="stylesheet" href="../../css/paginas_de_midia_social/geral.css">
         <link rel="stylesheet" href="../../css/paginas_de_midia_social/piu.css">
         <link rel="stylesheet" href="../../css/paginas_de_midia_social/piar_box.css">
@@ -43,6 +50,7 @@
             <section id="right_side_header">
                 <a href="../../index.html" id="logout_button">
                     <img alt="Logout icon" src="../../img/icons/Logout.svg">
+                    <p>Logout</p>
                 </a>
                 <a id="avatar_header">
                     <img class="avatar_usuario_logado" alt="Avatar usuário" src="../../img/avatars/null.svg">
@@ -112,9 +120,8 @@
                                     </section>
                                     
                                     <section id="numbers_right_side">
-                                        <div class="user_numbers_box">
-                                            <span class="number" id="conosco_desde">--/--/----</span>
-                                            <span class="number_text">Conosco desde</span>
+                                        <div class="hollow_button seguir_button">
+                                            <p>Seguir</p>
                                         </div>
                                     </section>
     
@@ -158,6 +165,31 @@
 
         </aside>
 
+        <!-- Popup de alterar perfil -->
+        <div id="popup_alterar_perfil" class="popup_tela_cheia">
+            <div class="popup_tela_cheia_conteudo">
+                <div class="topo_popup_piu">
+                    <h2>Altere seus dados de perfil</h2>
+                    <p class="exit_popup_button popup_exit_functionality">&times;</p>
+                </div>
+                <form>
+                    <div class="input_box">
+                        <input class="featureless_textfield textfield" type="text" placeholder="Altere seu nome" id="name" name="name">
+                    </div>
+                    <div class="input_box_help_parent">                    
+                        <span class="popup_ajuda">A descrição pode ter, no máximo, 140 caracteres.</span>
+    
+                        <div class="input_box">
+                            <input class="featureless_textfield textfield" type="text" placeholder="Altere sua descrição" id="description" name="description">
+                            <i class="fa textfield_extension botao_ajuda">&#xf059;</i>
+                        </div>
+                    </div>
+                    <span class="error_text not_displayed">Insira os dados corretamente.</span>
+                    <input class="filled_button popup_tela_cheia_button button_confirmar" id="popup_alterar_perfil_button" type="submit" value="Continuar">
+                </form>
+            </div>
+        </div>
+
         <!-- Popup para piar da sidebar -->
         <div id="popup_piar_sidebar" class="popup_tela_cheia piar_tela_cheia">
             <div class="popup_tela_cheia_conteudo">
@@ -170,7 +202,7 @@
                         <a>
                             <img class="avatar_piu avatar_usuario_logado" alt="Avatar usuário" src="../../img/avatars/null.svg">
                         </a>
-                        <textarea class="featureless_textfield transparent_border_text_area piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
+                        <textarea class="featureless_textfield transparent_border_text_area auto_expand_text_area piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
                     </div>
                     <div class="horizontal_piar_box">
                         <p class="invisible" class="piar_box_characters"><span class="number_of_characters invalid_number_of_characters"></span>/140</p>
@@ -193,7 +225,7 @@
                             <img class="avatar_piu avatar_usuario_logado" alt="Avatar usuário" src="../../img/avatars/null.svg">
                         </a>
                         <div class="piu_text_area">
-                            <textarea class="featureless_textfield transparent_border_text_area piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
+                            <textarea class="featureless_textfield transparent_border_text_area auto_expand_text_area piar_textfield" type="text" name="piar" placeholder="Em que você está pensando?"></textarea>
                             <div class="piu_reply_box"></div>
                         </div>
                     </div>
@@ -224,5 +256,8 @@
         <script src="../../js/pius/montar_perfil.js"></script>
         <script src="../../js/pius/interacao_com_pius.js"></script>
         <script src="../../js/pius/implement_server_pius.js"></script>
+        <script src="../../js/formularios/extensoes_textfield.js"></script>
+        <script src="../../js/formularios/verificacao_campos.js"></script>
+        <script src="../../js/formularios/ajuda.js"></script>
     </body>
 </html>

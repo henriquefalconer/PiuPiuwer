@@ -69,6 +69,27 @@
     display: flex;
 }
 
+.seguindo_button{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15.5px;
+    font-weight: 500;
+    height: 32px;
+    width: 120px;
+    padding: 0 13px;
+}
+
+.seguir_button{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 15.5px;
+    font-weight: 500;
+    height: 32px;
+    width: 120px;
+}
+
 #nome_perfil{
     margin-bottom: 6px;
     font-size: 25px;
@@ -110,4 +131,25 @@
 
 #pius_area{
     background-color: #ddd;
+}
+
+#popup_alterar_perfil .popup_tela_cheia_conteudo{
+    width: 450px;
+    padding: 30px;
+}
+
+#popup_alterar_perfil form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#popup_alterar_perfil h2{
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#popup_alterar_perfil .button_confirmar{
+    margin: 20px 0 5px;
 }

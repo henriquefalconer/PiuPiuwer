@@ -34,8 +34,12 @@ function montarPiusFeed() {
                 break;
 
             case TipoDeFeed.contatos:
-                baseDeDados.data.forEach(function(userData){
-                    userData.pius.forEach(function(piu){
+                baseDeDados.getDadosUsuarioFromUsername(loggedInUser).pius.forEach(function(piu){
+                    allPius.push(piu);
+                });
+                baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.seguindo.forEach(function(usuario){
+                    const contatoPius = baseDeDados.getDadosUsuarioFromUsername(usuario).pius;
+                    contatoPius.forEach(function(piu){
                         allPius.push(piu);
                     });
                 });

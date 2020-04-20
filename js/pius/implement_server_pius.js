@@ -61,8 +61,10 @@ function implementarPius(piusData) {
     // Atualizar feed de pius:
     montarPiusFeed();
 
-    // Atualizar dados da página de perfil, caso ela exista:
-    montarDadosPessoais();
+    if (location.href.includes("perfil.html")) {
+        // Atualizar dados da página de perfil, caso ela exista:
+        montarDadosPessoais();
+    }
 }
 
 function getTimeForServerUser(username) {
@@ -97,42 +99,4 @@ function getRandomTime() {
         horario = Date.parse("15 Apr 2020 " + hora + ":" + minuto + ":" + segundo);
     }
     return horario;
-}
-
-function montarDadosPessoais() {
-    var perfilArea = document.querySelector("#perfil_content");
-
-    if (perfilArea != null) {
-        // Obter dados do usuário em questão:
-        var dadosUsuario = baseDeDados.getDadosUsuarioFromUsername(usuarioSelecionado);
-
-        // Alterar dados da página de perfil:
-        var planoDeFundo = perfilArea.querySelector("#fundo_perfil");
-        planoDeFundo.src = "../../img/background/" + dadosUsuario.infoUsuario.background;
-
-        var perfilAvatar = perfilArea.querySelector("#perfil_avatar");
-        perfilAvatar.src = getAvatarSrc(dadosUsuario.infoUsuario.avatar, ImgurSize.medium);
-
-        var seguidoresCounter = perfilArea.querySelector("#seguidores_counter");
-        seguidoresCounter.textContent = dadosUsuario.infoUsuario.seguidores.length;
-
-        if (dadosUsuario.infoUsuario.seguidores.length == 1) {
-            seguidoresCounter.parentNode.querySelector(".number_text").textContent = "Seguidor";
-        }
-
-        var conoscoDesdeCounter = perfilArea.querySelector("#conosco_desde");
-        conoscoDesdeCounter.textContent = GeneralFunctions.getDateFromMilisseconds(dadosUsuario.infoUsuario.conoscoDesde);
-
-        var seguindoCounter = perfilArea.querySelector("#seguindo_counter");
-        seguindoCounter.textContent = dadosUsuario.infoUsuario.seguindo.length;
-
-        var nomePerfil = perfilArea.querySelector("#nome_perfil");
-        nomePerfil.textContent = dadosUsuario.infoUsuario.nome;
-
-        var usernamePerfil = perfilArea.querySelector("#username_perfil");
-        usernamePerfil.textContent = "@" + dadosUsuario.infoUsuario.username;
-        
-        var descricaoPerfil = perfilArea.querySelector("#descricao_perfil");
-        descricaoPerfil.textContent = dadosUsuario.infoUsuario.descricao;
-    }
 }
