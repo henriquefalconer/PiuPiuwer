@@ -9,13 +9,13 @@ autoSizeTextArea();
 piarButtonListener();
 
 // Controlar o contador de caracteres:
-changeNumberOfCharactersColor();
+piarBoxTextareasListener();
 
 function autoSizeTextArea() {
     var allTextAreas = document.querySelectorAll(".auto_expand_text_area");
     allTextAreas.forEach(function(textArea){
         textArea.addEventListener("input", function() {
-            // Reset field height:
+            // Resetar altura da textarea:
             this.style.height = 'inherit';
             this.style.height = (this.scrollHeight) + "px";
         });
@@ -29,14 +29,16 @@ function piarButtonListener() {
         var piarTextArea = piarBox.querySelector(".piar_textfield");
         var piarButton = piarBox.querySelector(".piar_box_button");
     
+        // Adicionar listener para permitir o funcionamento do piar button:
         piarButton.addEventListener("click", function(){
+            // Verificar se o texto é válido:
             if (piarTextArea.value.length > 0 && piarTextArea.value.length <= 140) {
                 var replyPiuId = null;
 
                 if (piarBox.classList.contains("popup_reply_piu")) {
                     replyPiuId = piarBox.querySelector(".piu_reply").id;
                 }
-
+                
                 baseDeDados.adicionarPiuABaseDeDados(piarTextArea.value, replyPiuId);
                 piarTextArea.value = "";
                 atualizarEstiloTextarea(piarBox);
@@ -46,15 +48,17 @@ function piarButtonListener() {
                     closeAllWholeScreenPopups();
                 }
             } else {
+                // Acionar o popup de erro:
                 togglePopupWholeScreen("#popup_piar_box_erro");
             }
         });
     });
 }
 
-function changeNumberOfCharactersColor() {
+function piarBoxTextareasListener() {
     var piarBoxes = document.querySelectorAll(".piar_box");
 
+    // Para cada piar box, implementar um listener:
     piarBoxes.forEach(function(piarBox){
         var textArea = piarBox.querySelector(".piar_textfield");
         
@@ -69,23 +73,27 @@ function atualizarEstiloTextarea(piarBox) {
     var numberOfCharacters = piarBox.querySelector(".number_of_characters");
     var piarButton = piarBox.querySelector(".piar_box_button");
 
+    // Verificar estilo que deve ser associado ao piar box:
     if (textArea.value.length > 0) {
         numberOfCharacters.parentNode.classList.remove("invisible");
         piarButton.classList.remove("invalid_button_piu");
 
+        // Se piar textarea conter mais de 140 caracteres, mude sua aparência:
         if (textArea.value.length > 140) {
             numberOfCharacters.classList.add("invalid_number_of_characters");
             textArea.classList.add("invalid_text_area");
             piarButton.classList.add("invalid_button_piu");
-        }
-        else {
+        } else {
             numberOfCharacters.classList.remove("invalid_number_of_characters");
             textArea.classList.remove("invalid_text_area");
             piarButton.classList.remove("invalid_button_piu");
         }
+
+        // Altere o número de caracteres do piar textarea:
         numberOfCharacters.textContent = textArea.value.length;
         
     }
+    // Caso o piar textarea estiver vazio, retirar toda a formatação de erro:
     else {
         numberOfCharacters.parentNode.classList.add("invisible");
         piarButton.classList.add("invalid_button_piu");

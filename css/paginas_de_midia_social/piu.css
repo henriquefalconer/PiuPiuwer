@@ -125,6 +125,26 @@
     margin: 15px 0;
 }
 
+.sem_pius{
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+    margin: 0;
+    color: rgb(94, 94, 94);
+}
+
+.sem_pius img{
+    height: 80px;
+}
+
+.sem_pius h2{
+    font-size: 22px;
+    color: rgb(44, 44, 44);
+}
+
 @media screen and (max-width: 1000px){
 
     .piu_message{
@@ -145,5 +165,5 @@
     #popup_piar_sidebar .popup_tela_cheia_conteudo{
         width: 80%;
     }
-    
+
 }

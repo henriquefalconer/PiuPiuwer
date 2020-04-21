@@ -38,10 +38,12 @@ function montarPiusFeed() {
                     allPius.push(piu);
                 });
                 baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.seguindo.forEach(function(usuario){
-                    const contatoPius = baseDeDados.getDadosUsuarioFromUsername(usuario).pius;
-                    contatoPius.forEach(function(piu){
-                        allPius.push(piu);
-                    });
+                    if (usuario != loggedInUser) {
+                        const contatoPius = baseDeDados.getDadosUsuarioFromUsername(usuario).pius;
+                        contatoPius.forEach(function(piu){
+                            allPius.push(piu);
+                        });
+                    }
                 });
                 break;
         
@@ -54,21 +56,36 @@ function montarPiusFeed() {
                 break;
         }
         
-        if (allPius.length > 0) GeneralFunctions.sortPius(allPius);
-
         piusArea.innerHTML = "";
 
-        allPius.forEach(function(piu){
-            var piuElement = montarPiuElement(piu);
+        if (allPius.length > 0) {
+            GeneralFunctions.sortPius(allPius);
 
-            piusArea.appendChild(piuElement);
-        });
+            allPius.forEach(function(piu){
+                var piuElement = montarPiuElement(piu);
 
-        // Adicionar functionalidades aos botãoes de ação dos pius:
-        ativarFuncoesPius();
+                piusArea.appendChild(piuElement);
+            });
 
-        // Alterar links para repassar usuário logado:
-        alterarLinksParaRepassarUsuarioLogado();
+            // Adicionar functionalidades aos botãoes de ação dos pius:
+            ativarFuncoesPius();
+
+            // Alterar links para repassar usuário logado:
+            alterarLinksParaRepassarUsuarioLogado();
+        } else {
+            var infoTextArea = document.createElement("div");
+            infoTextArea.classList.add("sem_pius");
+
+            var noPiusIcon = document.createElement("img");
+            noPiusIcon.src = "../../img/icons/Sem Pius.svg";
+            infoTextArea.appendChild(noPiusIcon);
+
+            var infoText = document.createElement("h2");
+            infoText.textContent = "Não há pius...";
+            infoTextArea.appendChild(infoText);
+
+            piusArea.appendChild(infoTextArea);
+        }
     }
 }
 

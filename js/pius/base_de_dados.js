@@ -17,6 +17,7 @@ var baseDeDados = new BaseDeDados([
             "Pés%20na%20praia.png",
             // Seguindo:
             [
+                "fulano.beltrano",
                 "cleber.cunha",
                 "rosi.plat",
                 "richar.lison",
@@ -61,7 +62,7 @@ var baseDeDados = new BaseDeDados([
             "Cleber.png",
             "Porsche 911.jpg",
             [
-                "cleber.cunha",
+                "fulano.beltrano",
                 "rosi.plat",
                 "richar.lison",
                 "YeVictor",
@@ -107,9 +108,9 @@ var baseDeDados = new BaseDeDados([
             "Richarlison.png",
             "Palmeira.jpg",
             [
+                "fulano.beltrano",
                 "cleber.cunha",
                 "rosi.plat",
-                "richar.lison",
                 "YeVictor",
                 "Murilo_T",
                 "Clau",
@@ -153,8 +154,8 @@ var baseDeDados = new BaseDeDados([
             "Rosimary.png",
             "Cidade.jpg",
             [
+                "fulano.beltrano",
                 "cleber.cunha",
-                "rosi.plat",
                 "richar.lison",
                 "YeVictor",
                 "Murilo_T",

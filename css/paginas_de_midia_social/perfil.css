@@ -153,3 +153,15 @@
 #popup_alterar_perfil .button_confirmar{
     margin: 20px 0 5px;
 }
+
+@media screen and (max-width: 640px){
+    #user_numbers{
+        position: relative;
+        justify-content: center;
+    }
+
+    #numbers_right_side{
+        position: absolute;
+        top: 133%;
+    }
+}

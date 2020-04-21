@@ -23,6 +23,7 @@ alterarLinksParaRepassarUsuarioLogado();
 // Ativar listener para a mudança do estilo do pesquisar no piupiuwer:
 pesquisarNoPiupiuwerListener(); 
 
+// Ativar listener da barra de pesquisa:
 listenerDePesquisa();
 
 // Definir se mouse está acima do pesquisa resultados:
@@ -124,7 +125,11 @@ function montarResultadosDePesquisa() {
 
     var allResults = [];
 
-    baseDeDados.data.forEach(function(usuarioData){
+    var sortedUsuarioDatas = baseDeDados.data;
+
+    sortedUsuarioDatas.sort((a,b) => a.infoUsuario.nome > b.infoUsuario.nome ? 1 : -1);
+
+    sortedUsuarioDatas.forEach(function(usuarioData){
         if (usuarioData.infoUsuario.nome.count(searchTerm) > 0 || usuarioData.infoUsuario.username.count(searchTerm) > 0) {
             allResults.push(montarPesquisaCard(usuarioData.infoUsuario));
         }
@@ -166,7 +171,7 @@ function montarPesquisaCard(infoUsuario) {
 
     var title = document.createElement("h3");
     title.classList.add("nome_pesquisa");
-    title.textContent = infoUsuario.nome.length > 30 ? infoUsuario.nome.abreviar() : infoUsuario.nome;
+    title.textContent = infoUsuario.nome.length > 24 ? infoUsuario.nome.abreviar() : infoUsuario.nome;
     textArea.appendChild(title);
 
     var username = document.createElement("p");
