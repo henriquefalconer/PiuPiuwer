@@ -55,6 +55,7 @@
     text-align: center;
     margin: 0 8px;
     letter-spacing: 0.005em;
+    cursor: default;
 }
 
 .number{
