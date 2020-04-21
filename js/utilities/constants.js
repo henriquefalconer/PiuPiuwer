@@ -14,8 +14,6 @@ class BaseDeDados {
                 piuReplyId,
             ),
         );
-
-        console.log(this.getDadosUsuarioFromUsername(loggedInUser).pius);
         
         // Recarregar feed de pius:
         montarPiusFeed();

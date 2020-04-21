@@ -2,68 +2,18 @@ function montarPiusFeed() {
     var piusArea = document.querySelector("#pius_area");
 
     if (piusArea != null) {
-        var allPius = [];
+        // Para o tipo de feed dado, selecionar pius para mostrar:
+        var allPius = montarListaAllPius(tipoDeFeed);
         
-        switch (tipoDeFeed) {
-            case TipoDeFeed.apenasPiusDoUsuario:
-                allPius = baseDeDados.getDadosUsuarioFromUsername(usuarioSelecionado).pius;
-                break;
-            
-            case TipoDeFeed.piusERespostasDoUsuario:
-                baseDeDados.data.forEach(function(userData){
-
-                    if (userData.infoUsuario.username == usuarioSelecionado) {
-                        userData.pius.forEach(function(piu){
-                            allPius.push(piu);
-                        });
-                    } else {
-                        userData.pius.forEach(function(piu){
-                            if (GeneralFunctions.getUserNameFromPiuId(piu.piuReplyId) == usuarioSelecionado) {
-                                allPius.push(piu);
-                            }
-                        });
-                    }
-    
-                });
-                break;
-            
-            case TipoDeFeed.curtidasDoUsuario:
-                baseDeDados.getDadosUsuarioFromUsername(usuarioSelecionado).infoUsuario.likes.forEach(function(likePiuId){
-                    allPius.push(baseDeDados.getDadosPiuFromPiuId(likePiuId));
-                });
-                break;
-
-            case TipoDeFeed.contatos:
-                baseDeDados.getDadosUsuarioFromUsername(loggedInUser).pius.forEach(function(piu){
-                    allPius.push(piu);
-                });
-                baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.seguindo.forEach(function(usuario){
-                    if (usuario != loggedInUser) {
-                        const contatoPius = baseDeDados.getDadosUsuarioFromUsername(usuario).pius;
-                        contatoPius.forEach(function(piu){
-                            allPius.push(piu);
-                        });
-                    }
-                });
-                break;
-        
-            default:
-                baseDeDados.data.forEach(function(userData){
-                    userData.pius.forEach(function(piu){
-                        allPius.push(piu);
-                    });
-                });
-                break;
-        }
-        
+        // Esvaziar piusArea:
         piusArea.innerHTML = "";
 
+        // Se a quantidade de pius não for 0, adicione eles ao sistema:
         if (allPius.length > 0) {
             GeneralFunctions.sortPius(allPius);
 
             allPius.forEach(function(piu){
                 var piuElement = montarPiuElement(piu);
-
                 piusArea.appendChild(piuElement);
             });
 
@@ -72,7 +22,10 @@ function montarPiusFeed() {
 
             // Alterar links para repassar usuário logado:
             alterarLinksParaRepassarUsuarioLogado();
-        } else {
+        }
+        
+        // Caso contrário, adicione o ícone de falta de pius:
+        else {
             var infoTextArea = document.createElement("div");
             infoTextArea.classList.add("sem_pius");
 
@@ -87,6 +40,64 @@ function montarPiusFeed() {
             piusArea.appendChild(infoTextArea);
         }
     }
+}
+
+function montarListaAllPius(tipoDeFeed) {
+    var allPius = [];
+    
+    switch (tipoDeFeed) {
+        case TipoDeFeed.apenasPiusDoUsuario:
+            allPius = baseDeDados.getDadosUsuarioFromUsername(usuarioSelecionado).pius;
+            break;
+        
+        case TipoDeFeed.piusERespostasDoUsuario:
+            baseDeDados.data.forEach(function(userData){
+
+                if (userData.infoUsuario.username == usuarioSelecionado) {
+                    userData.pius.forEach(function(piu){
+                        allPius.push(piu);
+                    });
+                } else {
+                    userData.pius.forEach(function(piu){
+                        if (GeneralFunctions.getUserNameFromPiuId(piu.piuReplyId) == usuarioSelecionado) {
+                            allPius.push(piu);
+                        }
+                    });
+                }
+
+            });
+            break;
+        
+        case TipoDeFeed.curtidasDoUsuario:
+            baseDeDados.getDadosUsuarioFromUsername(usuarioSelecionado).infoUsuario.likes.forEach(function(likePiuId){
+                allPius.push(baseDeDados.getDadosPiuFromPiuId(likePiuId));
+            });
+            break;
+
+        case TipoDeFeed.contatos:
+            baseDeDados.getDadosUsuarioFromUsername(loggedInUser).pius.forEach(function(piu){
+                allPius.push(piu);
+            });
+            baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario.seguindo.forEach(function(usuario){
+                if (usuario != loggedInUser) {
+                    const contatoPius = baseDeDados.getDadosUsuarioFromUsername(usuario).pius;
+                    contatoPius.forEach(function(piu){
+                        allPius.push(piu);
+                    });
+                }
+            });
+            break;
+    
+        default:
+            baseDeDados.data.forEach(function(userData){
+                userData.pius.forEach(function(piu){
+                    allPius.push(piu);
+                });
+            });
+            break;
+    }
+
+    return allPius;
 }
 
 function montarPiuElement(piu) {

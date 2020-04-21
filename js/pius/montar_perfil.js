@@ -175,7 +175,6 @@ function listenerBotaoAlterarPerfil() {
 
     if (botaoAlterarPerfil != null) {
         botaoAlterarPerfil.addEventListener("click", function(){
-            console.log("www");
             setupFormAlterarPerfil();
             togglePopupWholeScreen("#popup_alterar_perfil");
         });

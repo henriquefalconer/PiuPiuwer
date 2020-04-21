@@ -2,6 +2,7 @@
 // IMPLEMENTAÇÃO DOS PIUS DO SERVIDOR À BASE DE DADOS:
 // ---------------------------------------------------
 
+// Obter dados do servidor externo:
 getJsonData("https://next.json-generator.com/api/json/get/EkyZfHLU_", implementarPius);
 
 function implementarPius(piusData) {
