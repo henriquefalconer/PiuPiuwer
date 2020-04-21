@@ -243,6 +243,10 @@
     height: 70%;
 }
 
+#pius_area{
+    padding-bottom: 0.5px;
+}
+
 #right_side_content{
     padding-bottom: 10px;
     right: 50%;
