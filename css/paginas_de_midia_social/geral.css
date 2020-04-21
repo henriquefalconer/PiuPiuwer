@@ -167,22 +167,6 @@
     cursor: pointer;
 }
 
-#secao_em_desenvolvimento{
-    background-color: white;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0;
-    color: #222;
-}
-
-#icone_desenvolvimento{
-    width: 90px;
-}
-
 .side_bar{
     position: fixed;
     width: 200px;
@@ -235,6 +219,17 @@
     height: 15px;
 }
 
+#piar_button_region{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50%;
+}
+
 #navigation_piar_button{
     width: 100%;
     height: 50px;
@@ -246,11 +241,6 @@
 #navigation_piar_button img{
     display: none;
     height: 70%;
-}
-
-#ajustes_button{
-    height: 40px;
-    margin: 10px;
 }
 
 #right_side_content{
@@ -337,10 +327,6 @@
 
     #navigation_piar_button p{
         display: none;
-    }
-
-    #ajustes_button{
-        height: 35px;
     }
 }
 
