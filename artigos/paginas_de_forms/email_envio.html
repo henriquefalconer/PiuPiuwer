@@ -19,7 +19,6 @@
         <link rel="stylesheet" href="../../css/geral/botoes.css">
         <link rel="stylesheet" href="../../css/geral/interacao_botoes.css">
         <link rel="stylesheet" href="../../css/paginas_de_forms/geral.css">
-        <link rel="stylesheet" href="../../css/paginas_de_forms/erros.css">
     </head>
     <body>
         <header>
@@ -29,28 +28,22 @@
                     <img class="logo_piu" src="../../img/logo/Logo Piupiuwer.svg">
                 </a>
                 
-                <a class="hollow_button voltar_button" href="login.html">
+                <a class="hollow_button voltar_button" href="esqueci_senha.html">
                     Voltar
                 </a>
 
             </section>
         </header>
         <main class="main_content formulario_content">
-            <h1 class="form_title">Esqueci minha senha</h1>
-            <form class="formulario_cadastro">
-                <div class="input_box">
-                    <input class="featureless_textfield textfield email_or_username" type="text" placeholder="Insira seu e-mail ou nome de usuário" id="name" name="name">
-                </div>
-                <span class="error_text not_displayed">Insira os dados corretamente.</span>
-                <input class="filled_button button_confirmar" type="submit" value="Continuar">
-            </form>
+            <h1 class="form_title">Enviaremos um e-mail para você</h1>
             
-            <div class="pagina_cadastro_links_conta">
+            <p class="centralized_text form_subtitle">
+                Isso deve demorar alguns minutos.
+            </p>
             
-                <a href="esqueci_email_e_username.html">
-                    <p class="link_conta">Esqueci meu e-mail e meu nome de usuário</p>
-                </a>
-            </div>
+            <a href="../../index.html" class="filled_button criar_nova_conta_apos_esquecer_tudo">
+                Retornar ao início
+            </a>
         </main>
         
         <footer>
@@ -59,9 +52,5 @@
                 <p id="piupiuwer_copyright_text">© 2020 PiuPiuwer, Inc.</p>
             </div>
         </footer>
-
-        <script src="../../js/utilities/constants.js"></script>
-        <script src="../../js/formularios/extensoes_textfield.js"></script>
-        <script src="../../js/formularios/verificacao_campos.js"></script>
     </body>
 </html>

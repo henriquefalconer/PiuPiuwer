@@ -12,7 +12,7 @@ function botaoConfirmarListener() {
     var buttonConfirmar = document.querySelector(".button_confirmar");
 
     buttonConfirmar.addEventListener("click", function(){
-        event.preventDefault();
+        event.preventDefault(); 
 
         var camposFormulario = document.querySelectorAll(".input_box");
 
@@ -37,21 +37,20 @@ function botaoConfirmarListener() {
         });
 
         if (todosOsCamposSaoValidos) {
-
-            if (!location.href.includes("perfil.html")) {
-                const usuarioSelecionado = document.querySelector("#username").value;
-                location.replace("../paginas_de_midia_social/feed.html?loggedInAs=" + usuarioSelecionado);    
-            } else {
+            if (location.href.includes("perfil.html")) {   
                 var infoUsuario = baseDeDados.getDadosUsuarioFromUsername(loggedInUser).infoUsuario;
                 infoUsuario.nome = document.querySelector("#name").value;
                 infoUsuario.descricao = document.querySelector("#description").value;
                 montarDadosPessoais();
                 montarPiusFeed();
                 togglePopupWholeScreen("#popup_alterar_perfil");
+            } else if (location.href.includes("esqueci_senha.html")) {
+                location.replace("email_envio.html"); 
+            } else {
+                const usuarioSelecionado = document.querySelector("#username").value;
+                location.replace("../paginas_de_midia_social/feed.html?loggedInAs=" + usuarioSelecionado); 
             }
-
         } else {
-
             var primeiroCampoComErro = document.querySelector(".erro_no_campo");
     
             var errorText = document.querySelector(".error_text");
@@ -61,7 +60,6 @@ function botaoConfirmarListener() {
                 primeiroCampoComErro.focus();
             }
             else errorText.classList.add("not_displayed");
-
         }
 
     });
