@@ -9,3 +9,4 @@
 
 - Este projeto foi criado em abril de 2020 como parte do treinamento para o **Núcleo de Tecnologia da Poli Júnior**. 💪🏻
 - Qualquer semelhança com o visual ou aparência do Twitter, é pura coincidência. 😇
+- O design foi feito no Figma ([link](https://www.figma.com/file/UFBgBqOEC7NIyJSaUVTGc5/Henrique-Falconer-%E2%80%93-PIT-PiuPiuwer?node-id=0%3A1)). 🎨
