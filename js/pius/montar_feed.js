@@ -293,6 +293,7 @@ function montarAvatarDoPiu(classe, src) {
     piuAvatar.classList.add(classe);
     piuAvatar.alt = "Avatar usuário";
     piuAvatar.src = getAvatarSrc(src, ImgurSize.small);
+    piuAvatar.onerror = e => (e.target.src = getAvatarSrc("null.svg"));
     return piuAvatar;
 }
 
