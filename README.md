@@ -7,5 +7,5 @@
 
 ## Informações gerais:
 
-- Este projeto foi criado em abril de 2020 como parte do treinamento para o Núcleo de Tecnologia da Poli Júnior. 💪🏻
+- Este projeto foi criado em abril de 2020 como parte do **treinamento** para o **Núcleo de Tecnologia da Poli Júnior**. 💪🏻
 - Qualquer semelhança com o visual ou aparência do Twitter, é pura coincidência. 😇
